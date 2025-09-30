@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -8,8 +10,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { testimonials } from "@/constants";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function TestimonialSection() {
+  // Autoplay plugin configuration for carousel
+  const plugin = React.useRef(
+    Autoplay({ delay: 8000, stopOnInteraction: true })
+  );
   return (
     <>
       <section className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 text-[#0D090A]">
@@ -29,10 +36,9 @@ export default function TestimonialSection() {
         {/* Carousel Container */}
         <div className="relative max-w-7xl mx-auto">
           <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
+            plugins={[plugin.current]}
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
             className="w-full"
           >
             <CarouselContent className="-ml-2 sm:-ml-3 md:-ml-4">
@@ -73,12 +79,6 @@ export default function TestimonialSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-
-            {/* Navigation Buttons - Optimized positioning */}
-            <div className="hidden lg:block">
-              <CarouselPrevious className="absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2" />
-            </div>
 
             {/* Mobile Navigation - Centered below carousel */}
             <div className="flex justify-center gap-4 mt-6 md:hidden">
