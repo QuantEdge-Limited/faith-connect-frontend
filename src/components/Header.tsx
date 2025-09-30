@@ -4,8 +4,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 
-// Navbar component renders the top navigation bar for the application
-export default function Navbar() {
+// Header component renders the top navigation bar for the application
+export default function Header() {
 
 
   // State to track if the user is logged in
@@ -13,16 +13,16 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Main navbar container */}
-      <div className="nav flex justify-between p-4 py-6 h-[70px] top-0 fixed w-[100vw] bg-white border-b border-b-gray-400">
+      {/* Main header container */}
+      <div className="header flex justify-between p-4 py-6 h-[70px] top-0 fixed w-[100vw] bg-white border-b border-b-gray-400">
         {/* Left section: Logo */}
-        <div className="nav-left flex justify-start ps-5">
+        <div className="header-left flex justify-start ps-5">
           <Image src="/logo.png" alt="Logo" width={50} height={50} />
         </div>
         {/* Right section: Navigation links and auth buttons */}
-        <div className="nav-right justify-around flex">
+        <div className="header-right justify-around flex">
           {/* Navigation links with animated underline on hover */}
-          <div className="nav-right-list flex py-1 my-auto">
+          <div className="header-right-list flex py-1 my-auto">
             {/* Each link uses a span for animated underline effect from center to ends */}
             <Link href="/" className="me-4 group relative overflow-hidden"> 
               <span className="relative z-10">Products</span>
@@ -54,7 +54,7 @@ export default function Navbar() {
             </Link>
           </div>
           {/* Authentication buttons: Show Log Out if logged in, else Login/Sign Up */}
-          <div className="nav-right-logs flex py-1 my-auto">
+          <div className="header-right-logs flex py-1 my-auto">
             {isLoggedIn ? (
               <>
                 <Link href="/" className="me-4 px-3 py-[2px] bg-gray-200 border border-gray-400 rounded-md">Log Out</Link>
