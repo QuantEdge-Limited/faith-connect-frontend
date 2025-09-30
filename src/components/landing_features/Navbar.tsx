@@ -46,7 +46,7 @@ export default function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    setIsExploreOpen(false); 
+    setIsExploreOpen(false);
   };
 
   const closeMobileMenu = () => {
@@ -82,7 +82,7 @@ export default function Navbar() {
     <Link
       href={href}
       onClick={onClick}
-      className="text-sm sm:text-base hover:text-[#D4AF37] transition-colors"
+      className="text-sm sm:text-base lg:text-lg hover:text-[#D4AF37] transition-colors"
     >
       {label}
     </Link>
