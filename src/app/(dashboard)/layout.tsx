@@ -1,17 +1,29 @@
-import Sidebar from "@/components/Sidebar";
+"use client";
+import React, { useState } from "react";
+import Header from "@/components/dashboard_features/Header";
+import Sidebar from "@/components/dashboard_features/Sidebar";
 
 // app/(dashboard)/layout.tsx
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { ReactNode } from "react";
+
+export default function DashboardLayout({ children }: { children: ReactNode }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const closeSidebar = () => setIsSidebarOpen(false);
+
   return (
-    <>
-      <div className="">
-        <Sidebar />
-        <main>{children}</main>
-      </div>
-    </>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header Component */}
+      <Header onMenuClick={toggleSidebar} />
+
+      {/* Sidebar Component */}
+      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+
+      {/* Main Content Area */}
+      <main className="lg:ml-64 mt-16 min-h-[calc(100vh-4rem)]">
+        <div className="p-4 md:p-6 lg:p-8">{children}</div>
+      </main>
+    </div>
   );
 }

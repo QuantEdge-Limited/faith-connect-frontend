@@ -1,10 +1,11 @@
-/* Import Inter from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Apply Poppins font globally */
 @theme {
-  --font-sans: "Inter", sans-serif;
+  --font-sans: var(--font-open-sans), sans-serif;
+  --font-heading: var(--font-cormorant), serif;
+}
+
+.next-image-no-gap {
+  display: block !important;
 }

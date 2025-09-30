@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Open_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const openSans = Open_Sans({
   subsets: ["latin"],
+  variable: "--font-open-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["400", "500", "600", "700"], // adjust as needed
 });
 
 export const metadata: Metadata = {
@@ -23,12 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${openSans.variable} ${cormorant.variable}`}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

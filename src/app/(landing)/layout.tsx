@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Navbar from "@/components/landing_features/Navbar";
 
-export default function DashboardLayout({
+// app/(landing)/layout.tsx
+export default function LandingLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ export default function DashboardLayout({
   return (
     <>
       <div>
-        <Header />
+        <Navbar />
         <main>{children}</main>
         <Footer />
       </div>
