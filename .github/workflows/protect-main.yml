@@ -1,0 +1,20 @@
+name: Protect Main Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  block-non-admins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject push to main if not admin
+        run: |
+          echo "Pusher: ${{ github.actor }}"
+          if [ "${{ github.actor }}" != "samuelnmu" ]; then
+            echo "❌ Push blocked: main is read-only."
+            exit 1
+          else
+            echo "✅ Push allowed for admin."
+          fi
