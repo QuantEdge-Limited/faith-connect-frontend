@@ -121,7 +121,7 @@ export default function Navbar() {
 
                 {/* Explore Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm sm:text-base hover:text-[#D4AF37] transition-colors">
+                  <NavigationMenuTrigger className="text-sm sm:text-base lg:text-lg hover:text-[#D4AF37] transition-colors">
                     Explore
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="border border-[#0D090A]/15 bg-white/90 backdrop-blur-lg">
