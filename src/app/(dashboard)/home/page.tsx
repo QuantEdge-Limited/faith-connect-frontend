@@ -3,9 +3,9 @@
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { MapPin, Users } from "lucide-react";
 import React from "react";
-import Calendar from "./calendar";
-import Schedule from "./schedule";
-import Branch from "./branch";
+import Calendar from "../../../components/dashboard_features/calendar";
+import Schedule from "../../../components/dashboard_features/schedule";
+import Branch from "../../../components/dashboard_features/branch";
 
 // Dashboard main component for the home page
 export default function Dashboard() {
