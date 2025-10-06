@@ -93,7 +93,7 @@ export default function Navbar() {
       <nav className="w-full fixed top-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
         <div
           className="max-w-7xl mx-auto h-14 sm:h-16 md:h-18
-                  flex items-center justify-between text-[#0D090A]"
+                  flex items-center justify-between text-[#0D090A] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-0 "
         >
           {/* Logo */}
           <div className="flex-shrink-0 min-w-0">
