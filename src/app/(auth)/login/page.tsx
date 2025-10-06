@@ -1,5 +1,6 @@
 import React from "react";
 import { AuthForm } from "@/components/AuthForm";
+import Link from "next/link";
 
 export default function LoginPage() {
   return (
@@ -28,7 +29,17 @@ export default function LoginPage() {
           />
 
           <div className="relative z-10 flex flex-col justify-end p-12 h-full text-white">
+            {/* Website Title */}
+            <Link href="/">
+              <p className="text-xl  tracking-widest text-gray-300 mb-2">
+                Faith Connect
+              </p>
+            </Link>
+
+            {/* Page Heading */}
             <h1 className="text-4xl font-bold mb-4">Welcome Back</h1>
+
+            {/* Subtitle / Description */}
             <p className="text-lg text-gray-200">
               Sign in to continue your spiritual journey
             </p>
