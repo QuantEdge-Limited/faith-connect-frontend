@@ -1,13 +1,13 @@
 "use client";
 
 // Import UI components and icons
-import Calendar from "@/components/dashboard_features/Calendar";
-import Schedule from "@/components/dashboard_features/Schedule";
-import Branch from "@/components/dashboard_features/Branch";
+import Branch from "@/components/dashboard_features/branch";
+import Schedule from "@/components/dashboard_features/schedule";
+import CalendarComponent from "@/components/dashboard_features/calendar";
+
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import React from "react";
-import CalendarComponent from "@/components/dashboard_features/Calendar";
 
 // Dashboard main component for the home page
 export default function Dashboard() {
