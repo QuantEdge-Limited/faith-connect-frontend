@@ -99,7 +99,7 @@ export default function HeroSection() {
             </Button>
           </Link>
 
-          <Link href="#about">
+          <Link href="#features">
             <Button
               variant="outline"
               className="w-full sm:w-auto 

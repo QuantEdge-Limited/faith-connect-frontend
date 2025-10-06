@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   // const token = request.cookies.get("authToken")?.value;
-  const token = 1111; //get token from cookies
+  const token = null; //get token from cookies
   const isAuth = !!token;
 
   const url = request.nextUrl;
