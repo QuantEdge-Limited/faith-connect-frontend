@@ -78,22 +78,22 @@ export default function GroupsPage() {
   return (
     <div className="p-4 md:p-8 space-y-6 max-w-6xl mx-auto">
       {/* Breadcrumbs */}
-      <nav className="text-sm text-gray-600">
+      <nav className="text-sm text-gray-600 dark:text-gray-300">
         <ol className="flex gap-2">
-          <li className="text-gray-900 font-medium">Groups</li>
+          <li className="text-gray-900 font-medium dark:text-gray-100">Groups</li>
         </ol>
       </nav>
 
       {/* Quick Links */}
       <section>
-        <h2 className="text-xl font-semibold mb-3">Quick Links</h2>
+        <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Quick Links</h2>
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={() => setActiveFilter("joined")}
             className={`px-4 py-2 rounded-lg border transition ${
               activeFilter === "joined"
                 ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-gray-700 hover:bg-gray-100"
+                : "bg-white text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
             }`}
           >
             My Groups
@@ -103,7 +103,7 @@ export default function GroupsPage() {
             className={`px-4 py-2 rounded-lg border transition ${
               activeFilter === "available"
                 ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-gray-700 hover:bg-gray-100"
+                : "bg-white text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
             }`}
           >
             Available Groups
@@ -113,7 +113,7 @@ export default function GroupsPage() {
             className={`px-4 py-2 rounded-lg border transition ${
               activeFilter === "all"
                 ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-gray-700 hover:bg-gray-100"
+                : "bg-white text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
             }`}
           >
             All Groups
@@ -123,10 +123,10 @@ export default function GroupsPage() {
 
       {/* Groups Grid */}
       <section>
-        <h2 className="text-xl font-semibold mb-4">Parish Groups</h2>
+        <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">Parish Groups</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredGroups.length === 0 ? (
-            <p className="text-gray-500">No groups found.</p>
+            <p className="text-gray-500 dark:text-gray-400">No groups found.</p>
           ) : (
             filteredGroups.map((group) => (
               <Card

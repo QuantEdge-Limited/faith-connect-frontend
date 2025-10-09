@@ -83,15 +83,15 @@ export default function AnnouncementsPage() {
   return (
     <div className="p-6 space-y-6">
       {/* Breadcrumbs */}
-      <nav className="text-sm text-gray-600">
+      <nav className="text-sm text-gray-600 dark:text-gray-300">
         <ol className="flex gap-2">
-          <li className="text-gray-900 font-medium">Announcements</li>
+          <li className="text-gray-900 font-medium dark:text-gray-100">Announcements</li>
         </ol>
       </nav>
 
       {/* Filters */}
       <section>
-        <h2 className="text-xl font-semibold mb-3">Filter Announcements</h2>
+        <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Filter Announcements</h2>
         <div className="flex gap-3 flex-wrap">
           {["All", "Parish-wide", "Outstation", "Group-specific"].map((cat) => (
             <button
@@ -100,7 +100,7 @@ export default function AnnouncementsPage() {
               className={`px-4 py-2 rounded-lg border ${
                 filter === cat
                   ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  : "bg-white text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
               }`}
             >
               {cat}
@@ -112,7 +112,7 @@ export default function AnnouncementsPage() {
       {/* Announcements feed */}
       <section className="space-y-4">
         {filtered.length === 0 ? (
-          <p className="text-gray-500">No announcements found.</p>
+          <p className="text-gray-500 dark:text-gray-400">No announcements found.</p>
         ) : (
           filtered.map((announcement) => (
             <Card
@@ -128,7 +128,7 @@ export default function AnnouncementsPage() {
                     className={`px-3 py-1 rounded-lg ${
                       readIds.includes(announcement.id)
                         ? "bg-green-600 text-white"
-                        : "bg-gray-200 hover:bg-green-500 hover:text-white"
+                        : "bg-gray-200 hover:bg-green-500 hover:text-white dark:bg-gray-700 dark:hover:bg-green-500"
                     }`}
                   >
                     {readIds.includes(announcement.id) ? "Read" : "Mark as Read"}
@@ -138,7 +138,7 @@ export default function AnnouncementsPage() {
                     className={`px-3 py-1 rounded-lg ${
                       savedIds.includes(announcement.id)
                         ? "bg-yellow-500 text-white"
-                        : "bg-gray-200 hover:bg-yellow-400 hover:text-white"
+                        : "bg-gray-200 hover:bg-yellow-400 hover:text-white dark:bg-gray-700 dark:hover:bg-yellow-400"
                     }`}
                   >
                     {savedIds.includes(announcement.id)
