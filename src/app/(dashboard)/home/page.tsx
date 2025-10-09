@@ -8,6 +8,7 @@ import CalendarComponent from "@/components/dashboard_features/calendar";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import React from "react";
+import Group from "@/components/dashboard_features/group";
 
 // Dashboard main component for the home page
 export default function Dashboard() {
@@ -68,6 +69,7 @@ export default function Dashboard() {
             <Branch />
             <CalendarComponent />
             <Schedule />
+            <Group />
           </div>
         </div>
       </section>
