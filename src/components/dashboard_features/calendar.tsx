@@ -87,21 +87,21 @@ const CalendarComponent = () => {
   return (
     <>
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold mb-3 px-1">
+        <h2 className="text-lg sm:text-xl font-semibold mb-3 px-1 dark:text-gray-100">
           Calendar & Events
         </h2>
-        <Card className="bg-white shadow-sm border-[#D4AF37]/20">
+        <Card className="bg-white shadow-sm border-[#D4AF37]/20 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-4 sm:p-5">
             {/* Layout: Calendar on the left, Events on the right */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Compact Calendar Section */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm sm:text-base font-semibold text-gray-800">
+                  <h3 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100">
                     {monthNames[selectedDate.getMonth()]}{" "}
                     {selectedDate.getFullYear()}
                   </h3>
-                  <CalendarDays className="w-4 h-4 text-gray-400" />
+                  <CalendarDays className="w-4 h-4 text-gray-400 dark:text-gray-300" />
                 </div>
 
                 {/* Weekday headers */}
@@ -109,7 +109,7 @@ const CalendarComponent = () => {
                   {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
                     <div
                       key={day}
-                      className="text-center text-xs font-medium text-gray-500 py-1"
+                      className="text-center text-xs font-medium text-gray-500 py-1 dark:text-gray-400"
                     >
                       {day}
                     </div>
@@ -121,8 +121,8 @@ const CalendarComponent = () => {
               </div>
 
               {/* Events List Section */}
-              <div className="md:border-l md:border-gray-200 md:pl-4 border-t md:border-t-0 border-gray-200 pt-3 md:pt-0">
-                <h3 className="text-sm sm:text-base font-semibold mb-2 text-gray-800">
+              <div className="md:border-l md:border-gray-200 md:pl-4 border-t md:border-t-0 border-gray-200 pt-3 md:pt-0 dark:md:border-gray-700 dark:border-gray-700">
+                <h3 className="text-sm sm:text-base font-semibold mb-2 text-gray-800 dark:text-gray-100">
                   Upcoming Events
                 </h3>
 
@@ -131,7 +131,7 @@ const CalendarComponent = () => {
                   {events.map((event) => (
                     <div
                       key={event.id}
-                      className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 transition-colors"
+                      className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
                       {/* Colored indicator */}
                       <span
@@ -140,12 +140,12 @@ const CalendarComponent = () => {
                       />
                       <div className="flex-1 min-w-0">
                         <p
-                          className="font-medium text-base text-gray-800 truncate"
+                          className="font-medium text-base truncate"
                           style={{ color: event.color }}
                         >
                           {event.title}
                         </p>
-                        <p className="text-sm text-gray-500">{event.date}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">{event.date}</p>
                       </div>
                     </div>
                   ))}

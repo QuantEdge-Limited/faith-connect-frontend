@@ -39,7 +39,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     <>
       {/* Sidebar */}
       <aside
-        className={`fixed top-16 left-0 bottom-0 w-64 bg-white border-r border-gray-200 z-40 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-16 left-0 bottom-0 w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 z-40 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -51,10 +51,10 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                    className="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-gray-800 dark:hover:text-blue-300 transition-colors"
                     onClick={handleLinkClick}
                   >
-                    {Icon && <Icon className="w-5 h-5" />}
+                    {Icon && <Icon className="w-5 h-5 dark:text-gray-300" />}
                     <span className="font-medium">{label}</span>
                   </Link>
                 </li>
@@ -63,14 +63,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           </div>
 
           {/* Logout Button at Bottom */}
-          <div className="p-3 border-t border-gray-200">
+          <div className="p-3 border-t border-gray-200 dark:border-gray-700">
             <button
               onClick={() => {
                 // Add your logout logic here
                 console.log("Logging out...");
                 // Example: router.push('/login');
               }}
-              className="w-full flex items-center gap-3 px-4 py-3 text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 text-red-600 rounded-lg hover:bg-red-50 dark:hover:bg-gray-800 transition-colors"
             >
               <LogOut className="w-5 h-5" />
               <span className="font-medium">Log Out</span>
