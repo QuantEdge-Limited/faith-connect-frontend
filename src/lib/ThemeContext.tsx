@@ -72,12 +72,16 @@ const ThemeContext = () => {
         }
     }, [])
 
-    // Toggle behavior: cycle system -> light -> dark -> system
+    // Toggle behavior: switch between light and dark only.
+    // If the current state is 'system', resolve it to the user's preference
+    // and toggle to the opposite (so the first click from system sets a concrete choice).
     const toggle = () => {
         setTheme(prev => {
-            if (prev === 'system') return 'light'
-            if (prev === 'light') return 'dark'
-            return 'system'
+            if (prev === 'system') {
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                return prefersDark ? 'light' : 'dark'
+            }
+            return prev === 'light' ? 'dark' : 'light'
         })
     }
 
@@ -87,7 +91,7 @@ const ThemeContext = () => {
             onClick={toggle}
             className={`relative inline-flex items-center p-1 rounded-full transition-colors duration-200 focus:outline-none cursor-pointer ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}
             style={{ width: 56, height: 32 }}
-            title={`Theme: ${theme}. Click to cycle (system / light / dark)`}
+            title={`Theme: ${theme}. Click to toggle between light and dark (initially follows system)`}
         >
             {/* Sliding knob */}
             <span
