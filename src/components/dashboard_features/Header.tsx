@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Bell, Menu, Settings, User } from "lucide-react";
+import Profile from "./profile";
 
 
 // Props for Header component
@@ -16,8 +17,8 @@ interface HeaderProps {
 // Header component renders the top navigation bar for the dashboard
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-50">
-      <div className="flex items-center justify-between h-full px-4">
+  <header className="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-50 overflow-visible">
+      <div className="flex items-center justify-between h-full px-4 max-sm:pr-6">
         {/* Left section: Mobile menu button and logo */}
         <div className="flex items-center gap-4">
           {/* Mobile menu button (visible on small screens) */}
@@ -56,8 +57,12 @@ export default function Header({ onMenuClick }: HeaderProps) {
             <span className="text-xs text-gray-500 dark:text-gray-400">Member</span>
           </div>
           {/* User avatar icon */}
-          <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center">
+          <div className="relative group w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center cursor-pointer">
             <User className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+            <div className="absolute top-full right-2 mt-1 min-w-[14rem] max-w-[90vw] bg-white dark:bg-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-50 origin-top-right">
+              {/* Compact profile card for header hover (keeps hover active when pointer moves between icon and panel) */}
+              <Profile compact />
+            </div>
           </div>
         </div>
       </div>
