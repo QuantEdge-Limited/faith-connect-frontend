@@ -18,7 +18,7 @@ interface HeaderProps {
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
   <header className="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-50 overflow-visible">
-      <div className="flex items-center justify-between h-full px-4">
+      <div className="flex items-center justify-between h-full px-4 max-sm:pr-6">
         {/* Left section: Mobile menu button and logo */}
         <div className="flex items-center gap-4">
           {/* Mobile menu button (visible on small screens) */}

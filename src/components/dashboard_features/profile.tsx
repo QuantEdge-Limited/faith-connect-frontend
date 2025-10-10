@@ -11,7 +11,7 @@ const Profile: React.FC<ProfileProps> = ({ compact = false }) => {
   if (compact) {
     // Compact dropdown card used in header hover
     return (
-      <div className="p-3 w-56 bg-white dark:bg-gray-800 rounded-md text-sm text-gray-800 dark:text-gray-100">
+      <div className="p-3 w-56 bg-white border border-gray-400 dark:bg-gray-800 rounded-md text-sm text-gray-800 dark:text-gray-100">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 relative">
             <Image src={'/profile-placeholder.png'} alt="Profile" width={48} height={48} className="rounded-full" />
