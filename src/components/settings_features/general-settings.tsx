@@ -7,13 +7,61 @@ import React, { useEffect, useState } from 'react'
 const GeneralSettings = () => {
 
     const [timezones, setTimezones] = useState<string[]>([]);
-    const [selectedTimezone, setSelectedTimezone] = useState('');
+    // initialize selectedTimezone to 'Africa/Nairobi' by default when available
+    const getInitialTimezone = (): string => {
+        const preferred = 'Africa/Nairobi';
+        try {
+            // If runtime exposes supportedValuesOf, prefer the preferred tz when present
+            const supported = (Intl as any).supportedValuesOf ? (Intl as any).supportedValuesOf('timeZone') : [];
+            if (Array.isArray(supported) && supported.includes(preferred)) return preferred;
+        } catch (e) {
+            // ignore and try other methods
+        }
+
+        if (typeof Intl !== 'undefined' && typeof Intl.DateTimeFormat === 'function') {
+            try {
+                const systemTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (systemTz) return systemTz;
+            } catch (e) {
+                // fallthrough to UTC
+            }
+        }
+
+        return 'UTC';
+    }
+    const [selectedTimezone, setSelectedTimezone] = useState<string>(getInitialTimezone());
+
+    const [selectedProfileVisible, setSelectedProfileVisible] = useState<boolean>(true);
+    const [selectedMemberStatus, setSelectedMemberStatus] = useState<boolean>(true);
+
+    // Currency selector state: default to KES
+    const CURRENCIES = ['KES', 'USD', 'EUR', 'GBP', 'UGX', 'TZS'];
+    const [selectedCurrency, setSelectedCurrency] = useState<string>(() => {
+        if (typeof window !== 'undefined' && window.localStorage) {
+            return localStorage.getItem('currency') || 'KES';
+        }
+        return 'KES';
+    });
+
+    const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+        const cur = e.target.value;
+        setSelectedCurrency(cur);
+        if (typeof window !== 'undefined' && window.localStorage) {
+            localStorage.setItem('currency', cur);
+            window.dispatchEvent(new CustomEvent('currency-change', { detail: { currency: cur } }));
+        }
+    }
 
     useEffect(() => {
-        const tz = Intl.supportedValuesOf('timeZone');
-        setTimezones(tz);
-        // Always set default timezone to 'Africa/Nairobi' on initial load
-        setSelectedTimezone('Africa/Nairobi');
+        // populate list of timezones where available; guard for environments that don't support supportedValuesOf
+        try {
+            // Intl.supportedValuesOf may not exist in older browsers; guard accordingly
+            const tz = (Intl as any).supportedValuesOf ? (Intl as any).supportedValuesOf('timeZone') : [];
+            setTimezones(Array.isArray(tz) && tz.length ? tz : []);
+        } catch (e) {
+            setTimezones([]);
+        }
+        // keep existing selectedTimezone (initialized above) rather than force overriding
     }, []);
 
     interface TimezoneChangeEvent extends React.ChangeEvent<HTMLSelectElement> {}
@@ -24,8 +72,17 @@ const GeneralSettings = () => {
         if (tz) {
             const date: Date = new Date();
             const options: Intl.DateTimeFormatOptions = { timeZone: tz, timeZoneName: 'short' };
-            const time: string = new Intl.DateTimeFormat('en-KE', options).format(date);
-            console.log(`Current time in ${tz}: ${time}`);
+            try {
+                const time: string = new Intl.DateTimeFormat('en-KE', options).format(date);
+                console.log(`Current time in ${tz}: ${time}`);
+            } catch (err) {
+                // invalid timezone value passed; fallback to UTC and log a warning
+                console.warn(`Invalid timeZone specified (${tz}), falling back to UTC.`, err);
+                const fallbackOptions: Intl.DateTimeFormatOptions = { timeZone: 'UTC', timeZoneName: 'short' };
+                const time: string = new Intl.DateTimeFormat('en-KE', fallbackOptions).format(date);
+                console.log(`Current time in UTC: ${time}`);
+                setSelectedTimezone('UTC');
+            }
         }
     }
 
@@ -95,46 +152,86 @@ const GeneralSettings = () => {
         <section className='p-4 px-8 bg-white dark:bg-gray-800 rounded-md shadow-md w-full space-y-2'>
             <h2 className='text-xl font-semibold dark:text-gray-100'>Time and Date</h2>
             <div className="flex justify-end items-center">
-                <p className='p-2 border border-gray-300 rounded-lg w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>Central Street, Limuru, Kiambu</p>
+                <p className='p-2 border border-gray-300 rounded-lg md:w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>Central Street, Limuru, Kiambu</p>
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4>Date Tone</h4>
-                <p className='p-2 border border-gray-300 rounded-lg w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>MM/DD/YYYY</p>
+                <p className='p-2 border border-gray-300 rounded-lg md:w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                    {(() => {
+                        try {
+                            // Format as MM/DD/YYYY in the selected timezone
+                            const now = new Date();
+                            const options: Intl.DateTimeFormatOptions = {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit',
+                                timeZone: selectedTimezone,
+                            };
+                            // en-US gives MM/DD/YYYY
+                            return new Intl.DateTimeFormat('en-US', options).format(now);
+                        } catch (err) {
+                            // fallback to default date string
+                            return new Date().toLocaleDateString();
+                        }
+                    })()}
+                </p>
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
-                <h4>Date Format</h4>
-                <select id="timezone-select" value={selectedTimezone} onChange={handleTimezoneChange} className='p-2 border w-[40%] border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
-                    {timezones.map((tz) => (
-                        <option key={tz} value={tz} className='dark:bg-gray-800 dark:text-gray-200'>{tz}</option>
-                    ))}
+                <h4>Time Zone</h4>
+                <select id="timezone-select" value={selectedTimezone} onChange={handleTimezoneChange} className='p-2 border w-[40%] max-sm:text-sm border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                    {/* If supported timezones are available, list them; otherwise show a UTC/default option */}
+                    {timezones.length ? (
+                        timezones.map((tz) => (
+                            <option key={tz} value={tz} className='dark:bg-gray-800 dark:text-gray-200'>{tz}</option>
+                        ))
+                    ) : (
+                        <option key="UTC" value="UTC">UTC</option>
+                    )}
                 </select>
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
-                <h4>New Day of Week</h4>
-                <p className='p-2 border border-gray-300 rounded-lg w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>Sunday</p>
+                <h4>Day of Week</h4>
+                <p className='p-2 border border-gray-300 rounded-lg w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                    {(() => {
+                        try {
+                            return new Intl.DateTimeFormat('en-KE', { weekday: 'long', timeZone: selectedTimezone }).format(new Date());
+                        } catch (err) {
+                            // fallback to no timeZone option
+                            console.warn(`Failed to format weekday with timezone '${selectedTimezone}', falling back.`, err);
+                            return new Intl.DateTimeFormat('en-KE', { weekday: 'long' }).format(new Date());
+                        }
+                    })()}
+                </p>
             </div>
         </section>
         <section className='p-4 px-8 bg-white dark:bg-gray-800 rounded-md shadow-md w-full space-y-2'>
             <h2 className='text-xl font-semibold dark:text-gray-100'>System Defaults</h2>
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>New Member Status</h4>
-                <p className='p-2 border border-gray-300 rounded-full bg-green-700 relative w-[8%] h-[35px]'><span className='absolute w-1/2 bg-white rounded-full inset-0 z-50'></span></p>
+                <button type="button" aria-pressed={selectedMemberStatus} onClick={() => setSelectedMemberStatus((prev) => !prev)}
+                    className={`w-[48px] h-[28px] rounded-full relative transition-colors duration-200 border border-gray-300 dark:border-gray-700 focus:outline-none ${
+                        selectedMemberStatus ? 'bg-green-600' : 'bg-gray-300 dark:bg-gray-600'
+                    }`}
+                >
+                    <span className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform duration-200 ${selectedMemberStatus ? 'translate-x-5' : ''}`}/>
+                </button>
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Default Currency</h4>
-                <p className='pe-4 dark:text-gray-200'>KES </p>
+                <select id="currency-select" value={selectedCurrency} onChange={handleCurrencyChange} className='p-2 border border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                    {CURRENCIES.map((c) => (
+                        <option key={c} value={c} className='dark:bg-gray-800 dark:text-gray-200'>{c}</option>
+                    ))}
+                </select>
             </div>
-            <div className="flex justify-between gap-4 space-y-1 items-center">
+            {/* <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Auto Generate Reports</h4>
                 <p className='p-2 border border-gray-300 rounded-full bg-green-700 relative w-[8%] h-[35px]'><span className='absolute w-1/2 bg-white rounded-full inset-0 z-50'></span></p>
-            </div>
+            </div> */}
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Choose Theme</h4>
                 <ThemeContext />
             </div>
-            {/* <div className="flex justify-between gap-4 space-y-1 items-center">
-                <ThemeContext />
-            </div> */}
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Font Size Preference</h4>
                 <select id="font-size-select" value={selectedFontSize} onChange={handleFontSizeChange} className='p-2 border border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
@@ -142,6 +239,23 @@ const GeneralSettings = () => {
                         <option key={size} value={size} className='dark:bg-gray-800 dark:text-gray-200'>{size}</option>
                     ))}
                 </select>
+            </div>
+                <div className="flex flex-col mt-2">
+                    <div className="flex justify-between gap-1 space-y-1 items-center">
+                    <h4 className='dark:text-gray-100 max-sm:text-sm'>Make your profile visible publicly</h4>
+                    <button type="button" aria-pressed={selectedProfileVisible}
+                        onClick={() => setSelectedProfileVisible((prev) => !prev)}
+                        className={`w-[48px] h-[28px] rounded-full relative transition-colors duration-200 border border-gray-300 dark:border-gray-700 focus:outline-none ${
+                            selectedProfileVisible ? 'bg-green-600' : 'bg-gray-300 dark:bg-gray-600'
+                        }`}>
+                        <span
+                            className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform duration-200 ${
+                                selectedProfileVisible ? 'translate-x-5' : ''
+                            }`}
+                        />
+                    </button>
+                </div>
+                <p className='text-sm max-sm:text-xs italic ps-2 dark:text-gray-300'>Allow other users to view your profile information</p>
             </div>
         </section>
     </div>
