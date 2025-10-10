@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "./ui/card";
+import { Button } from "./ui/button";
 
 export interface CardAction {
   label: string;
@@ -22,6 +23,9 @@ export interface CardProps {
   metadata?: CardMeta[];
   action?: CardAction;
   footer?: React.ReactNode;
+  buttonLabel?: string;
+  onButtonClick?: () => void;
+  buttonVariant?: "primary" | "success" | "secondary";
 }
 
 export const ShowcaseCard = ({
@@ -33,6 +37,9 @@ export const ShowcaseCard = ({
   metadata,
   action,
   footer,
+  buttonLabel,
+  onButtonClick,
+  buttonVariant,
 }: CardProps) => {
   return (
     <Card className="bg-white border-2 border-[#D4AF37] rounded-xl p-6 hover:shadow-xl transition-all duration-300 flex flex-col">

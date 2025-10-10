@@ -112,7 +112,7 @@ export default function AboutSection() {
           <div className="w-full order-1 lg:order-2">
             <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/5] xl:aspect-[3/4] 2xl:aspect-[4/5] rounded-2xl overflow-hidden">
               <Image
-                src="/church.jpg"
+                src="/images/church.jpg"
                 alt="Church building showcasing our parish community"
                 fill
                 className="object-cover"

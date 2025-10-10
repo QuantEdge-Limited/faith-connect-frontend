@@ -1,14 +1,13 @@
-
 import React from "react";
 import { AuthForm } from "@/components/AuthForm";
 import Link from "next/link";
 
-export default function LoginPage() {
-  async function handleSubmit(data) {
-    "use server";
-    // handle server-side logic
-    console.log(data);
-  }
+export default function OTPPage() {
+ async function handleSubmit(formData: FormData) {
+   "use server";
+   // handle server-side logic
+   console.log(formData.get("email"));
+ }
   return (
     <section className="flex min-h-screen ">
       {/* Left Side - Image */}
@@ -53,10 +52,10 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Side - Login Card */}
+      {/* Right Side - OTP Card */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
         <div className="w-full max-w-md">
-          <AuthForm type="login" onSubmit={handleSubmit} submitLabel='Login' />
+          <AuthForm type="otp" onSubmit={handleSubmit} submitLabel="Verify" />
         </div>
       </div>
     </section>

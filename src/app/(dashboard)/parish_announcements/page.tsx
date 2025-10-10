@@ -1,5 +1,9 @@
 // src/app/announcements/page.tsx
 "use client";
+import { ShowcaseCard } from "@/components/ShowcaseCard";
+import TabButtons from "@/components/TabButtons";
+import { Button } from "@/components/ui/button";
+import { Calendar, Paperclip } from "lucide-react";
 import { useState } from "react";
 
 const mockAnnouncements = [
@@ -29,35 +33,6 @@ const mockAnnouncements = [
   },
 ];
 
-// ✅ Inline Card component
-function Card({
-  title,
-  subtitle,
-  description,
-  date,
-  actions,
-}: {
-  title: string;
-  subtitle: string;
-  description: string;
-  date: string;
-  actions?: React.ReactNode;
-}) {
-  return (
-    <div className="p-5 rounded-xl shadow-md bg-white border border-gray-200 hover:shadow-lg transition w-full">
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-        <div>
-          <h3 className="text-lg font-bold text-gray-900">{title}</h3>
-          <p className="text-sm text-gray-500">{subtitle}</p>
-        </div>
-        <span className="text-xs text-gray-400 mt-2 sm:mt-0">{date}</span>
-      </div>
-      <p className="mt-3 text-gray-700 text-sm">{description}</p>
-      {actions && <div className="mt-4 flex gap-2 flex-wrap">{actions}</div>}
-    </div>
-  );
-}
-
 export default function AnnouncementsPage() {
   const [filter, setFilter] = useState("All");
   const [readIds, setReadIds] = useState<number[]>([]);
@@ -81,76 +56,121 @@ export default function AnnouncementsPage() {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Breadcrumbs */}
-      <nav className="text-sm text-gray-600 dark:text-gray-300">
-        <ol className="flex gap-2">
-          <li className="text-gray-900 font-medium dark:text-gray-100">Announcements</li>
-        </ol>
-      </nav>
+    <>
+      <section className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-8">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 max-w-[1600px] mx-auto">
+          {/* Breadcrumbs */}
+          <div className="text-sm text-gray-600 dark:text-gray-300">
+            <ol className="flex gap-2">
+              <li className="text-gray-900 font-medium dark:text-gray-100">
+                Announcements
+              </li>
+            </ol>
+          </div>
 
-      {/* Filters */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">Filter Announcements</h2>
-        <div className="flex gap-3 flex-wrap">
-          {["All", "Parish-wide", "Outstation", "Group-specific"].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-lg border ${
-                filter === cat
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-              }`}
+          {/* Filters */}
+          <div className="mb-5">
+            <h2 className="text-xl font-semibold mb-3 dark:text-gray-100">
+              Filter Announcements
+            </h2>
+            <div
+              className="grid grid-cols-2 gap-4
+                sm:grid-cols-3
+                lg:grid-cols-4
+                "
             >
-              {cat}
-            </button>
-          ))}
+              {["All", "Parish-wide", "Outstation", "Group-specific"].map(
+                (cat) => (
+                  <TabButtons
+                    key={cat}
+                    id={cat}
+                    label={cat}
+                    isActive={filter === cat}
+                    onClick={() => setFilter(cat)}
+                  />
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Announcements feed */}
+          <div>
+            {filtered.length === 0 ? (
+              <p className="text-gray-500 dark:text-gray-400">
+                No announcements found.
+              </p>
+            ) : (
+              <div
+                className="
+        grid gap-4
+        sm:grid-cols-2
+        xl:grid-cols-4
+      "
+              >
+                {filtered.map((announcement) => (
+                  <ShowcaseCard
+                    key={announcement.id}
+                    title={announcement.title}
+                    subtitle={announcement.category}
+                    description={announcement.body}
+                    tags={
+                      announcement.attachments.length > 0
+                        ? ["Has Attachments"]
+                        : []
+                    }
+                    metadata={[
+                      {
+                        icon: Calendar,
+                        label: new Date(announcement.date).toLocaleDateString(),
+                      },
+                      ...(announcement.attachments.length > 0
+                        ? [
+                            {
+                              icon: Paperclip,
+                              label: `${
+                                announcement.attachments.length
+                              } attachment${
+                                announcement.attachments.length > 1 ? "s" : ""
+                              }`,
+                            },
+                          ]
+                        : []),
+                    ]}
+                    footer={
+                      <div className="flex gap-2 flex-wrap">
+                        <Button
+                          onClick={() => toggleRead(announcement.id)}
+                          className={`px-3 py-1 rounded-lg text-sm transition-colors ${
+                            readIds.includes(announcement.id)
+                              ? "bg-green-600 text-white"
+                              : "bg-gray-200 text-gray-800 hover:bg-green-500 hover:text-white dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-green-500"
+                          }`}
+                        >
+                          {readIds.includes(announcement.id)
+                            ? "Read"
+                            : "Mark as Read"}
+                        </Button>
+                        <button
+                          onClick={() => toggleSaved(announcement.id)}
+                          className={`px-3 py-1 rounded-lg text-sm transition-colors ${
+                            savedIds.includes(announcement.id)
+                              ? "bg-yellow-500 text-white"
+                              : "bg-gray-200 text-gray-800 hover:bg-yellow-400 hover:text-white dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-yellow-400"
+                          }`}
+                        >
+                          {savedIds.includes(announcement.id)
+                            ? "Saved"
+                            : "Save for Later"}
+                        </button>
+                      </div>
+                    }
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </section>
-
-      {/* Announcements feed */}
-      <section className="space-y-4">
-        {filtered.length === 0 ? (
-          <p className="text-gray-500 dark:text-gray-400">No announcements found.</p>
-        ) : (
-          filtered.map((announcement) => (
-            <Card
-              key={announcement.id}
-              title={announcement.title}
-              subtitle={announcement.category}
-              description={announcement.body}
-              date={announcement.date}
-              actions={
-                <div className="flex gap-2 flex-wrap">
-                  <button
-                    onClick={() => toggleRead(announcement.id)}
-                    className={`px-3 py-1 rounded-lg ${
-                      readIds.includes(announcement.id)
-                        ? "bg-green-600 text-white"
-                        : "bg-gray-200 hover:bg-green-500 hover:text-white dark:bg-gray-700 dark:hover:bg-green-500"
-                    }`}
-                  >
-                    {readIds.includes(announcement.id) ? "Read" : "Mark as Read"}
-                  </button>
-                  <button
-                    onClick={() => toggleSaved(announcement.id)}
-                    className={`px-3 py-1 rounded-lg ${
-                      savedIds.includes(announcement.id)
-                        ? "bg-yellow-500 text-white"
-                        : "bg-gray-200 hover:bg-yellow-400 hover:text-white dark:bg-gray-700 dark:hover:bg-yellow-400"
-                    }`}
-                  >
-                    {savedIds.includes(announcement.id)
-                      ? "Saved"
-                      : "Save for Later"}
-                  </button>
-                </div>
-              }
-            />
-          ))
-        )}
-      </section>
-    </div>
+    </>
   );
 }

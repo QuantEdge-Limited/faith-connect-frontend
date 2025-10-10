@@ -29,9 +29,13 @@ export default function HeroSection() {
                  px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 
                  overflow-hidden"
       style={{
-        backgroundImage: "url('/hero.jpg')",
+        backgroundImage: `
+      url('/images/hero2.jpg'),
+      linear-gradient(to bottom right, #FEEBC8, #FBD38D, #FAF7EB)
+    `,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Simple Dark Overlay */}

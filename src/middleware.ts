@@ -22,9 +22,15 @@ export function middleware(request: NextRequest) {
   //   Block other routes if not authenticated
   if (
     !isAuth &&
-    !["/", "/login", "/about", "/community", "/general_announcements"].includes(
-      url.pathname
-    )
+    ![
+      "/",
+      "/login",
+      "/sign_up",
+      "/verify_otp",
+      "/about",
+      "/community",
+      "/general_announcements",
+    ].includes(url.pathname)
   ) {
     return NextResponse.redirect(new URL("/login", request.url));
   }

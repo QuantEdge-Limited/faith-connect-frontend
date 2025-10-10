@@ -1,9 +1,8 @@
-
 import React from "react";
 import { AuthForm } from "@/components/AuthForm";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function SignupPage() {
   async function handleSubmit(data) {
     "use server";
     // handle server-side logic
@@ -53,10 +52,14 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Side - Login Card */}
+      {/* Right Side - Sign Up Card */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
         <div className="w-full max-w-md">
-          <AuthForm type="login" onSubmit={handleSubmit} submitLabel='Login' />
+          <AuthForm
+            type="signup"
+            onSubmit={handleSubmit}
+            submitLabel="register"
+          />
         </div>
       </div>
     </section>

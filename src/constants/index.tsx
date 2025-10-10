@@ -13,7 +13,7 @@ import {
 
 export const processCards = [
   {
-    image: "/fellowship.jpg",
+    image: "/images/group.jpg",
     alt: "Outstation -Parish fellowship gathering for event",
     category: "Outstation",
     title: "Join your outstation community",
@@ -21,7 +21,7 @@ export const processCards = [
     buttonLabel: "Explore",
   },
   {
-    image: "/update.jpg",
+    image: "/images/update.jpg",
     alt: "Updates - Person receiving notification on device",
     category: "Updates",
     title: "Stay informed",
@@ -29,7 +29,7 @@ export const processCards = [
     buttonLabel: "View",
   },
   {
-    image: "/bible-study.jpg",
+    image: "/images/study.jpg",
     alt: "Grow - Person engaging in spiritual activity",
     category: "Grow",
     title: "Track your spiritual journey",
@@ -37,11 +37,11 @@ export const processCards = [
     buttonLabel: "Start now",
   },
   {
-    image: "/church-volunteer.jpg",
+    image: "/images/ministry.jpg",
     alt: "Serve - Person volunteering in church service",
     category: "Serve",
     title: "Get involved",
-    description: "Track your spiritual journey",
+    description: "Join the ministry and spread the gospel",
     buttonLabel: "Join",
   },
 ];
