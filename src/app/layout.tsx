@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from '@/lib/ThemeProvider';
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -25,7 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${openSans.variable} ${cormorant.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
