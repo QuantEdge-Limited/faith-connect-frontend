@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import {
-  Home,
-  Bell,
-  User,
-  Users,
-  Settings,
   LogOut,
-  BookOpen,
+  LucideIcon,
 } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  catechistLinks,
+  priestLinks,
+  leaderLinks,
+  userLinks,
+} from "@/constants/links";
 
 // Sidebar component renders the vertical navigation menu for the dashboard
 interface SidebarProps {
@@ -17,23 +19,25 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const pathname = usePathname();
+
   const handleLinkClick = () => {
     // Close sidebar on mobile after clicking a link
     if (onClose) onClose();
   };
 
-  const navLinks = [
-    { href: "/home", label: "Home", icon: Home },
-    {
-      href: "/parish_announcements",
-      label: "Parish Announcements",
-      icon: Bell,
-    },
-    { href: "/groups", label: "Groups", icon: Users },
-    { href: "/catechism", label: "Catechism", icon: BookOpen },
-    { href: "/profile", label: "Profile", icon: User },
-    { href: "/settings", label: "Settings", icon: Settings },
-  ];
+  type NavLink = { label: string; href: string; icon: LucideIcon };
+  let navLinks: NavLink[] = [];
+
+  if (pathname.startsWith("/user")) {
+    navLinks = userLinks;
+  } else if (pathname.startsWith("/priest")) {
+    navLinks = priestLinks;
+  } else if (pathname.startsWith("/leaders")) {
+    navLinks = leaderLinks;
+  } else if (pathname.startsWith("/catechist")) {
+    navLinks = catechistLinks;
+  }
 
   return (
     <>

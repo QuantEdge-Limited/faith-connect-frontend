@@ -1,17 +1,17 @@
 "use client";
 
 // Import UI components and icons
-import Branch from "@/components/dashboard_features/branch";
-import Schedule from "@/components/dashboard_features/schedule";
-import CalendarComponent from "@/components/dashboard_features/calendar";
+import Branch from "@/components/dashboard/user/dashboard_features/branch";
+import Schedule from "@/components/dashboard/user/dashboard_features/schedule";
+import CalendarComponent from "@/components/dashboard/user/dashboard_features/calendar";
 
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import React from "react";
-import Group from "@/components/dashboard_features/group";
+import Group from "@/components/dashboard/user/dashboard_features/group";
 
 // Dashboard main component for the home page
-export default function Dashboard() {
+export default function UserDashboard() {
   return (
     <>
       <section className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-8">

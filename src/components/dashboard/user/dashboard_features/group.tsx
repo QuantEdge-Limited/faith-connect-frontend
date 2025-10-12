@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { Card } from "../ui/card";
+import { Card } from "../../../ui/card";
 
 interface GroupProps {
   total?: number;

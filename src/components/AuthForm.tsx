@@ -351,7 +351,7 @@ export function AuthForm({ type, onSubmit, submitLabel }: AuthFormProps) {
                               key={i}
                               index={i}
                               className="h-10 w-10 sm:h-11 sm:w-11 text-center text-lg border border-gray-300 rounded-md 
-                           focus:outline-none focus:ring-2 text-[#D4AF37] mr-2  mr-2
+                           focus:outline-none focus:ring-2 text-[#D4AF37] mr-2
                            transition-all duration-150"
                             />
                           ))}

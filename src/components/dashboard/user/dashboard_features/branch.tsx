@@ -1,6 +1,6 @@
 import React from "react";
 import { MapPin, Clock } from "lucide-react";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "../../../ui/card";
 
 /*
   Branch component:
@@ -94,7 +94,7 @@ const Branch = () => {
 
             {/* Conditional rendering for website */}
             {branch.contact.website && (
-                <p className=" break-all">
+              <p className=" break-all">
                 <span className="font-semibold ">Website:</span>{" "}
                 <a
                   href={branch.contact.website}

@@ -1,12 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import Header from "@/components/dashboard_features/Header";
-import Sidebar from "@/components/dashboard_features/Sidebar";
+import Header from "@/components/dashboard/Header";
+import Sidebar from "@/components/dashboard/Sidebar";
 
 // app/(dashboard)/layout.tsx
 import { ReactNode } from "react";
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -22,7 +26,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Main Content Area */}
       <main className="lg:ml-64 mt-16 min-h-[calc(100vh-4rem)]">
-        <div className="p-4 md:p-6 lg:p-8 text-gray-800 dark:text-gray-100">{children}</div>
+        <div className="p-4 md:p-6 lg:p-8 text-gray-800 dark:text-gray-100">
+          {children}
+        </div>
       </main>
     </div>
   );

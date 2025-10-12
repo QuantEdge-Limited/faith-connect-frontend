@@ -1,6 +1,6 @@
 // Schedule component displays the mass schedule table for the dashboard
 import React from "react";
-import { Card } from "../ui/card";
+import { Card } from "../../../ui/card";
 
 const Schedule = () => {
   // Static schedule data (this can later be fetched from an API)
@@ -60,12 +60,25 @@ const Schedule = () => {
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {/* Render each schedule row */}
               {schedules.map((schedule, idx) => (
-                <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">{schedule.date}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">{schedule.time}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">{schedule.location}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">{schedule.priest}</td>
-                  <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">{schedule.intentions}</td>
+                <tr
+                  key={idx}
+                  className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">
+                    {schedule.date}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">
+                    {schedule.time}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">
+                    {schedule.location}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">
+                    {schedule.priest}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
+                    {schedule.intentions}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -75,11 +88,18 @@ const Schedule = () => {
         {/* Mobile-friendly layout */}
         <div className="lg:hidden divide-y divide-gray-200 dark:divide-gray-700">
           {schedules.map((schedule, idx) => (
-            <div key={idx} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <div
+              key={idx}
+              className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            >
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <p className="font-semibold text-gray-800 text-sm sm:text-base dark:text-gray-100">{schedule.date}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{schedule.time}</p>
+                  <p className="font-semibold text-gray-800 text-sm sm:text-base dark:text-gray-100">
+                    {schedule.date}
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {schedule.time}
+                  </p>
                 </div>
                 <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   {schedule.location}

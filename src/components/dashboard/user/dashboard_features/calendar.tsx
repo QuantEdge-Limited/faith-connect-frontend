@@ -1,6 +1,6 @@
 // CalendarComponent displays a calendar and a list of upcoming events/announcements
 import React, { useState } from "react";
-import { Card } from "../ui/card";
+import { Card } from "../../../ui/card";
 import { CalendarDays } from "lucide-react";
 
 const CalendarComponent = () => {
@@ -145,7 +145,9 @@ const CalendarComponent = () => {
                         >
                           {event.title}
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">{event.date}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">
+                          {event.date}
+                        </p>
                       </div>
                     </div>
                   ))}
