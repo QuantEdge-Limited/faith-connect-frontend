@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Header from "@/components/dashboard/Header";
-import Sidebar from "@/components/dashboard/Sidebar";
+import Header from "@/components/dashboard/user/Header";
+import Sidebar from "@/components/dashboard/user/Sidebar";
 
 // app/(dashboard)/layout.tsx
 import { ReactNode } from "react";
