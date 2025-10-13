@@ -1,15 +1,15 @@
 import { Home, Bell, Users, BookOpen, Settings } from "lucide-react";
 
 export const userLinks = [
-  { href: "/home", label: "Home", icon: Home },
+  { href: "/user/home", label: "Home", icon: Home },
   {
-    href: "/parish_announcements",
+    href: "/user/parish_announcements",
     label: "Parish Announcements",
     icon: Bell,
   },
-  { href: "/groups", label: "Groups", icon: Users },
-  { href: "/catechism", label: "Catechism", icon: BookOpen },
-  { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/user/groups", label: "Groups", icon: Users },
+  { href: "/user/catechism", label: "Catechism", icon: BookOpen },
+  { href: "/user/settings", label: "Settings", icon: Settings },
 ];
 
 export const priestLinks = [

@@ -6,7 +6,7 @@ import Sidebar from "@/components/dashboard/Sidebar";
 // app/(dashboard)/layout.tsx
 import { ReactNode } from "react";
 
-export default function DashboardLayout({
+export default function UserDashboardLayout({
   children,
 }: {
   children: ReactNode;
