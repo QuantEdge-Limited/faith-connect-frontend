@@ -6,7 +6,6 @@ import { mockPrograms, mockResources, mockStudents } from "@/components/dashboar
 import ProgramsSection from "@/components/dashboard/catechist/programs/ProgramsSection";
 import ResourcesGrid from "@/components/dashboard/catechist/resources/ResourcesGrid";
 import StudentsTable from "@/components/dashboard/catechist/students/StudentsTable";
-import { CatechismProgram, Resource, Student } from "@/components/dashboard/catechist/types";
 import QuickActions from "@/components/dashboard/catechist/ui/QuickActions";
 
 // // Mock data (replace with real API calls)
