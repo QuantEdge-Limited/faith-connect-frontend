@@ -124,7 +124,7 @@ export default function Navbar() {
                 {/* Explore Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm sm:text-base lg:text-lg hover:text-[#D4AF37] transition-colors font-normal">
-                    Out Stations
+                    OutStations
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="border border-[#0D090A]/15 bg-white/90 backdrop-blur-lg">
                     <ul className="grid w-[220px] gap-5 p-2">
@@ -226,7 +226,7 @@ export default function Navbar() {
                   className="flex items-center justify-between w-full px-4 py-3 text-base font-medium hover:bg-black/5 rounded-lg transition-colors touch-manipulation"
                   aria-expanded={isExploreOpen}
                 >
-                  Out Stations
+                  OutStations
                   <ChevronDown
                     className={`h-4 w-4 transform transition-transform duration-200 ${
                       isExploreOpen ? "rotate-180" : ""

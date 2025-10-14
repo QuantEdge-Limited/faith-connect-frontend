@@ -112,7 +112,7 @@ export default function OutstationSection({ branchId }: Props) {
                         className="bg-gray-50 rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow"
                       >
                         <div className="flex items-start gap-3 sm:gap-4">
-                          <div className="text-4xl sm:text-5xl flex-shrink-0">
+                          <div className="text-2xl flex-shrink-0">
                             {leader.image}
                           </div>
                           <div className="flex-1 min-w-0">
@@ -150,7 +150,6 @@ export default function OutstationSection({ branchId }: Props) {
                           { icon: MapPin, label: ministry.location },
                           { icon: Users, label: `Led by ${ministry.leader}` },
                         ]}
-                        action={{ label: "Join Group" }}
                       />
                     ))}
                   </div>
