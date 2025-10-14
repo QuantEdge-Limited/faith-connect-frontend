@@ -1,5 +1,5 @@
 // app/catechist/mockData.ts
-import { CatechismProgram, Student, Resource } from './types';
+import { CatechismProgram, Student, Resource, SearchResult, Announcement, Booking } from './types';
 
 export const mockPrograms: CatechismProgram[] = [
   {
@@ -143,5 +143,81 @@ export const mockResources: Resource[] = [
     title: 'Parent Meeting Agenda – First Reconciliation Prep',
     type: 'Guide',
     tags: ['Parents', 'Reconciliation', 'FirstCommunion'],
+  },
+];
+
+export const searchDashboard = (query: string): SearchResult[] => {
+  if (!query.trim()) return [];
+
+  const q = query.toLowerCase();
+
+  const programResults: SearchResult[] = mockPrograms
+    .filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.sacramentFocus.toLowerCase().includes(q) ||
+      p.type.toLowerCase().includes(q)
+    )
+    .map(p => ({ type: 'program' as const, data: p }));
+
+  const studentResults: SearchResult[] = mockStudents
+    .filter(s =>
+      s.name.toLowerCase().includes(q) ||
+      s.parentNames.some(parent => parent.toLowerCase().includes(q)) ||
+      s.sacramentsReceived.some(sac => sac.toLowerCase().includes(q))
+    )
+    .map(s => ({ type: 'student' as const, data: s }));
+
+  const resourceResults: SearchResult[] = mockResources
+    .filter(r =>
+      r.title.toLowerCase().includes(q) ||
+      r.type.toLowerCase().includes(q) ||
+      r.tags.some(tag => tag.toLowerCase().includes(q))
+    )
+    .map(r => ({ type: 'resource' as const, data: r }));
+
+  // Combine and limit total results (e.g., 15)
+  return [...programResults, ...studentResults, ...resourceResults].slice(0, 15);
+};
+
+export const mockAnnouncements: Announcement[] = [
+  {
+    id: 'a1',
+    title: 'RCIA Session Moved',
+    content: 'This week’s RCIA session will be held on Thursday at 7 PM instead of Wednesday due to parish event.',
+    author: 'Fr. Michael',
+    createdAt: '2025-04-01T14:30:00Z',
+    priority: 'high',
+  },
+  {
+    id: 'a2',
+    title: 'New Lesson Plans Available',
+    content: 'Updated First Communion lesson plans for Weeks 4–6 are now in the Resources library.',
+    author: 'Catechist Admin',
+    createdAt: '2025-03-28T09:15:00Z',
+    priority: 'medium',
+  },
+];
+
+export const mockBookings: Booking[] = [
+  {
+    id: 'b1',
+    requesterName: 'Linda Torres',
+    requesterEmail: 'linda.t@example.com',
+    catechistName: 'Maria Chen',
+    purpose: 'First Reconciliation preparation for my son (age 8)',
+    dateRequested: '2025-04-01T10:00:00Z',
+    preferredDate: '2025-04-10T16:00:00Z',
+    status: 'pending',
+    notes: 'We prefer evening sessions.',
+  },
+  {
+    id: 'b2',
+    requesterName: 'James Wilson',
+    requesterEmail: 'jwilson@example.com',
+    catechistName: 'David Kim',
+    purpose: 'Adult baptism inquiry',
+    dateRequested: '2025-03-30T14:20:00Z',
+    preferredDate: '2025-04-05T18:00:00Z',
+    status: 'approved',
   },
 ];

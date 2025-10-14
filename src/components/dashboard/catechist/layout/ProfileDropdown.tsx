@@ -6,7 +6,7 @@ import { LogOut, Settings, User } from 'lucide-react';
 export default function ProfileDropdown({ onClose }: { onClose: () => void }) {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close when clicking outside (optional: you can also rely on parent logic)
+  // Close when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -20,12 +20,15 @@ export default function ProfileDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div
       ref={dropdownRef}
-      className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 py-1"
+      className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-30 py-1"
     >
+      {/* Header: Email */}
       <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
         <p className="text-sm font-medium text-gray-800 dark:text-gray-200">Catechist Admin</p>
         <p className="text-xs text-gray-600 dark:text-gray-400">catechist@parish.org</p>
       </div>
+
+      {/* Menu Items */}
       <ul className="text-sm text-gray-700 dark:text-gray-300">
         <li>
           <button
