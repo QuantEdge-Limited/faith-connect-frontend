@@ -19,17 +19,9 @@ function QuickCard({ title, subtitle }: { title: string; subtitle: string }) {
 }
 
 export default function OutstationSection({ branchId }: Props) {
-  console.log("params.branch =", branchId);
-  console.log(
-    "branch IDs =",
-    branches.map((b) => b.id)
-  );
-
   const branch = branches.find(
     (b) => b.id.toLowerCase() === branchId.toLowerCase()
   );
-
-  console.log("Branch Data:", branch); // Debugging line
 
   const [activeTab, setActiveTab] = useState("leadership");
   const tabs = [
