@@ -1,4 +1,4 @@
-import GeneralSettings from "@/components/dashboard/user/settings_features/general-settings";
+import GeneralSettings from "@/components/settings_features/general-settings";
 import React from "react";
 
 export default function SettingsPage() {
