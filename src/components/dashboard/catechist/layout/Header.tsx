@@ -5,12 +5,14 @@ import { useEffect, useRef, useState } from "react";
 import NotificationBell from "./NotificationBell";
 import ProfileDropdown from "./ProfileDropdown";
 import GlobalSearch from "./GlobalSearch";
+import SettingsModal from "../settings/SettingsModal";
 
 export default function Header() {
 
     const [catechistNotifications, setCatechistNotifications] = useState(8);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isSearchVisible, setIsSearchVisible] = useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
     const profileRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +54,7 @@ export default function Header() {
           </div>
           {isProfileOpen && (
             <div className="absolute right-2 mt-2 z-30">
-            <ProfileDropdown onClose={() => setIsProfileOpen(false)} />
+            <ProfileDropdown onClose={() => setIsProfileOpen(false)} onOpenSettings={() => {setIsProfileOpen(false); setIsSettingsOpen(true);}} />
             </div>
         )}
         </div>
@@ -70,6 +72,7 @@ export default function Header() {
         </div>
         </div>
     )}
+    <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
     </header>
   );
 }
