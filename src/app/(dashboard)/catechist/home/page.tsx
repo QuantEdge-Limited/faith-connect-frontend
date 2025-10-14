@@ -1,3 +1,5 @@
+import AnnouncementsSection from "@/components/dashboard/catechist/announcements/AnnouncementsSection";
+import BookingsSection from "@/components/dashboard/catechist/bookings/BookingsSection";
 import Header from "@/components/dashboard/catechist/layout/Header";
 import StatsOverview from "@/components/dashboard/catechist/layout/StatsOverview";
 import { mockPrograms, mockResources, mockStudents } from "@/components/dashboard/catechist/mockData";
@@ -41,6 +43,9 @@ export default function CatechistDashboard() {
           <h2 className="text-xl font-semibold mb-4">Teaching Resources</h2>
           <ResourcesGrid resources={mockResources} />
         </section>
+
+        <AnnouncementsSection />
+        <BookingsSection />
       </main>
     </div>
   );

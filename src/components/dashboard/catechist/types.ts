@@ -29,3 +29,29 @@ export interface Resource {
   type: 'Lesson Plan' | 'Guide' | 'Reference' | 'Video' | 'Worksheet';
   tags: string[];
 }
+
+export type SearchResult =
+  | { type: 'program'; data: CatechismProgram }
+  | { type: 'student'; data: Student }
+  | { type: 'resource'; data: Resource };
+
+export interface Announcement {
+  id: string;
+  title: string;
+  content: string;
+  author: string;
+  createdAt: string; // ISO string
+  priority: 'low' | 'medium' | 'high';
+}
+
+export interface Booking {
+  id: string;
+  requesterName: string;
+  requesterEmail: string;
+  catechistName: string;
+  purpose: string; // e.g., "First Communion prep", "RCIA inquiry"
+  dateRequested: string; // ISO
+  preferredDate: string; // ISO
+  status: 'pending' | 'approved' | 'rejected';
+  notes?: string;
+}
