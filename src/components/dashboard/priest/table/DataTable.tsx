@@ -25,6 +25,8 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   columnFilters: any[];
   setColumnFilters: React.Dispatch<React.SetStateAction<any[]>>;
+  globalFilter: string;
+  setGlobalFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export function DataTable<TData, TValue>({
@@ -32,6 +34,8 @@ export function DataTable<TData, TValue>({
   data,
   columnFilters,
   setColumnFilters,
+  globalFilter,
+  setGlobalFilter,
 }: DataTableProps<TData, TValue>) {
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
@@ -44,10 +48,13 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
     onColumnFiltersChange: setColumnFilters,
+    globalFilterFn: "includesString",
     state: {
       pagination,
       columnFilters,
+      globalFilter,
     },
   });
 

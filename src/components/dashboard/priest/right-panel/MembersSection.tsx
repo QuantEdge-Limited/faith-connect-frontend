@@ -6,7 +6,18 @@ import Filters from "../table/Filters";
 
 export default function MembersSection() {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [globalFilter, setGlobalFilter] = useState("");
   // Sample data
+  // Outstations list
+  const outStations = [
+    "St Charles",
+    "St Francis",
+    "St Andrew",
+    "St Monica",
+    "St Gabriel",
+  ];
+
+  // Mock members data (with email + outstation)
   const members = [
     {
       id: 1,
@@ -14,6 +25,8 @@ export default function MembersSection() {
       gender: "Male",
       baptized: "2010-05-12",
       contact: "555-0101",
+      email: "michael.anderson@yahoo.com",
+      outStation: outStations[0],
     },
     {
       id: 2,
@@ -21,6 +34,8 @@ export default function MembersSection() {
       gender: "Female",
       baptized: "2015-08-20",
       contact: "555-0102",
+      email: "sarah.williams@example.com",
+      outStation: outStations[1],
     },
     {
       id: 3,
@@ -28,6 +43,8 @@ export default function MembersSection() {
       gender: "Male",
       baptized: "2018-03-15",
       contact: "555-0103",
+      email: "james.brown@gmail.com",
+      outStation: outStations[2],
     },
     {
       id: 4,
@@ -35,8 +52,11 @@ export default function MembersSection() {
       gender: "Female",
       baptized: "2020-11-08",
       contact: "555-0104",
+      email: "emma.davis@hotmail.com",
+      outStation: outStations[3],
     },
   ];
+
   return (
     <>
       <div className="space-y-4">
@@ -49,6 +69,8 @@ export default function MembersSection() {
         <Filters
           columnFilters={columnFilters}
           setColumnFilters={setColumnFilters}
+          globalFilter={globalFilter}
+          setGlobalFilter={setGlobalFilter}
         />
         <div className="overflow-hidden">
           <DataTable
@@ -56,6 +78,8 @@ export default function MembersSection() {
             data={members}
             columnFilters={columnFilters}
             setColumnFilters={setColumnFilters}
+            globalFilter={globalFilter}
+            setGlobalFilter={setGlobalFilter}
           />
         </div>
       </div>
