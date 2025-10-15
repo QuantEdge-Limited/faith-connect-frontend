@@ -26,6 +26,13 @@ type CatechismRecord = {
   notes: string;
 };
 
+type CatechismProgress = {
+  classesCompleted: string[];
+  currentLevel: string;
+  sacramentsReceived: string[];
+  attendance: number;
+};
+
 const MOCK_CLASSES: ClassItem[] = [
   {
     id: 1,
@@ -69,14 +76,37 @@ const MOCK_CLASSES: ClassItem[] = [
   },
 ];
 
+// Mock data for catechism record
+const MOCK_RECORD: CatechismRecord = {
+  id: 1,
+  date_of_baptism: "2010-05-15",
+  place_of_baptism: "St. Mary's Cathedral",
+  baptism_officiant: "Fr. Michael Rodriguez",
+  certificate_number: "BT-2010-05872",
+  godparents: "John & Mary Smith",
+  parish: "St. Mary's Parish",
+  confirmed: true,
+  date_of_confirmation: "2018-09-22",
+  notes: "Completed First Communion in 2012. Regular participant in youth activities."
+};
+
+// Mock progress data
+const MOCK_PROGRESS: CatechismProgress = {
+  classesCompleted: ["Catechism Level 1", "First Communion Prep"],
+  currentLevel: "Intermediate",
+  sacramentsReceived: ["Baptism", "First Communion"],
+  attendance: 85, // percentage
+};
+
 export default function CatechismPage() {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState<
     "All" | "Beginner" | "Intermediate" | "Advanced" | "Youth"
   >("All");
   const [enrolled, setEnrolled] = useState<number[]>([]);
-  const [view, setView] = useState<"classes" | "profile">("classes"); // Toggle between views
+  const [view, setView] = useState<"classes" | "profile">("classes");
   const [record, setRecord] = useState<CatechismRecord | null>(null);
+  const [progress, setProgress] = useState<CatechismProgress | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -106,13 +136,14 @@ export default function CatechismPage() {
     );
   };
 
-  // Fetch catechism record on mount
+  // Commented out useEffect since we don't have backend yet
+  /*
   useEffect(() => {
     const fetchRecord = async () => {
       setLoading(true);
       try {
         const response = await axios.get("/api/records/me/", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }, // Adjust based on your auth setup
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setRecord(response.data);
       } catch (err) {
@@ -127,6 +158,21 @@ export default function CatechismPage() {
       fetchRecord();
     }
   }, [view]);
+  */
+
+  // Use mock data instead
+  useEffect(() => {
+    if (view === "profile") {
+      setLoading(true);
+      // Simulate API call delay
+      const timer = setTimeout(() => {
+        setRecord(MOCK_RECORD);
+        setProgress(MOCK_PROGRESS);
+        setLoading(false);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [view]);
 
   return (
     <div className="p-6 space-y-6">
@@ -135,7 +181,7 @@ export default function CatechismPage() {
           <li className="text-gray-900 font-medium dark:text-gray-100">
             <button
               onClick={() => setView("classes")}
-              className={view === "classes" ? "underline" : ""}
+              className={`${view === "classes" ? "underline" : ""} hover:text-blue-600 transition-colors`}
             >
               Catechism
             </button>
@@ -144,7 +190,7 @@ export default function CatechismPage() {
           <li className="text-gray-900 font-medium dark:text-gray-100">
             <button
               onClick={() => setView("profile")}
-              className={view === "profile" ? "underline" : ""}
+              className={`${view === "profile" ? "underline" : ""} hover:text-blue-600 transition-colors`}
             >
               Profile
             </button>
@@ -271,80 +317,253 @@ export default function CatechismPage() {
           </section>
         </>
       ) : (
-        <section className="p-4 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
-          <h2 className="text-xl font-bold dark:text-gray-100">
-            Catechism Profile
-          </h2>
+        <section className="space-y-6">
+          {/* Profile Header */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h2 className="text-2xl font-bold dark:text-gray-100">
+                Catechism Profile
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                View your sacramental records and progress
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm"
+                onClick={() => alert("Contact parish admin to update details.")}
+              >
+                Request Update
+              </button>
+              <button
+                className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
+                onClick={() => window.print()}
+              >
+                Print Record
+              </button>
+            </div>
+          </div>
+
           {loading ? (
-            <p className="text-gray-600 dark:text-gray-300">Loading...</p>
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
           ) : error ? (
-            <p className="text-red-600 dark:text-red-400">{error}</p>
+            <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+              <p className="text-red-600 dark:text-red-400">{error}</p>
+            </div>
           ) : record ? (
-            <div className="mt-4 space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold dark:text-gray-100">
-                  Baptism Details
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Date of Baptism:</strong>{" "}
-                  {new Date(record.date_of_baptism).toLocaleDateString()}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Place of Baptism:</strong> {record.place_of_baptism}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Baptism Officiant:</strong>{" "}
-                  {record.baptism_officiant || "N/A"}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Certificate Number:</strong>{" "}
-                  {record.certificate_number}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Godparents:</strong> {record.godparents || "N/A"}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Parish:</strong> {record.parish || "N/A"}
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold dark:text-gray-100">
-                  Confirmation Details
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Confirmed:</strong> {record.confirmed ? "Yes" : "No"}
-                </p>
-                {record.confirmed && record.date_of_confirmation && (
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    <strong>Date of Confirmation:</strong>{" "}
-                    {new Date(record.date_of_confirmation).toLocaleDateString()}
-                  </p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Sacramental Records */}
+              <div className="lg:col-span-2 space-y-6">
+                {/* Baptism Card */}
+                <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                      💧
+                    </div>
+                    <h3 className="text-lg font-semibold dark:text-gray-100">
+                      Baptism Details
+                    </h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Date of Baptism
+                      </label>
+                      <p className="text-sm text-gray-900 dark:text-gray-100">
+                        {new Date(record.date_of_baptism).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Place of Baptism
+                      </label>
+                      <p className="text-sm text-gray-900 dark:text-gray-100">
+                        {record.place_of_baptism}
+                      </p>
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Officiant
+                      </label>
+                      <p className="text-sm text-gray-900 dark:text-gray-100">
+                        {record.baptism_officiant || "N/A"}
+                      </p>
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Certificate Number
+                      </label>
+                      <p className="text-sm text-gray-900 dark:text-gray-100 font-mono">
+                        {record.certificate_number}
+                      </p>
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Godparents
+                      </label>
+                      <p className="text-sm text-gray-900 dark:text-gray-100">
+                        {record.godparents || "N/A"}
+                      </p>
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Parish
+                      </label>
+                      <p className="text-sm text-gray-900 dark:text-gray-100">
+                        {record.parish || "N/A"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Confirmation Card */}
+                <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                      ✝️
+                    </div>
+                    <h3 className="text-lg font-semibold dark:text-gray-100">
+                      Confirmation Details
+                    </h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Status
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            record.confirmed
+                              ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                              : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                          }`}
+                        >
+                          {record.confirmed ? "Confirmed" : "Not Confirmed"}
+                        </span>
+                      </div>
+                    </div>
+                    {record.confirmed && record.date_of_confirmation && (
+                      <div>
+                        <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                          Date of Confirmation
+                        </label>
+                        <p className="text-sm text-gray-900 dark:text-gray-100">
+                          {new Date(record.date_of_confirmation).toLocaleDateString()}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Notes Card */}
+                {record.notes && (
+                  <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+                    <h3 className="text-lg font-semibold dark:text-gray-100 mb-4">
+                      Additional Notes
+                    </h3>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                      {record.notes}
+                    </p>
+                  </div>
                 )}
               </div>
-              <div>
-                <h3 className="text-lg font-semibold dark:text-gray-100">
-                  Notes
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {record.notes || "No notes available."}
-                </p>
-              </div>
-              <div>
-                <button
-                  className="px-3 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
-                  onClick={() =>
-                    alert("Contact parish admin to update details.")
-                  }
-                >
-                  Request Update
-                </button>
+
+              {/* Progress Sidebar */}
+              <div className="space-y-6">
+                {/* Progress Summary */}
+                <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+                  <h4 className="font-semibold dark:text-gray-100 mb-4">
+                    Catechism Progress
+                  </h4>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Current Level
+                      </label>
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {progress?.currentLevel || "Not enrolled"}
+                      </p>
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">
+                        Attendance
+                      </label>
+                      <div className="mt-1">
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                          <div
+                            className="bg-green-600 h-2 rounded-full transition-all duration-300"
+                            style={{ width: `${progress?.attendance || 0}%` }}
+                          ></div>
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          {progress?.attendance || 0}% overall attendance
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sacraments Received */}
+                <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+                  <h4 className="font-semibold dark:text-gray-100 mb-4">
+                    Sacraments Received
+                  </h4>
+                  <div className="space-y-2">
+                    {progress?.sacramentsReceived.map((sacrament, index) => (
+                      <div key={index} className="flex items-center gap-2 text-sm">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-gray-700 dark:text-gray-300">{sacrament}</span>
+                      </div>
+                    ))}
+                    {(!progress?.sacramentsReceived || progress.sacramentsReceived.length === 0) && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400">No sacraments recorded yet</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+                  <h4 className="font-semibold dark:text-gray-100 mb-4">
+                    Quick Actions
+                  </h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => setView("classes")}
+                      className="w-full px-3 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm text-center"
+                    >
+                      Browse Classes
+                    </button>
+                    <button
+                      onClick={() => alert("Document download feature coming soon")}
+                      className="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
+                    >
+                      Download Certificate
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
-            <p className="text-gray-600 dark:text-gray-300">
-              No catechism record found. Please contact the parish admin to add
-              your details.
-            </p>
+            <div className="p-8 text-center rounded-xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                📝
+              </div>
+              <h3 className="text-lg font-semibold dark:text-gray-100 mb-2">
+                No Catechism Record Found
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4 max-w-md mx-auto">
+                We couldn't find your catechism records. Please contact the parish administration to add your sacramental details.
+              </p>
+              <button
+                className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                onClick={() => alert("Contact: parish@example.com | Phone: (555) 123-4567")}
+              >
+                Contact Parish Admin
+              </button>
+            </div>
           )}
         </section>
       )}

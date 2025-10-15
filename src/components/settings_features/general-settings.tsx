@@ -34,23 +34,23 @@ const GeneralSettings = () => {
     const [selectedProfileVisible, setSelectedProfileVisible] = useState<boolean>(true);
     const [selectedMemberStatus, setSelectedMemberStatus] = useState<boolean>(true);
 
-    // Currency selector state: default to KES
-    const CURRENCIES = ['KES', 'USD', 'EUR', 'GBP', 'UGX', 'TZS'];
-    const [selectedCurrency, setSelectedCurrency] = useState<string>(() => {
-        if (typeof window !== 'undefined' && window.localStorage) {
-            return localStorage.getItem('currency') || 'KES';
-        }
-        return 'KES';
-    });
+    // // Currency selector state: default to KES
+    // const CURRENCIES = ['KES', 'USD', 'EUR', 'GBP', 'UGX', 'TZS'];
+    // const [selectedCurrency, setSelectedCurrency] = useState<string>(() => {
+    //     if (typeof window !== 'undefined' && window.localStorage) {
+    //         return localStorage.getItem('currency') || 'KES';
+    //     }
+    //     return 'KES';
+    // });
 
-    const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-        const cur = e.target.value;
-        setSelectedCurrency(cur);
-        if (typeof window !== 'undefined' && window.localStorage) {
-            localStorage.setItem('currency', cur);
-            window.dispatchEvent(new CustomEvent('currency-change', { detail: { currency: cur } }));
-        }
-    }
+    // const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    //     const cur = e.target.value;
+    //     setSelectedCurrency(cur);
+    //     if (typeof window !== 'undefined' && window.localStorage) {
+    //         localStorage.setItem('currency', cur);
+    //         window.dispatchEvent(new CustomEvent('currency-change', { detail: { currency: cur } }));
+    //     }
+    // }
 
     useEffect(() => {
         // populate list of timezones where available; guard for environments that don't support supportedValuesOf
@@ -111,14 +111,14 @@ const GeneralSettings = () => {
         }
     }
 
-    const fontSizes = ['Small', 'Medium', 'Large'];
-    const [selectedFontSize, setSelectedFontSize] = useState(fontSizes[1]);
+    // const fontSizes = ['Small', 'Medium', 'Large'];
+    // const [selectedFontSize, setSelectedFontSize] = useState(fontSizes[1]);
 
-    const handleFontSizeChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-        const size: string = event.target.value;
-        setSelectedFontSize(size);
-        console.log(`Selected font size: ${size}`);
-    }
+    // const handleFontSizeChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    //     const size: string = event.target.value;
+    //     setSelectedFontSize(size);
+    //     console.log(`Selected font size: ${size}`);
+    // }
 
   return (
     <div className='general-settings p-1 w-full min-h-[calc(100vh-6rem)] space-y-2'>
@@ -206,7 +206,7 @@ const GeneralSettings = () => {
         </section>
         <section className='p-4 px-8 bg-white dark:bg-gray-800 rounded-md shadow-md w-full space-y-2'>
             <h2 className='text-xl font-semibold dark:text-gray-100'>System Defaults</h2>
-            <div className="flex justify-between gap-4 space-y-1 items-center">
+            {/* <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>New Member Status</h4>
                 <button type="button" aria-pressed={selectedMemberStatus} onClick={() => setSelectedMemberStatus((prev) => !prev)}
                     className={`w-[48px] h-[28px] rounded-full relative transition-colors duration-200 border border-gray-300 dark:border-gray-700 focus:outline-none ${
@@ -215,15 +215,15 @@ const GeneralSettings = () => {
                 >
                     <span className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform duration-200 ${selectedMemberStatus ? 'translate-x-5' : ''}`}/>
                 </button>
-            </div>
-            <div className="flex justify-between gap-4 space-y-1 items-center">
+            </div> */}
+            {/* <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Default Currency</h4>
                 <select id="currency-select" value={selectedCurrency} onChange={handleCurrencyChange} className='p-2 border border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
                     {CURRENCIES.map((c) => (
                         <option key={c} value={c} className='dark:bg-gray-800 dark:text-gray-200'>{c}</option>
                     ))}
                 </select>
-            </div>
+            </div> */}
             {/* <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Auto Generate Reports</h4>
                 <p className='p-2 border border-gray-300 rounded-full bg-green-700 relative w-[8%] h-[35px]'><span className='absolute w-1/2 bg-white rounded-full inset-0 z-50'></span></p>
@@ -232,16 +232,16 @@ const GeneralSettings = () => {
                 <h4 className='dark:text-gray-100'>Choose Theme</h4>
                 <ThemeContext />
             </div>
-            <div className="flex justify-between gap-4 space-y-1 items-center">
+            {/* <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4 className='dark:text-gray-100'>Font Size Preference</h4>
                 <select id="font-size-select" value={selectedFontSize} onChange={handleFontSizeChange} className='p-2 border border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
                     {fontSizes.map((size) => (
                         <option key={size} value={size} className='dark:bg-gray-800 dark:text-gray-200'>{size}</option>
                     ))}
                 </select>
-            </div>
-                <div className="flex flex-col mt-2">
-                    <div className="flex justify-between gap-1 space-y-1 items-center">
+            </div> */}
+            {/* <div className="flex flex-col mt-2">
+                <div className="flex justify-between gap-1 space-y-1 items-center">
                     <h4 className='dark:text-gray-100 max-sm:text-sm'>Make your profile visible publicly</h4>
                     <button type="button" aria-pressed={selectedProfileVisible}
                         onClick={() => setSelectedProfileVisible((prev) => !prev)}
@@ -256,7 +256,7 @@ const GeneralSettings = () => {
                     </button>
                 </div>
                 <p className='text-sm max-sm:text-xs italic ps-2 dark:text-gray-300'>Allow other users to view your profile information</p>
-            </div>
+            </div> */}
         </section>
     </div>
   )

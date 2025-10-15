@@ -15,7 +15,7 @@ import Autoplay from "embla-carousel-autoplay";
 export default function TestimonialSection() {
   // Autoplay plugin configuration for carousel
   const plugin = React.useRef(
-    Autoplay({ delay: 8000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: false })
   );
   return (
     <>
@@ -39,6 +39,9 @@ export default function TestimonialSection() {
             plugins={[plugin.current]}
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
+            opts={{
+              loop: true,
+            }}
             className="w-full"
           >
             <CarouselContent className="-ml-2 sm:-ml-3 md:-ml-4">

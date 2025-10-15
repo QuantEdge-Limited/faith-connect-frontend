@@ -247,12 +247,7 @@ export function AuthForm({ type, onSubmit, submitLabel }: AuthFormProps) {
                     </FormItem>
                   )}
                 />
-              </>
-            )}
 
-            {/* ---  SHARED FIELDS (Login + Signup) --- */}
-            {(type === "signup" || type === "login") && (
-              <>
                 {/* --- Branch Dropdown --- */}
                 <FormField
                   control={form.control}
@@ -288,7 +283,12 @@ export function AuthForm({ type, onSubmit, submitLabel }: AuthFormProps) {
                     </FormItem>
                   )}
                 />
+              </>
+            )}
 
+            {/* ---  SHARED FIELDS (Login + Signup) --- */}
+            {(type === "signup" || type === "login") && (
+              <>
                 {/* --- Email --- */}
                 <FormField
                   control={form.control}
