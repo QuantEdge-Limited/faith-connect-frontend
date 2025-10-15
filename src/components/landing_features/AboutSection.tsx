@@ -13,7 +13,7 @@ export default function AboutSection() {
                  text-[#0D090A]"
     >
       {/* Content Container - Responsive grid layout */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-screen-2xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 2xl:gap-24 items-center lg:items-start">
           {/* Left Column - Text Content */}
           <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 order-2 lg:order-1">
@@ -50,7 +50,7 @@ export default function AboutSection() {
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[#D4AF37] mb-2">
                   50
                 </div>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-tight max-w-[200px]">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-tight max-w-[200px] align-middle">
                   Years of spiritual growth and community service
                 </p>
               </div>

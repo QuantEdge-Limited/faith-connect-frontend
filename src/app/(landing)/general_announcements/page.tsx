@@ -7,8 +7,10 @@ import { Calendar, Bell, MapPin, Clock } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
+type AnnouncementTab = "all" | "events" | "ministry" | "outreach";
+
 export default function GlobalAnnouncements() {
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState<AnnouncementTab>("all");
 
   // Categorize
   announcements.events = announcements.all.filter(
@@ -28,7 +30,7 @@ export default function GlobalAnnouncements() {
     { id: "outreach", label: "Outreach", count: announcements.outreach.length },
   ];
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: any) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
       weekday: "long",
@@ -39,8 +41,8 @@ export default function GlobalAnnouncements() {
   };
 
   return (
-    <section className="min-h-screen bg-white text-[#0D090A] py-12 sm:py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section className="min-h-screen bg-white text-[#0D090A] py-12 sm:py-16 px-5 md:px-16">
+      <div className="max-screen-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
           <Bell className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />

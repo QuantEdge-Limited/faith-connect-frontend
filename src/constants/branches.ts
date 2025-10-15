@@ -12,9 +12,10 @@ import {
 export const branches = [
   {
     id: "st-charles",
-    name: "St Charles",
+    name: "St Charles OutStation",
     address: "123 Unity Avenue, Nairobi, Kenya",
     established: "1988-04-15",
+    image: "/outStations/st-charles.jpg",
     history:
       "St Charles began as a small prayer group in 1988 and has grown into a vibrant church serving the Nairobi community through worship, outreach, and fellowship.",
     inspirationMessage:
@@ -53,40 +54,57 @@ export const branches = [
 
     ministries: [
       {
-        name: "Youth Fellowship",
-        leader: "James Kariuki",
-        location: "Main Hall",
-        schedule: "Saturdays, 2:00 PM",
-        icon: Users,
+        name: "CMA",
+        leader: "Samuel Mutua",
+        location: "Mission Office",
+        schedule: "Wednesdays, 6:00 PM",
+        icon: Cross,
         description:
-          "Engaging the next generation through mentorship, worship, and service.",
+          "Bringing the gospel to the streets, homes, and hearts of Mombasa.",
       },
       {
-        name: "Men's Ministry",
-        leader: "Joseph Kamau",
-        location: "Community Center",
-        schedule: "Every 2nd Sunday, 4:00 PM",
+        name: "Choir",
+        leader: "Evelyn Achieng",
+        location: "Main Sanctuary",
+        schedule: "Fridays, 5:00 PM",
+        icon: Music,
+        description: "Raising voices and spirits through song and praise.",
+      },
+      {
+        name: "CWA",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
         icon: Heart,
         description:
-          "Empowering men to lead with integrity, humility, and faith.",
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
       {
-        name: "Women's Guild",
-        leader: "Grace Wambui",
-        location: "Fellowship Room",
-        schedule: "Fridays, 5:30 PM",
+        name: "Youth",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
         icon: Heart,
         description:
-          "Supporting women through prayer, outreach, and sisterhood.",
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
       {
-        name: "Sunday School",
-        leader: "Alice Mwangi",
-        location: "Children's Wing",
-        schedule: "Sundays, 9:00 AM",
-        icon: BookOpen,
+        name: "MYM",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
         description:
-          "Nurturing young hearts with biblical teaching and fun learning activities.",
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Jumuiya",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
     ],
 
@@ -115,9 +133,10 @@ export const branches = [
 
   {
     id: "st-francis",
-    name: "St Francis",
+    name: "St Francis OutStation",
     address: "45 Peace Road, Mombasa, Kenya",
     established: "1995-09-22",
+    image: "/outStations/st-francis.jpg",
     history:
       "Founded in 1995, St Francis Church is a beacon of peace and faith in Mombasa, known for its vibrant worship and strong outreach programs.",
     inspirationMessage:
@@ -125,10 +144,10 @@ export const branches = [
 
     leadership: [
       {
-        name: "Rev. John Odhiambo",
-        role: "Lead Pastor",
+        name: "Fr. Charles Njoroge",
+        role: "Parish Priest",
         description:
-          "Rev. Odhiambo leads with a heart for mission, prayer, and unity across all parishes.",
+          "Fr. Charles Njoroge leads with a heart for mission, prayer, and unity across all parishes.",
         image: "✝️",
       },
       {
@@ -156,7 +175,7 @@ export const branches = [
 
     ministries: [
       {
-        name: "Evangelism Team",
+        name: "CMA",
         leader: "Samuel Mutua",
         location: "Mission Office",
         schedule: "Wednesdays, 6:00 PM",
@@ -165,7 +184,7 @@ export const branches = [
           "Bringing the gospel to the streets, homes, and hearts of Mombasa.",
       },
       {
-        name: "Choir Ministry",
+        name: "Choir",
         leader: "Evelyn Achieng",
         location: "Main Sanctuary",
         schedule: "Fridays, 5:00 PM",
@@ -173,7 +192,34 @@ export const branches = [
         description: "Raising voices and spirits through song and praise.",
       },
       {
-        name: "Family Support Group",
+        name: "CWA",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Youth",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "MYM",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Jumuiya",
         leader: "Peter Kilonzo",
         location: "Community Hall",
         schedule: "Monthly, 3rd Sunday, 3:00 PM",
@@ -203,13 +249,21 @@ export const branches = [
       phone: "+254 711 112 233",
       email: "support@stmonicachurch.org",
     },
+    mass: [
+      { day: "Sat", time: "05:30 pm - 07:30 pm" },
+      { day: "Sun", time: "06:30 am - 08:30 am" },
+      { day: "Sun", time: "08:30 am - 10:30 am" },
+      { day: "Sun", time: "10:30 am - 12:30 pm" },
+      { day: "Sun", time: "12:30 pm - 14:30 pm" },
+    ],
   },
 
   {
     id: "st-andrew",
-    name: "St Andrew",
+    name: "St Andrew OutStation",
     address: "12 Hope Street, Kisumu, Kenya",
     established: "2001-06-10",
+    image: "/outStations/st-andrew.jpg",
     history:
       "St Andrew Church was established in 2001 to serve the lakeside community of Kisumu, uniting believers in faith, worship, and community service.",
     inspirationMessage: "Faith grows when shared; serve with humility and joy.",
@@ -240,30 +294,57 @@ export const branches = [
 
     ministries: [
       {
-        name: "Music and Worship",
-        leader: "Sarah Akinyi",
-        location: "Sanctuary Hall",
-        schedule: "Thursdays, 6:00 PM",
+        name: "CMA",
+        leader: "Samuel Mutua",
+        location: "Mission Office",
+        schedule: "Wednesdays, 6:00 PM",
+        icon: Cross,
+        description:
+          "Bringing the gospel to the streets, homes, and hearts of Mombasa.",
+      },
+      {
+        name: "Choir",
+        leader: "Evelyn Achieng",
+        location: "Main Sanctuary",
+        schedule: "Fridays, 5:00 PM",
         icon: Music,
-        description:
-          "Inspiring hearts through worship, praise, and music excellence.",
+        description: "Raising voices and spirits through song and praise.",
       },
       {
-        name: "Men of Faith",
-        leader: "George Ochieng",
-        location: "Church Courtyard",
-        schedule: "Every 1st Sunday, 3:00 PM",
+        name: "CWA",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
         icon: Heart,
-        description: "Building godly men for strong families and leadership.",
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
       {
-        name: "Youth Empowerment Group",
-        leader: "David Otieno",
-        location: "Youth Center",
-        schedule: "Saturdays, 10:00 AM",
-        icon: Users,
+        name: "Youth",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
         description:
-          "Mentoring young people to live purpose-driven and Christ-centered lives.",
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "MYM",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Jumuiya",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
     ],
 
@@ -292,9 +373,10 @@ export const branches = [
 
   {
     id: "st-monica",
-    name: "St Monica",
+    name: "St Monica OutStation",
     address: "78 Grace Lane, Nakuru, Kenya",
     established: "2005-03-18",
+    image: "/outStations/st-monica.jpg",
     history:
       "St Monica Church began as a small chapel and has grown into one of Nakuru’s most active Christian centers, focusing on education and family ministries.",
     inspirationMessage:
@@ -326,31 +408,57 @@ export const branches = [
 
     ministries: [
       {
-        name: "Outreach & Charity",
-        leader: "Catherine Njeri",
-        location: "Community Wing",
-        schedule: "Wednesdays, 3:00 PM",
-        icon: HandHeart,
+        name: "CMA",
+        leader: "Samuel Mutua",
+        location: "Mission Office",
+        schedule: "Wednesdays, 6:00 PM",
+        icon: Cross,
         description:
-          "Serving the community through feeding programs and school drives.",
+          "Bringing the gospel to the streets, homes, and hearts of Mombasa.",
       },
       {
-        name: "Bible Study Group",
-        leader: "Joseph Kimani",
-        location: "Conference Room",
-        schedule: "Tuesdays, 6:00 PM",
-        icon: BookOpen,
-        description:
-          "Deepening faith through guided study and scripture meditation.",
-      },
-      {
-        name: "Worship Choir",
-        leader: "Mary Wairimu",
-        location: "Main Hall",
+        name: "Choir",
+        leader: "Evelyn Achieng",
+        location: "Main Sanctuary",
         schedule: "Fridays, 5:00 PM",
         icon: Music,
+        description: "Raising voices and spirits through song and praise.",
+      },
+      {
+        name: "CWA",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
         description:
-          "Leading worship in spirit and truth with beautiful harmonies and devotion.",
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Youth",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "MYM",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Jumuiya",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
     ],
 
@@ -379,9 +487,10 @@ export const branches = [
 
   {
     id: "st-gabriel",
-    name: "St Gabriel",
+    name: "St Gabriel OutStation",
     address: "32 Trinity Road, Eldoret, Kenya",
     established: "2010-11-27",
+    image: "/outStations/st-gabriel.jpg",
     history:
       "Founded in 2010, St Gabriel Church stands as a symbol of unity and renewal for the Eldoret community, known for strong youth engagement and missions.",
     inspirationMessage:
@@ -413,31 +522,57 @@ export const branches = [
 
     ministries: [
       {
-        name: "Mission Team",
-        leader: "Mark Cheruiyot",
+        name: "CMA",
+        leader: "Samuel Mutua",
         location: "Mission Office",
-        schedule: "Every 2nd Saturday, 10:00 AM",
-        icon: Globe,
-        description:
-          "Organizing regional missions and spreading the Word to rural communities.",
-      },
-      {
-        name: "Prayer and Intercession",
-        leader: "Rev. Stephen Kiptoo",
-        location: "Prayer Room",
-        schedule: "Daily, 6:00 AM",
+        schedule: "Wednesdays, 6:00 PM",
         icon: Cross,
         description:
-          "Building a praying community grounded in the Word and Spirit.",
+          "Bringing the gospel to the streets, homes, and hearts of Mombasa.",
       },
       {
-        name: "Business Fellowship",
-        leader: "John Ruto",
-        location: "Upper Hall",
-        schedule: "Fridays, 7:00 PM",
-        icon: Briefcase,
+        name: "Choir",
+        leader: "Evelyn Achieng",
+        location: "Main Sanctuary",
+        schedule: "Fridays, 5:00 PM",
+        icon: Music,
+        description: "Raising voices and spirits through song and praise.",
+      },
+      {
+        name: "CWA",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
         description:
-          "Equipping professionals and entrepreneurs to live out their faith in the marketplace.",
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Youth",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "MYM",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
+      },
+      {
+        name: "Jumuiya",
+        leader: "Peter Kilonzo",
+        location: "Community Hall",
+        schedule: "Monthly, 3rd Sunday, 3:00 PM",
+        icon: Heart,
+        description:
+          "Providing counseling, mentorship, and prayer for families in need.",
       },
     ],
 
