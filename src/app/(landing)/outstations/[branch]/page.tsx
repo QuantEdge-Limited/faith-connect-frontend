@@ -3,9 +3,13 @@ import { branches } from "@/constants/branches";
 import { Metadata } from "next";
 import React from "react";
 
-type Props = {
-  params: { branch: string };
-};
+interface BranchPageParams {
+  branch: string;
+}
+
+interface BranchPageProps {
+  params: BranchPageParams;
+}
 
 // Generate metadata for SEO
 export async function generateMetadata(props: {
@@ -45,8 +49,13 @@ export async function generateMetadata(props: {
   };
 }
 
-export default function BranchPage({ params }: Props) {
-  return <OutstationSection branchId={params.branch} />;
+export default async function BranchPage({
+  params,
+}: {
+  params: Promise<BranchPageParams>;
+}) {
+  const { branch } = await params;
+  return <OutstationSection branchId={branch} />;
 }
 
 export async function generateStaticParams() {
