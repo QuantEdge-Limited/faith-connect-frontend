@@ -1,38 +1,79 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+type UserRole = "user" | "catechist" | "leaders" | "priest";
+
 export function middleware(request: NextRequest) {
   // const token = request.cookies.get("authToken")?.value;
-  const token = 1111; //get token from cookies
+  const token = null; //get token from cookies
   const isAuth = !!token;
 
-  const url = request.nextUrl;
+  //  const role = (request.cookies.get("role")?.value as UserRole) || "user";
+  const role: UserRole = "priest"; // Mocked role for testing
 
-  //   If user hits "/" (root)
-  if (url.pathname === "/") {
+  const url = request.nextUrl;
+  const pathname = url.pathname;
+
+  // If user hits root `/`, redirect to their dashboard
+  if (pathname === "/") {
     if (isAuth) {
-      // Redirect to the dashboard "/" (inside dashboard group)
-      return NextResponse.redirect(new URL("/home", request.url));
+      const roleRedirectMap: Record<UserRole, string> = {
+        user: "/user/home",
+        catechist: "/catechist/home",
+        leaders: "/leaders/home",
+        priest: "/priest/home",
+      };
+
+      return NextResponse.redirect(new URL(roleRedirectMap[role], request.url));
     } else {
-      // Show landing Page
-      return NextResponse.next();
+      return NextResponse.next(); // Show landing page
     }
   }
 
-  //   Block other routes if not authenticated
-  if (
-    !isAuth &&
-    ![
-      "/",
-      "/login",
-      "/sign_up",
-      "/verify_otp",
-      "/about",
-      "/community",
-      "/general_announcements",
-    ].includes(url.pathname)
-  ) {
+  // Public routes
+  const publicRoutes = [
+    "/",
+    "/login",
+    "/sign_up",
+    "/verify_otp",
+    "/about",
+    "/community",
+    "/general_announcements",
+    "/outstations/[branchId]",
+  ];
+
+  // Handle dynamic public route: /outstations/:branchId
+  const isPublic =
+    publicRoutes.includes(pathname) || pathname.startsWith("/outstations/");
+
+  // Block unauthenticated users from private routes
+  if (!isAuth && !isPublic) {
     return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // Role-based access control for authenticated users
+  if (isAuth) {
+    const rolePaths: Record<UserRole, string> = {
+      user: "/user",
+      catechist: "/catechist",
+      leaders: "/leaders",
+      priest: "/priest",
+    };
+
+    const allowedPrefix = rolePaths[role];
+    if (
+      pathname.startsWith("/user") ||
+      pathname.startsWith("/catechist") ||
+      pathname.startsWith("/leaders") ||
+      pathname.startsWith("/priest")
+    ) {
+      if (!pathname.startsWith(allowedPrefix)) {
+        // redirect them to their correct dashboard
+        return NextResponse.redirect(
+          new URL(`${allowedPrefix}/home`, request.url)
+        );
+      }
+    }
   }
 
   return NextResponse.next();
