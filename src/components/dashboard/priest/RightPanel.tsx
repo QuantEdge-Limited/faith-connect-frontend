@@ -28,7 +28,7 @@ export default function RightPanel() {
       <section className="w-3/4 overflow-y-auto">
         {/* Header with Tabs */}
         <div className="bg-white border-b border-slate-200 p-5 sticky top-0 z-10">
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 justify-start gap-3">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-start gap-3">
             {/* Tab Navigation */}
             {tabs.map((tab) => (
               <TabButtons
