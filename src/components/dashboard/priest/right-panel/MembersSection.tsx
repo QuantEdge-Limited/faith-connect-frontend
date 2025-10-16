@@ -22,7 +22,7 @@ export default function MembersSection() {
     {
       id: 1,
       name: "Michael Anderson",
-      gender: "Male",
+      role: "Youth Leader",
       baptized: "2010-05-12",
       contact: "555-0101",
       email: "michael.anderson@yahoo.com",
@@ -31,7 +31,7 @@ export default function MembersSection() {
     {
       id: 2,
       name: "Sarah Williams",
-      gender: "Female",
+      role: "Catechist Coordinator",
       baptized: "2015-08-20",
       contact: "555-0102",
       email: "sarah.williams@example.com",
@@ -40,7 +40,7 @@ export default function MembersSection() {
     {
       id: 3,
       name: "James Brown",
-      gender: "Male",
+      role: "Parish Administrator",
       baptized: "2018-03-15",
       contact: "555-0103",
       email: "james.brown@gmail.com",
@@ -49,7 +49,7 @@ export default function MembersSection() {
     {
       id: 4,
       name: "Emma Davis",
-      gender: "Female",
+      role: "Choir Director",
       baptized: "2020-11-08",
       contact: "555-0104",
       email: "emma.davis@hotmail.com",

@@ -6,17 +6,19 @@ import {
   Megaphone,
   Users,
 } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 import MembersSection from "./right-panel/MembersSection";
 import BookingSection from "./right-panel/BookingSection";
 import SchedulingSection from "./right-panel/SchedulingSection";
 import AnalyticsSection from "./right-panel/AnalyticsSection";
 import PriestAnnouncements from "./right-panel/AnnouncementsSection";
+import { RightPanelProps } from "@/types";
 
-export default function RightPanel() {
-  const [activeTab, setActiveTab] = useState("members");
+export default function RightPanel({  activeTab,
+  setActiveTab,
+}: RightPanelProps) {
   const tabs = [
-    { id: "members", label: "Parish Members", icon: Users },
+    { id: "members", label: "Parish Leaders", icon: Users },
     { id: "bookings", label: "Bookings", icon: ClipboardList },
     { id: "announcements", label: "Announcements", icon: Megaphone },
     { id: "scheduling", label: "Scheduling", icon: CalendarDays },

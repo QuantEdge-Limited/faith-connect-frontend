@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import {
-  Plus,
   CalendarDays,
   ChevronLeft,
   ChevronRight,
@@ -19,19 +18,19 @@ export default function SchedulingSection() {
   const assignments = [
     {
       id: 1,
-      date: "2025-10-05",
+      date: "2025-10-20",
       priest: "Fr. Michael Santos",
       time: "9:00 AM",
     },
     {
       id: 2,
-      date: "2025-10-08",
+      date: "2025-10-25",
       priest: "Fr. Joseph Rivera",
       time: "6:30 PM",
     },
     {
       id: 3,
-      date: "2025-10-15",
+      date: "2025-10-28",
       priest: "Fr. Paul Dela Cruz",
       time: "10:00 AM",
     },
@@ -111,7 +110,7 @@ export default function SchedulingSection() {
   // Upcoming assignments list
   const upcomingAssignments = assignments
     .filter((a) => new Date(a.date) >= new Date())
-    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .slice(0, 5);
 
   return (
