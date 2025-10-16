@@ -16,7 +16,7 @@ export default function UserDashboard() {
     <>
       <section className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-8">
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 max-w-[1600px] mx-auto">
-          <div className="grid grid-cols-1 min-[450px]:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 pt-4 sm:pt-6">
+          {/* <div className="grid grid-cols-1 min-[450px]:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 pt-4 sm:pt-6">
             <Card className="p-4 sm:p-5 flex flex-col text-center items-center bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 hover:shadow-md transition-shadow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-700 dark:border-gray-700">
               <Users className="w-8 h-8 sm:w-10 sm:h-10 text-amber-600 mb-2 dark:text-amber-400" />
               <CardTitle className="text-2xl sm:text-3xl font-bold text-amber-700 mb-1 dark:text-amber-300">
@@ -63,13 +63,13 @@ export default function UserDashboard() {
                 ></div>
               </div>
             </Card>
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
             <Branch />
             <CalendarComponent />
             <Schedule />
-            <Group />
+            {/* <Group /> */}
           </div>
         </div>
       </section>
