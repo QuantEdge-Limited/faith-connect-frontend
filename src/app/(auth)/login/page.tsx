@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthForm } from "@/components/AuthForm";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   async function handleSubmit(data: unknown) {
@@ -12,43 +13,46 @@ export default function LoginPage() {
     <section className="flex min-h-screen ">
       {/* Left Side - Image */}
       <div className="hidden lg:flex lg:w-1/2 relative">
+        {/* Background Image using next/image */}
+        <Image
+          src="/outStations/st-francis.jpg"
+          alt="St. Francis of Assisi Ruiru Parish"
+          fill
+          className="object-cover"
+          priority
+        />
+
+        {/* Simple Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Subtle Grid Pattern */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: "url('/images/church.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
           }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
+        />
 
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: "40px 40px",
-            }}
-          />
-
-          <div className="relative z-10 flex flex-col justify-end p-12 h-full text-white">
-            {/* Website Title */}
-            <Link href="/">
-              <p className="text-xl  tracking-widest text-gray-300 mb-2">
-                Faith Connect
-              </p>
-            </Link>
-
-            {/* Page Heading */}
-            <h1 className="text-4xl font-bold mb-4">Welcome Back</h1>
-
-            {/* Subtitle / Description */}
-            <p className="text-lg text-gray-200">
-              Sign in to continue your spiritual journey
+        {/* Content on top of the image */}
+        <div className="relative z-10 flex flex-col justify-end p-12 h-full text-white">
+          {/* Website Title */}
+          <Link href="/">
+            <p className="text-xl tracking-widest text-gray-300 mb-2">
+              Faith Connect
             </p>
-          </div>
+          </Link>
+
+          {/* Page Heading */}
+          <h1 className="text-4xl font-bold mb-4">Welcome Back</h1>
+
+          {/* Subtitle / Description */}
+          <p className="text-lg text-gray-200">
+            Sign in to continue your spiritual journey
+          </p>
         </div>
       </div>
 
