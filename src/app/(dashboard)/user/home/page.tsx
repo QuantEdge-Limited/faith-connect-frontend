@@ -5,7 +5,6 @@ import Branch from "@/components/dashboard/user/dashboard_features/branch";
 import Schedule from "@/components/dashboard/user/dashboard_features/schedule";
 import CalendarComponent from "@/components/dashboard/user/dashboard_features/calendar";
 import React from "react";
-import Group from "@/components/dashboard/user/dashboard_features/group";
 
 // Dashboard main component for the home page
 export default function UserDashboard() {
