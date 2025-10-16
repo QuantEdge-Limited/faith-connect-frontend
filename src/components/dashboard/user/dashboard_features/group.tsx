@@ -16,19 +16,16 @@ const DEFAULT_RECENT: Array<{ id: number; title: string }> = [
   { id: 5, title: "Women's Guild" },
 ];
 
-const Group: React.FC<GroupProps> = ({ 
-  total, 
-  recent = DEFAULT_RECENT 
-}) => {
+const Group: React.FC<GroupProps> = ({ total, recent = DEFAULT_RECENT }) => {
   const displayTotal = total ?? recent.length;
 
   return (
     <div className="h-full">
-      <h2 className="text-lg font-semibold mb-3 px-1 dark:text-gray-100">
+      <h2 className="text-base font-semibold mb-3 px-1 dark:text-gray-100">
         Groups
       </h2>
 
-      <Card className="bg-white border-[#D4AF37]/20 shadow-sm overflow-hidden dark:bg-gray-800 dark:border-gray-700 h-full">
+      <div className="border-0 shadow-none overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-3 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
           <p className="text-xs text-gray-700 dark:text-gray-300">
@@ -38,16 +35,13 @@ const Group: React.FC<GroupProps> = ({
             </span>{" "}
             groups
           </p>
-          <Link
-            href="/user/groups"
-            className="px-2 py-1 rounded text-xs bg-blue-600 text-white hover:bg-blue-700"
-          >
+          <Link href="/user/groups" className="rounded text-xs text-blue-600 ">
             View all
           </Link>
         </div>
 
         {/* Content */}
-        <div className="h-[180px] overflow-y-auto custom-scrollbar">
+        <div className="overflow-y-auto custom-scrollbar">
           {recent.length === 0 ? (
             <p className="text-xs text-gray-500 dark:text-gray-400 p-3">
               No groups
@@ -55,7 +49,10 @@ const Group: React.FC<GroupProps> = ({
           ) : (
             <ul className="divide-y divide-gray-200 dark:divide-gray-700">
               {recent.slice(0, 4).map((g) => (
-                <li key={g.id} className="p-2 hover:bg-gray-50 dark:hover:bg-gray-700">
+                <li
+                  key={g.id}
+                  className="p-2 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-800 dark:text-gray-200">
                       {g.title}
@@ -72,7 +69,7 @@ const Group: React.FC<GroupProps> = ({
             </ul>
           )}
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
