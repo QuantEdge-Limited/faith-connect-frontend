@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import BookingForm from './BookingForm';
-import { CatechismBooking } from '../types';
+import { useState } from "react";
+import BookingForm from "./BookingForm";
+import { CatechismBooking } from "@/types/types";
 
 export default function CatechismBookingForm() {
   const [data, setData] = useState<CatechismBooking>({
-    name: '',
-    email: '',
-    phone: '',
-    childName: '',
+    name: "",
+    email: "",
+    phone: "",
+    childName: "",
     childAge: 8,
-    sacrament: 'FirstCommunion',
-    preferredDay: 'Saturday',
-    notes: '',
+    sacrament: "FirstCommunion",
+    preferredDay: "Saturday",
+    notes: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Catechism Booking:', data);
-    alert('Booking request submitted! The catechist will contact you soon.');
+    console.log("Catechism Booking:", data);
+    alert("Booking request submitted! The catechist will contact you soon.");
   };
 
   return (
@@ -63,7 +63,7 @@ export default function CatechismBookingForm() {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Child's Name *
+            Child&apos;s Name *
           </label>
           <input
             type="text"
@@ -75,14 +75,16 @@ export default function CatechismBookingForm() {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Child's Age *
+            Child&apos;s Age *
           </label>
           <input
             type="number"
             min="3"
             max="18"
             value={data.childAge}
-            onChange={(e) => setData({ ...data, childAge: Number(e.target.value) })}
+            onChange={(e) =>
+              setData({ ...data, childAge: Number(e.target.value) })
+            }
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             required
           />
@@ -93,7 +95,12 @@ export default function CatechismBookingForm() {
           </label>
           <select
             value={data.sacrament}
-            onChange={(e) => setData({ ...data, sacrament: e.target.value as any })}
+            onChange={(e) =>
+              setData({
+                ...data,
+                sacrament: e.target.value as CatechismBooking["sacrament"],
+              })
+            }
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           >
             <option value="Baptism">Baptism</option>
