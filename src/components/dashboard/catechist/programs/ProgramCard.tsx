@@ -30,7 +30,9 @@ export default function ProgramCard({
       <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-5 bg-white dark:bg-gray-800 hover:shadow-md transition">
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200">{program.name}</h3>
+            <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              {program.name}
+            </h3>
             <div className="mt-1 flex flex-wrap gap-2">
               <span className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded">
                 {program.type}
@@ -73,8 +75,9 @@ export default function ProgramCard({
               Confirm Deletion
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Are you sure you want to delete <span className="font-medium">"{program.name}"</span>? 
-              This will remove the program and all associated student records. 
+              Are you sure you want to delete{" "}
+              <span className="font-medium">&quot;{program.name}&quot;</span>?
+              This will remove the program and all associated student records.
               <span className="text-red-600 dark:text-red-400 font-medium block mt-1">
                 This action cannot be undone.
               </span>
