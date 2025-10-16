@@ -50,7 +50,7 @@ export const branches = [
       },
       {
         name: "Daniel Onyango",
-        role: "Youth Ministry Leader",
+        role: "Youth Leader",
         description:
           "Daniel encourages faith development among the youth through mentorship and active engagement.",
         image: "🌱",
@@ -164,7 +164,7 @@ export const branches = [
       },
       {
         name: "Samuel Mutua",
-        role: "Catechist and Evangelization Coordinator",
+        role: "Catechist Coordinator",
         description:
           "Samuel leads catechism programs and coordinates parish evangelization efforts.",
         image: "📖",
@@ -185,7 +185,7 @@ export const branches = [
       },
       {
         name: "Michael Otieno",
-        role: "Youth Ministry Leader",
+        role: "Youth  Leader",
         description:
           "Michael mentors and empowers young people in faith through retreats, service, and fellowship.",
         image: "🌱",
@@ -304,7 +304,7 @@ export const branches = [
       },
       {
         name: "Joseph Kariuki",
-        role: "Catechist and Evangelization Coordinator",
+        role: "Catechist Coordinator",
         description:
           "Joseph organizes catechism sessions and inspires parishioners to live out the Gospel.",
         image: "📖",
@@ -325,7 +325,7 @@ export const branches = [
       },
       {
         name: "Daniel Onyango",
-        role: "Youth Ministry Leader",
+        role: "Youth Leader",
         description:
           "Daniel encourages faith development among the youth through mentorship and active engagement.",
         image: "🌱",
@@ -574,7 +574,7 @@ export const branches = [
       },
       {
         name: "Andrew Muthomi",
-        role: "Catechist and Evangelization Coordinator",
+        role: "Catechist Coordinator",
         description:
           "Andrew nurtures parish faith through Bible study, catechesis, and outreach.",
         image: "📖",
@@ -595,7 +595,7 @@ export const branches = [
       },
       {
         name: "Brian Mwangi",
-        role: "Youth Ministry Leader",
+        role: "Youth Leader",
         description:
           "Brian leads teens and young adults toward faith-filled lives with purpose and joy.",
         image: "🌱",
