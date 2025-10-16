@@ -1,15 +1,19 @@
+interface BookingFormProps {
+  title: string;
+  children: React.ReactNode;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
 export default function BookingForm({
   title,
   children,
   onSubmit,
-}: {
-  title: string;
-  children: React.ReactNode;
-  onSubmit: (e: React.FormEvent) => void;
-}) {
+}: BookingFormProps) {
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">{title}</h2>
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
+        {title}
+      </h2>
       {children}
       <div className="mt-6">
         <button
