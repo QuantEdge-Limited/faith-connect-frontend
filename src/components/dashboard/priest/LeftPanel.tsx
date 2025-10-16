@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import { ScheduleMassDrawer } from "./ScheduleMassDrawer";
-import { LeftPanelProps } from "@/types";
+import { LeftPanelProps } from "@/types/types";
 import { AddAnnouncementDrawer } from "./AddAnnouncementDrawer";
 
 export default function LeftPanel({ setActiveTab }: LeftPanelProps) {
