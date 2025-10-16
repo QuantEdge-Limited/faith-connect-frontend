@@ -12,7 +12,7 @@ type AnnouncementTab = "all" | "events" | "ministry" | "outreach";
 export default function GlobalAnnouncements() {
   const [activeTab, setActiveTab] = useState<AnnouncementTab>("all");
 
-  // Categorize
+  // Categorize announcements
   announcements.events = announcements.all.filter(
     (a) => a.category === "events"
   );
@@ -23,20 +23,18 @@ export default function GlobalAnnouncements() {
     (a) => a.category === "outreach"
   );
 
+  // 👇 Use "as const" to lock tab IDs to literal types
   const tabs = [
     { id: "all", label: "All Announcements", count: announcements.all.length },
     { id: "events", label: "Events", count: announcements.events.length },
     { id: "ministry", label: "Ministry", count: announcements.ministry.length },
     { id: "outreach", label: "Outreach", count: announcements.outreach.length },
-  ];
+  ] as const;
 
   const formatDate = (dateInput: string | Date): string => {
     const date =
       typeof dateInput === "string" ? new Date(dateInput) : dateInput;
-
-    if (isNaN(date.getTime())) {
-      return "Invalid date";
-    }
+    if (isNaN(date.getTime())) return "Invalid date";
 
     return date.toLocaleDateString("en-US", {
       weekday: "long",
@@ -64,35 +62,33 @@ export default function GlobalAnnouncements() {
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {tabs.map((tab) => (
-            <TabButtons
+            <TabButtons<AnnouncementTab> // 👈 tell TS what kind of tab this is
               key={tab.id}
               id={tab.id}
               label={tab.label}
               count={tab.count}
               isActive={activeTab === tab.id}
-              onClick={setActiveTab}
+              onClick={(id) => setActiveTab(id)} // ✅ fully type-safe
             />
           ))}
         </div>
 
         {/* Announcements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {announcements[activeTab].map((announcement) => {
-            return (
-              <ShowcaseCard
-                key={announcement.id}
-                icon={announcement.icon}
-                title={announcement.title}
-                subtitle={announcement.category}
-                description={announcement.description}
-                metadata={[
-                  { icon: Calendar, label: formatDate(announcement.date) },
-                  { icon: Clock, label: announcement.time },
-                  { icon: MapPin, label: announcement.location },
-                ]}
-              />
-            );
-          })}
+          {announcements[activeTab].map((announcement) => (
+            <ShowcaseCard
+              key={announcement.id}
+              icon={announcement.icon}
+              title={announcement.title}
+              subtitle={announcement.category}
+              description={announcement.description}
+              metadata={[
+                { icon: Calendar, label: formatDate(announcement.date) },
+                { icon: Clock, label: announcement.time },
+                { icon: MapPin, label: announcement.location },
+              ]}
+            />
+          ))}
         </div>
 
         {/* Footer */}

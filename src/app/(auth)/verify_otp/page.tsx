@@ -3,10 +3,10 @@ import { AuthForm } from "@/components/AuthForm";
 import Link from "next/link";
 
 export default function OTPPage() {
- async function handleSubmit(formData: FormData) {
+ async function handleSubmit(data: unknown) {
    "use server";
    // handle server-side logic
-   console.log(formData.get("email"));
+    console.log(data);
  }
   return (
     <section className="flex min-h-screen ">

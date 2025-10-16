@@ -36,17 +36,26 @@ const mockGroups: Group[] = [
   },
 ];
 
+type FilterType = "all" | "joined" | "available";
+
 export default function GroupsPage() {
   const [joinedGroups, setJoinedGroups] = useState<number[]>([]);
-  const [activeFilter, setActiveFilter] = useState<
-    "all" | "joined" | "available"
-  >("all");
+ const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+
+ const tabs: { key: FilterType; label: string }[] = [
+   { key: "all", label: "All" },
+   { key: "joined", label: "Joined" },
+   { key: "available", label: "Available" },
+ ];
+
 
   const toggleJoin = (id: number) => {
     setJoinedGroups((prev) =>
       prev.includes(id) ? prev.filter((g) => g !== id) : [...prev, id]
     );
   };
+
+
 
   const filteredGroups =
     activeFilter === "all"
@@ -78,17 +87,13 @@ export default function GroupsPage() {
                 lg:grid-cols-4
                 "
           >
-            {[
-              { key: "joined", label: "My Groups" },
-              { key: "available", label: "Available Groups" },
-              { key: "all", label: "All Groups" },
-            ].map(({ key, label }) => (
-              <TabButtons
+            {tabs.map(({ key, label }) => (
+              <TabButtons<FilterType>
                 key={key}
                 id={key}
                 label={label}
                 isActive={activeFilter === key}
-                onClick={setActiveFilter}
+                onClick={(id) => setActiveFilter(id)} // ✅ now id has correct type
               />
             ))}
           </div>
