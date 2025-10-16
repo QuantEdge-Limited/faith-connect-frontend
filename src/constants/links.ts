@@ -1,4 +1,4 @@
-import { Home, Bell, Users, BookOpen, Settings } from "lucide-react";
+import { Home, Bell, Users, BookOpen, Settings, Calendar } from "lucide-react";
 
 export const userLinks = [
   { href: "/user/home", label: "Home", icon: Home },
@@ -9,6 +9,7 @@ export const userLinks = [
   },
   { href: "/user/groups", label: "Groups", icon: Users },
   { href: "/user/catechism", label: "Catechism", icon: BookOpen },
+  { href: "/user/bookings", label: "Bookings", icon: Calendar },
   { href: "/user/settings", label: "Settings", icon: Settings },
 ];
 

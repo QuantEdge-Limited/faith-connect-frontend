@@ -10,6 +10,7 @@ const Schedule = () => {
       time: "10:00 AM",
       location: "Main Church",
       priest: "Fr. John Doe",
+      choir: "St. Monica",
       intentions: "For the sick and elderly",
     },
     {
@@ -17,6 +18,7 @@ const Schedule = () => {
       time: "5:00 PM",
       location: "St. Mary's",
       priest: "Fr. Jane Smith",
+      choir: "St. Charles",
       intentions: "For world peace",
     },
     {
@@ -24,6 +26,7 @@ const Schedule = () => {
       time: "8:00 AM",
       location: "Main Church",
       priest: "Fr. John Doe",
+      choir: "St. Paul",
       intentions: "For families",
     },
     {
@@ -31,6 +34,7 @@ const Schedule = () => {
       time: "6:00 PM",
       location: "St. Mary's",
       priest: "Fr. Jane Smith",
+      choir: "St. Francis",
       intentions: "For youth",
     },
   ];
@@ -53,6 +57,7 @@ const Schedule = () => {
                 <th className="px-4 py-3 text-left">Time</th>
                 <th className="px-4 py-3 text-left ">Location</th>
                 <th className="px-4 py-3 text-left ">Priest</th>
+                <th className="px-4 py-3 text-left ">Choir</th>
                 <th className="px-4 py-3 text-left ">Intentions</th>
               </tr>
             </thead>
@@ -75,6 +80,9 @@ const Schedule = () => {
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">
                     {schedule.priest}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-200">
+                    {schedule.choir}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
                     {schedule.intentions}
@@ -108,6 +116,9 @@ const Schedule = () => {
               <div className="space-y-1 text-sm">
                 <p className="text-gray-700 dark:text-gray-200">
                   <span className="font-medium">Priest:</span> {schedule.priest}
+                </p>
+                <p className="text-gray-700 dark:text-gray-200">
+                  <span className="font-medium">Choir:</span> {schedule.choir}
                 </p>
                 <p className="text-gray-600 dark:text-gray-300">
                   <span className="font-medium">Intentions:</span>{" "}

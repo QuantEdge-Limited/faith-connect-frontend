@@ -11,21 +11,21 @@ const Branch = () => {
   // Example static branch data
   const branch = {
     id: 1,
-    name: "Grace Community Church",
+    name: "St Francis Parish",
     image:
       "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&h=400&fit=crop",
     location: {
-      address: "123 Hope Street",
-      city: "Nairobi",
-      state: "Nairobi County",
+      address: "00232",
+      city: "Ruiru",
+      state: "Kiambu County",
       country: "Kenya",
     },
-    pastor: "Rev. John Mwangi",
+    pastor: "Fr. John Mwangi",
     serviceTimes: ["Sunday 9:00 AM", "Sunday 11:00 AM", "Wednesday 6:00 PM"],
     contact: {
       phone: "+254 712 345 678",
-      email: "info@gracecommunity.ke",
-      website: "https://gracecommunity.ke",
+      email: "info@stfrancis.ke",
+      website: "https://stfrancis.ke",
     },
   };
 

@@ -13,11 +13,11 @@ export default function UserDashboard() {
     <>
       <section className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-8">
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 max-w-[1600px] mx-auto">
-          <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
+   <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
             <Branch />
             <CalendarComponent />
             <Schedule />
-            <Group />
+            {/* <Group /> */}
           </div>
         </div>
       </section>
