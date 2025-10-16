@@ -2,21 +2,21 @@ import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-type QuickCardsProps = {
-  title: string;
-  subtitle: string;
-};
+// type QuickCardsProps = {
+//   title: string;
+//   subtitle: string;
+// };
 
-function QuickCards({ title, subtitle }: QuickCardsProps) {
-  return (
-    <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
-      <div className="text-white/70 text-xs uppercase tracking-wide">
-        {title}
-      </div>
-      <div className="text-white font-medium">{subtitle}</div>
-    </div>
-  );
-}
+// function QuickCards({ title, subtitle }: QuickCardsProps) {
+//   return (
+//     <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+//       <div className="text-white/70 text-xs uppercase tracking-wide">
+//         {title}
+//       </div>
+//       <div className="text-white font-medium">{subtitle}</div>
+//     </div>
+//   );
+// }
 
 export default function HeroSection() {
   return (
@@ -29,9 +29,13 @@ export default function HeroSection() {
                  px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 
                  overflow-hidden"
       style={{
-        backgroundImage: "url('/hero.jpg')",
+        backgroundImage: `
+      url('/images/hero2.jpg'),
+      linear-gradient(to bottom right, #FEEBC8, #FBD38D, #FAF7EB)
+    `,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Simple Dark Overlay */}
@@ -63,8 +67,8 @@ export default function HeroSection() {
                       leading-tight
                       tracking-wide"
         >
-          Stay connected to your parish,
-          <span className="block sm:inline"> wherever you are</span>
+          St. Francis of Assisi
+          <span className="block sm:inline"> Ruiru Parish</span>
         </h1>
 
         {/* Subtitle - Concise and informative */}
@@ -116,15 +120,6 @@ export default function HeroSection() {
               Learn More
             </Button>
           </Link>
-        </div>
-      </div>
-
-      {/* Quick Info Cards - Church-specific information */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10 w-full max-w-4xl px-4">
-        <div className="hidden md:flex justify-center gap-6 lg:gap-8">
-          <QuickCards title="Service Times" subtitle="Sun 9am & 11am" />
-          <QuickCards title="  Weekly Worship" subtitle="Wed 5pm" />
-          <QuickCards title="  Office Hours" subtitle="Mon-Fri 9am-5pm" />
         </div>
       </div>
     </section>

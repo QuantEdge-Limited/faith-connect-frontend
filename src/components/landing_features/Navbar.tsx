@@ -13,6 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { branches } from "@/constants/branches";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -64,11 +65,12 @@ export default function Navbar() {
     { href: "/general_announcements", label: "Announcements" },
   ];
 
-  const exploreLinks = [
-    { href: "/parish_announcements", label: "Parish Announcement" },
-    { href: "/groups", label: "My Groups" },
-    { href: "/catechism", label: "Catechism" },
-  ];
+  const outStationLinks = branches.map((branch) => ({
+    href: `/outstations/${branch.id}`,
+    label: branch.name
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (l) => l.toUpperCase()), // converts "st-marys" → "St Marys"
+  }));
 
   const NavLink = ({
     href,
@@ -99,7 +101,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 min-w-0">
             <Link href="/" onClick={closeMobileMenu}>
               <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium cursor-pointer truncate">
-                Faith Connect
+                FaithConnect
               </h1>
             </Link>
           </div>
@@ -122,11 +124,11 @@ export default function Navbar() {
                 {/* Explore Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm sm:text-base lg:text-lg hover:text-[#D4AF37] transition-colors font-normal">
-                    Explore
+                    OutStations
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="border border-[#0D090A]/15 bg-white/90 backdrop-blur-lg">
                     <ul className="grid w-[220px] gap-5 p-2">
-                      {exploreLinks.map((link) => (
+                      {outStationLinks.map((link) => (
                         <li key={link.href}>
                           <NavigationMenuLink asChild>
                             <NavLink {...link} />
@@ -224,7 +226,7 @@ export default function Navbar() {
                   className="flex items-center justify-between w-full px-4 py-3 text-base font-medium hover:bg-black/5 rounded-lg transition-colors touch-manipulation"
                   aria-expanded={isExploreOpen}
                 >
-                  Explore
+                  OutStations
                   <ChevronDown
                     className={`h-4 w-4 transform transition-transform duration-200 ${
                       isExploreOpen ? "rotate-180" : ""
@@ -233,32 +235,24 @@ export default function Navbar() {
                 </button>
 
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
+                  className={`overflow-y-auto pr-2 custom-scrollbar transition-all duration-300 ${
                     isExploreOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="ml-4 space-y-1 border-l-2 border-[#D4AF37] pl-4">
-                    <Link
-                      href="/parish_announcements"
-                      className="block px-4 py-2.5 text-sm hover:bg-black/5 rounded-lg transition-colors touch-manipulation"
-                      onClick={closeMobileMenu}
-                    >
-                      Parish Announcement
-                    </Link>
-                    <Link
-                      href="/groups"
-                      className="block px-4 py-2.5 text-sm hover:bg-black/5 rounded-lg transition-colors touch-manipulation"
-                      onClick={closeMobileMenu}
-                    >
-                      My Groups
-                    </Link>
-                    <Link
-                      href="/catechism"
-                      className="block px-4 py-2.5 text-sm hover:bg-black/5 rounded-lg transition-colors touch-manipulation"
-                      onClick={closeMobileMenu}
-                    >
-                      Catechism
-                    </Link>
+                  <div className="ml-4 space-y-1 border-l-2 border-[#D4AF37] ">
+                    <ul>
+                      {outStationLinks.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            className="flex items-center px-4 py-3 text-base font-medium hover:bg-black/5 rounded-lg transition-colors touch-manipulation"
+                            onClick={closeMobileMenu}
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>

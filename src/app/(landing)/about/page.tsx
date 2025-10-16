@@ -24,8 +24,8 @@ export default function AboutPage() {
   ];
   return (
     <>
-      <section className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 px-4 text-[#0D090A]">
-        <div className="max-w-7xl mx-auto">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 px-6 md:px-16 text-[#0D090A]">
+        <div className="max-screen-2xl mx-auto">
           {/* History Section */}
           <div className="mb-12 sm:mb-16">
             <div className="flex flex-col sm:flex-row items-center justify-center mb-6 sm:mb-8 gap-3">

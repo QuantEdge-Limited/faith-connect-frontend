@@ -15,7 +15,7 @@ import Autoplay from "embla-carousel-autoplay";
 export default function TestimonialSection() {
   // Autoplay plugin configuration for carousel
   const plugin = React.useRef(
-    Autoplay({ delay: 8000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: false })
   );
   return (
     <>
@@ -34,18 +34,21 @@ export default function TestimonialSection() {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-screen-2xl mx-auto">
           <Carousel
             plugins={[plugin.current]}
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
+            opts={{
+              loop: true,
+            }}
             className="w-full"
           >
             <CarouselContent className="-ml-2 sm:-ml-3 md:-ml-4">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem
                   key={index}
-                  className="pl-2 sm:pl-3 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3"
+                  className="pl-2 sm:pl-3 md:pl-4 basis-full sm:basis-1/2 md:basis-1/4"
                 >
                   <Card className="h-full border-[#0D090A]/10 hover:border-red-200 transition-all duration-300 hover:shadow-md rounded-xl">
                     <CardContent className="flex flex-col justify-between p-4 sm:p-5 md:p-6 min-h-[240px] sm:min-h-[260px] md:min-h-[280px]">

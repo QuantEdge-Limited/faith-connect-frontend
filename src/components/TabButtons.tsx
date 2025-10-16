@@ -4,7 +4,7 @@ interface TabButtonProps {
   id: string;
   label: string;
   isActive: boolean;
-  onClick: (id: string) => void;
+  onClick: (id: any) => void;
   icon?: React.ElementType;
   count?: number;
 }
