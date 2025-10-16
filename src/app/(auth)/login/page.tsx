@@ -3,7 +3,7 @@ import { AuthForm } from "@/components/AuthForm";
 import Link from "next/link";
 
 export default function LoginPage() {
-  async function handleSubmit(data: any) {
+  async function handleSubmit(data: unknown) {
     "use server";
     // handle server-side logic
     console.log(data);
