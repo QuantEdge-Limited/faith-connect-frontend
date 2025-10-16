@@ -11,8 +11,10 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import { ScheduleMassDrawer } from "./ScheduleMassDrawer";
+import { LeftPanelProps } from "@/types";
+import { AddAnnouncementDrawer } from "./AddAnnouncementDrawer";
 
-export default function LeftPanel() {
+export default function LeftPanel({ setActiveTab }: LeftPanelProps) {
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   const upcomingEvents = [
@@ -135,10 +137,15 @@ export default function LeftPanel() {
                 <CalendarDays size={14} /> Schedule Priest
               </Button>
             </ScheduleMassDrawer>
-            <Button className="w-full px-4 py-2 border border-slate-300 bg-white text-slate-700 text-left rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
-              <Plus size={14} /> Add Announcement
-            </Button>
-            <Button className="w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
+            <AddAnnouncementDrawer triggerAsChild>
+              <Button className="w-full px-4 py-2 border border-slate-300 bg-white text-slate-700 text-left rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
+                <Plus size={14} /> Add Announcement
+              </Button>
+            </AddAnnouncementDrawer>
+            <Button
+              onClick={() => setActiveTab("bookings")}
+              className="w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm"
+            >
               <ClipboardList size={14} /> View Bookings
             </Button>
           </div>

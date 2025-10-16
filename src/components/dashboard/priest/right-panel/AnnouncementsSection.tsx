@@ -2,6 +2,7 @@ import { ShowcaseCard } from "@/components/ShowcaseCard";
 import { Button } from "@/components/ui/button";
 import { Calendar, Plus } from "lucide-react";
 import React, { useState } from "react";
+import { AddAnnouncementDrawer } from "../AddAnnouncementDrawer";
 
 export default function PriestAnnouncements() {
   const [readIds, setReadIds] = useState<number[]>([]);
@@ -46,9 +47,11 @@ export default function PriestAnnouncements() {
     <div className="space-y-4">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-slate-800">Announcements</h2>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
-          <Plus size={16} /> New Announcement
-        </button>
+        <AddAnnouncementDrawer triggerAsChild>
+          <Button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
+            <Plus size={16} /> New Announcement
+          </Button>
+        </AddAnnouncementDrawer>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
