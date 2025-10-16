@@ -54,7 +54,7 @@ export default function AboutPage() {
                 <p className="text-[#0D090A] leading-relaxed mb-6">
                   Through times of prosperity and challenge, our church has
                   remained steadfast in its mission to serve God and our
-                  neighbors. We've weathered two world wars, economic
+                  neighbors. We&apos;ve weathered two world wars, economic
                   depressions, and social upheavals, always emerging stronger
                   and more united in our faith.
                 </p>
