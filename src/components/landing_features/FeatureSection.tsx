@@ -59,6 +59,7 @@ export default function FeatureSection() {
                   src={card.image}
                   alt={card.alt}
                   fill
+                  unoptimized
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 400px, (max-width: 768px) 448px, (max-width: 1024px) 448px, (max-width: 1280px) 480px, (max-width: 1536px) 512px, 512px"
                 />

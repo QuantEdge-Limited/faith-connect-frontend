@@ -21,6 +21,7 @@ export default function SignupPage() {
           fill
           className="object-cover"
           priority
+          unoptimized
         />
 
         {/* Simple Dark Overlay */}

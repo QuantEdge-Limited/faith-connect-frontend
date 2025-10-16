@@ -21,7 +21,7 @@ export default function OTPPage() {
           fill
           className="object-cover"
           priority
-          quality={85}
+          unoptimized
         />
 
         {/* Simple Dark Overlay */}
