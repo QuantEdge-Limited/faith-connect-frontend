@@ -11,40 +11,50 @@ import ThemeContext from "@/lib/ThemeContext";
 const GeneralSettings: React.FC = () => {
   const [timezones, setTimezones] = useState<string[]>([]);
 
+  function getSupportedTimeZones(): string[] {
+    const intl = Intl as unknown as {
+      supportedValuesOf?: (key: string) => string[];
+    };
+    return typeof intl.supportedValuesOf === "function"
+      ? intl.supportedValuesOf("timeZone")
+      : [];
+  }
+
   /** Returns initial timezone — prefers Africa/Nairobi if supported */
   const getInitialTimezone = (): string => {
     const preferred = "Africa/Nairobi";
-    try {
-      const supported: string[] =
-        (Intl as any).supportedValuesOf?.("timeZone") ?? [];
-      if (Array.isArray(supported) && supported.includes(preferred))
-        return preferred;
-    } catch {
-      // ignore and try fallback
-    }
+    const supported = getSupportedTimeZones();
+
+    if (supported.includes(preferred)) return preferred;
 
     try {
-      const systemTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (systemTz) return systemTz;
+      return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
     } catch {
-      // fallback
+      return "UTC";
     }
-
-    return "UTC";
   };
 
   const [selectedTimezone, setSelectedTimezone] = useState<string>(
     getInitialTimezone()
   );
 
-  useEffect(() => {
-    try {
-      const tz: string[] = (Intl as any).supportedValuesOf?.("timeZone") ?? [];
-      setTimezones(Array.isArray(tz) && tz.length ? tz : []);
-    } catch {
-      setTimezones([]);
-    }
-  }, []);
+ useEffect(() => {
+   try {
+     const intl = Intl as unknown as {
+       supportedValuesOf?: (key: string) => string[];
+     };
+
+     const tz: string[] =
+       typeof intl.supportedValuesOf === "function"
+         ? intl.supportedValuesOf("timeZone")
+         : [];
+
+     setTimezones(Array.isArray(tz) && tz.length ? tz : []);
+   } catch {
+     setTimezones([]);
+   }
+ }, []);
+
 
   const handleTimezoneChange = (
     event: React.ChangeEvent<HTMLSelectElement>
