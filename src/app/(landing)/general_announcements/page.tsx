@@ -30,8 +30,14 @@ export default function GlobalAnnouncements() {
     { id: "outreach", label: "Outreach", count: announcements.outreach.length },
   ];
 
-  const formatDate = (dateString: any) => {
-    const date = new Date(dateString);
+  const formatDate = (dateInput: string | Date): string => {
+    const date =
+      typeof dateInput === "string" ? new Date(dateInput) : dateInput;
+
+    if (isNaN(date.getTime())) {
+      return "Invalid date";
+    }
+
     return date.toLocaleDateString("en-US", {
       weekday: "long",
       month: "long",
