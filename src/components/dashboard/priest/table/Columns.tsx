@@ -1,57 +1,67 @@
 "use client";
 
-// import StatusBadge from "@/components/StatusBadge";
 import { ColumnDef } from "@tanstack/react-table";
 import { Eye } from "lucide-react";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
+// Define the type for each row in your table
+export interface Parishioner {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  baptized: string;
+  outStation: string;
+  // status?: string; // Uncomment if you later use StatusBadge
+}
 
-export const Columns: ColumnDef<any>[] = [
+// Columns definition
+export const Columns: ColumnDef<Parishioner>[] = [
   {
     accessorKey: "name",
     header: "Parishioner Name",
-    size: 50,
   },
   {
     accessorKey: "email",
     header: "Email",
-    size: 200,
   },
   {
     accessorKey: "role",
-    header: "Role ",
-    size: 10,
+    header: "Role",
   },
   {
     accessorKey: "baptized",
     header: "Baptized On",
-    size: 100,
   },
-  //   {
-  //     accessorKey: "status",
-  //     header: "Status",
-  //     cell: ({ row }) => {
-  //       const status = row.getValue("status");
-  //       return <StatusBadge status={status} />;
-  //     },
+  // {
+  //   accessorKey: "status",
+  //   header: "Status",
+  //   cell: ({ row }) => {
+  //     const status = row.getValue("status") as string;
+  //     return <StatusBadge status={status} />;
   //   },
+  // },
   {
     accessorKey: "outStation",
     header: "OutStation",
-    size: 150,
   },
   {
-    accessorKey: "actions",
+    id: "actions", // ✅ use id instead of accessorKey for computed/interactive columns
     header: () => (
       <div className="flex items-center justify-end space-x-2">Actions</div>
     ),
-    cell: () => (
-      <div className="flex items-center justify-end space-x-2">
-        <button className="text-blue-600 hover:text-blue-900 p-1">
-          <Eye className="w-4 h-4" />
-        </button>
-      </div>
-    ),
+    cell: ({ row }) => {
+      const parishioner = row.original; // typed as Parishioner
+      return (
+        <div className="flex items-center justify-end space-x-2">
+          <button
+            type="button"
+            className="text-blue-600 hover:text-blue-900 p-1"
+            onClick={() => console.log("Viewing:", parishioner.name)}
+          >
+            <Eye className="w-4 h-4" />
+          </button>
+        </div>
+      );
+    },
   },
 ];
