@@ -72,6 +72,7 @@ export default function OutstationSection({ branchId }: Props) {
                 fill
                 className="object-cover"
                 priority
+                unoptimized
               />
 
               {/* Overlay Content */}

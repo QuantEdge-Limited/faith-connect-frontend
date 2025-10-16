@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 // type QuickCardsProps = {
 //   title: string;
@@ -30,7 +31,7 @@ export default function HeroSection() {
                  overflow-hidden"
       style={{
         backgroundImage: `
-      url('/images/hero2.jpg'),
+
       linear-gradient(to bottom right, #FEEBC8, #FBD38D, #FAF7EB)
     `,
         backgroundSize: "cover",
@@ -38,6 +39,16 @@ export default function HeroSection() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {/* Background Image using next/image */}
+      <Image
+        src="/outStations/st-charles.jpg"
+        alt="St. Francis of Assisi Ruiru Parish"
+        fill
+        className="object-cover"
+        priority
+        unoptimized
+      />
+
       {/* Simple Dark Overlay */}
       <div className="absolute inset-0 bg-black/50" />
 

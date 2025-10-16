@@ -47,20 +47,21 @@ export default function FeatureSection() {
             <Card
               key={card.title}
               className="bg-white 
-             rounded-2xl lg:rounded-3xl
-             overflow-hidden 
-             border border-[#0D090A]/10 hover:border-[#0D090A]/20
-             transition-all duration-300 hover:shadow-2xl hover:-translate-y-2
-             group"
+   rounded-2xl lg:rounded-3xl
+   overflow-hidden 
+   border border-[#0D090A]/10 hover:border-[#0D090A]/20
+   transition-all duration-300 hover:shadow-2xl hover:-translate-y-2
+   group"
             >
-              {/* Card Image — uses static height and no fill */}
-              <div className="w-full h-40 sm:h-48 md:h-44 lg:h-48 xl:h-52 2xl:h-56 overflow-hidden">
+              {/* Card Image Container */}
+              <div className="w-full h-40 sm:h-48 md:h-44 lg:h-48 xl:h-52 2xl:h-56 overflow-hidden relative">
                 <Image
                   src={card.image}
                   alt={card.alt}
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  unoptimized
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 400px, (max-width: 768px) 448px, (max-width: 1024px) 448px, (max-width: 1280px) 480px, (max-width: 1536px) 512px, 512px"
                 />
               </div>
 
@@ -76,10 +77,10 @@ export default function FeatureSection() {
                 {/* Card Title */}
                 <h3
                   className="font-heading
-                  text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl
-                  font-medium 
-                  mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-6
-                  leading-tight"
+        text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl
+        font-medium 
+        mb-3 sm:mb-4 md:mb-4 lg:mb-5 xl:mb-6
+        leading-tight"
                 >
                   {card.title}
                 </h3>
@@ -87,8 +88,8 @@ export default function FeatureSection() {
                 {/* Card Description */}
                 <p
                   className="text-xs sm:text-sm md:text-base lg:text-base xl:text-lg
-                 leading-relaxed text-gray-700
-                 mb-4 sm:mb-6 md:mb-6 lg:mb-8 xl:mb-10"
+       leading-relaxed text-gray-700
+       mb-4 sm:mb-6 md:mb-6 lg:mb-8 xl:mb-10"
                 >
                   {card.description}
                 </p>
@@ -98,13 +99,13 @@ export default function FeatureSection() {
                   <Button
                     variant="ghost"
                     className="flex items-center justify-start
-                 font-medium 
-                 transition-all duration-300
-                 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg
-                 hover:bg-gray-50 hover:text-[#D4AF37]
-                 px-0 py-0 h-auto
-                 group-hover:translate-x-2
-                 w-full sm:w-auto"
+       font-medium 
+       transition-all duration-300
+       text-xs sm:text-sm md:text-base lg:text-base xl:text-lg
+       hover:bg-gray-50 hover:text-[#D4AF37]
+       px-0 py-0 h-auto
+       group-hover:translate-x-2
+       w-full sm:w-auto"
                   >
                     <span className="mr-2">{card.buttonLabel}</span>
                     <ChevronRight

@@ -55,11 +55,16 @@ export interface CatechismBooking extends BaseBookingData {
   preferredDay: string;
 }
 
-export interface PriestAppointment extends BaseBookingData {
+export interface PriestAppointment {
+  name: string;
+  email: string;
+  phone: string;
   purpose: "Confession" | "Counseling" | "Anointing" | "Other";
   preferredDate: string;
   preferredTime: string;
+  notes?: string;
 }
+
 
 export interface EventBooking extends BaseBookingData {
   eventId: string;
