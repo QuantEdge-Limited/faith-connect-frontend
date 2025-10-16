@@ -20,7 +20,7 @@ export default function MembersSection() {
   // Mock members data (with email + outstation)
   const members = [
     {
-      id: 1,
+      id: "1",
       name: "Michael Anderson",
       role: "Youth Leader",
       baptized: "2010-05-12",
@@ -29,7 +29,7 @@ export default function MembersSection() {
       outStation: outStations[0],
     },
     {
-      id: 2,
+      id: " 2",
       name: "Sarah Williams",
       role: "Catechist Coordinator",
       baptized: "2015-08-20",
@@ -38,7 +38,7 @@ export default function MembersSection() {
       outStation: outStations[1],
     },
     {
-      id: 3,
+      id: "3",
       name: "James Brown",
       role: "Parish Administrator",
       baptized: "2018-03-15",
@@ -47,7 +47,7 @@ export default function MembersSection() {
       outStation: outStations[2],
     },
     {
-      id: 4,
+      id: "4",
       name: "Emma Davis",
       role: "Choir Director",
       baptized: "2020-11-08",
