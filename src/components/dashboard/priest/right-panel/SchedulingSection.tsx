@@ -1,5 +1,7 @@
 import { Plus } from "lucide-react";
 import React from "react";
+import { ScheduleMassDrawer } from "../ScheduleMassDrawer";
+import { Button } from "@/components/ui/button";
 
 export default function SchedulingSection() {
   // Sample data
@@ -30,10 +32,13 @@ export default function SchedulingSection() {
           <h2 className="text-2xl font-semibold text-slate-800">
             Mass Schedule
           </h2>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
-            <Plus size={16} /> Schedule Mass
-          </button>
+          <ScheduleMassDrawer triggerAsChild>
+            <Button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
+              <Plus size={16} /> Schedule Mass
+            </Button>
+          </ScheduleMassDrawer>
         </div>
+
         <div className="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
           <div className="grid grid-cols-7 gap-4 mb-4">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (

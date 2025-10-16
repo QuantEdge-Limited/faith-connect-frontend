@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   CalendarDays,
   ClipboardList,
@@ -9,10 +10,10 @@ import {
   Users,
 } from "lucide-react";
 import React, { useState } from "react";
+import { ScheduleMassDrawer } from "./ScheduleMassDrawer";
 
 export default function LeftPanel() {
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
-
 
   const upcomingEvents = [
     {
@@ -129,15 +130,17 @@ export default function LeftPanel() {
             Quick Actions
           </h4>
           <div className="space-y-2">
-            <button className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2 text-sm">
+            <ScheduleMassDrawer triggerAsChild>
+              <Button className="w-full px-4 py-2   bg-blue-600  text-white rounded-lg hover:bg-blue-700  flex items-center gap-2 text-sm">
+                <CalendarDays size={14} /> Schedule Mass
+              </Button>
+            </ScheduleMassDrawer>
+            <Button className="w-full px-4 py-2 border border-slate-300 bg-white text-slate-700 text-left rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
               <Plus size={14} /> Add Announcement
-            </button>
-            <button className="w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
-              <CalendarDays size={14} /> Schedule Mass
-            </button>
-            <button className="w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
+            </Button>
+            <Button className="w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">
               <ClipboardList size={14} /> View Bookings
-            </button>
+            </Button>
           </div>
         </div>
       </div>

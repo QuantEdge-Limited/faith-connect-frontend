@@ -4,6 +4,7 @@ import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 import { processCards } from "@/constants";
+import Link from "next/link";
 
 export default function FeatureSection() {
   return (
@@ -93,9 +94,10 @@ export default function FeatureSection() {
                 </p>
 
                 {/* CTA Button */}
-                <Button
-                  variant="ghost"
-                  className="flex items-center justify-start
+                <Link href="/user/home">
+                  <Button
+                    variant="ghost"
+                    className="flex items-center justify-start
                  font-medium 
                  transition-all duration-300
                  text-xs sm:text-sm md:text-base lg:text-base xl:text-lg
@@ -103,13 +105,14 @@ export default function FeatureSection() {
                  px-0 py-0 h-auto
                  group-hover:translate-x-2
                  w-full sm:w-auto"
-                >
-                  <span className="mr-2">{card.buttonLabel}</span>
-                  <ChevronRight
-                    size={16}
-                    className="sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1"
-                  />
-                </Button>
+                  >
+                    <span className="mr-2">{card.buttonLabel}</span>
+                    <ChevronRight
+                      size={16}
+                      className="sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1"
+                    />
+                  </Button>
+                </Link>
               </div>
             </Card>
           ))}

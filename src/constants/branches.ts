@@ -1,13 +1,4 @@
-import {
-  Users,
-  Heart,
-  Music,
-  BookOpen,
-  Cross,
-  HandHeart,
-  Briefcase,
-  Globe,
-} from "lucide-react";
+import { Heart, Music, Cross } from "lucide-react";
 
 export const branches = [
   {
@@ -17,38 +8,52 @@ export const branches = [
     established: "1988-04-15",
     image: "/outStations/st-charles.jpg",
     history:
-      "St Charles began as a small prayer group in 1988 and has grown into a vibrant church serving the Nairobi community through worship, outreach, and fellowship.",
+      "St. Charles Lwanga (c. 1860-1886) was a Ugandan Catholic convert and leader among the royal pages of King Mwanga II. He protected young boys from the king's sexual abuse and encouraged them to stay strong in their Christian faith. For refusing to renounce Christianity, he was burned alive on June 3, 1886, at Namugongo, along with other Christian converts. He was canonized in 1964 and is now the patron saint of youth in Africa. His feast day is June 3",
     inspirationMessage:
       "Let your faith be bigger than your fears. Walk in love and serve with joy.",
 
     leadership: [
       {
-        name: "Rev. Peter Mwangi",
-        role: "Senior Pastor",
+        name: "Fr. Anthony Mwangi",
+        role: "Parish Priest",
         description:
-          "Rev. Mwangi leads the St Charles congregation with passion for prayer, teaching, and community empowerment.",
-        image: "🙏",
+          "Fr. Anthony Mwangi shepherds the parish with a deep commitment to faith formation and community service.",
+        image: "✝️",
       },
       {
-        name: "Mary Njeri",
-        role: "Worship Leader",
+        name: "Grace Naliaka",
+        role: "Choir Director",
         description:
-          "Mary directs the worship team and ensures every service is filled with spiritual and musical excellence.",
-        image: "🎵",
+          "Grace leads the choir with passion and discipline, enhancing every liturgy with vibrant music.",
+        image: "🎶",
       },
       {
-        name: "James Kariuki",
-        role: "Youth Coordinator",
+        name: "Joseph Kariuki",
+        role: "Catechist and Evangelization Coordinator",
         description:
-          "James guides the youth ministry, fostering leadership and discipleship among young believers.",
-        image: "🧑‍🤝‍🧑",
+          "Joseph organizes catechism sessions and inspires parishioners to live out the Gospel.",
+        image: "📖",
       },
       {
-        name: "Grace Wambui",
-        role: "Church Secretary",
+        name: "Ann Wambui",
+        role: "Parish Administrator",
         description:
-          "Grace manages church records and communication with warmth and professionalism.",
-        image: "📋",
+          "Ann oversees parish logistics and communication, ensuring seamless coordination of ministries.",
+        image: "🗂️",
+      },
+      {
+        name: "Sr. Beatrice Achieng",
+        role: "Pastoral Care Coordinator",
+        description:
+          "Sr. Beatrice visits the sick and marginalized, offering comfort and spiritual support.",
+        image: "🤝",
+      },
+      {
+        name: "Daniel Onyango",
+        role: "Youth Ministry Leader",
+        description:
+          "Daniel encourages faith development among the youth through mentorship and active engagement.",
+        image: "🌱",
       },
     ],
 
@@ -138,7 +143,7 @@ export const branches = [
     established: "1995-09-22",
     image: "/outStations/st-francis.jpg",
     history:
-      "Founded in 1995, St Francis Church is a beacon of peace and faith in Mombasa, known for its vibrant worship and strong outreach programs.",
+      "St. Francis of Assisi (1181/1182-1226) was an Italian Catholic friar and preacher who gave up a wealthy life to live in poverty, dedicating himself to God, peace, and care for the poor and nature. He founded the Franciscan Order and is known for his love of animals and creation. He received the stigmata (wounds of Christ) in 1224 and died in 1226. He was canonized in 1228 and is the patron saint of animals, ecology, and peace. His feast day is October 4",
     inspirationMessage:
       "Be the light that shines even in the darkest places. Serve with grace and gratitude.",
 
@@ -147,29 +152,43 @@ export const branches = [
         name: "Fr. Charles Njoroge",
         role: "Parish Priest",
         description:
-          "Fr. Charles Njoroge leads with a heart for mission, prayer, and unity across all parishes.",
+          "Fr. Charles Njoroge leads with a heart for mission, prayer, and unity across all parish ministries.",
         image: "✝️",
       },
       {
         name: "Evelyn Achieng",
         role: "Choir Director",
         description:
-          "Evelyn inspires worship through song and musical excellence.",
+          "Evelyn inspires worship through song and musical excellence, leading the liturgical music ministry.",
         image: "🎶",
       },
       {
         name: "Samuel Mutua",
-        role: "Evangelism Lead",
+        role: "Catechist and Evangelization Coordinator",
         description:
-          "Samuel coordinates evangelism and outreach programs throughout the region.",
-        image: "📢",
+          "Samuel leads catechism programs and coordinates parish evangelization efforts.",
+        image: "📖",
       },
       {
         name: "Lucy Mwende",
-        role: "Administrator",
+        role: "Parish Administrator",
         description:
-          "Lucy ensures smooth church operations and communication across teams.",
+          "Lucy ensures smooth parish operations, communications, and administrative support for all ministries.",
         image: "🗂️",
+      },
+      {
+        name: "Sr. Agnes Wanjiku",
+        role: "Pastoral Care Coordinator",
+        description:
+          "Sr. Agnes oversees pastoral visits, spiritual support for the sick, elderly, and those in need.",
+        image: "🤝",
+      },
+      {
+        name: "Michael Otieno",
+        role: "Youth Ministry Leader",
+        description:
+          "Michael mentors and empowers young people in faith through retreats, service, and fellowship.",
+        image: "🌱",
       },
     ],
 
@@ -265,30 +284,51 @@ export const branches = [
     established: "2001-06-10",
     image: "/outStations/st-andrew.jpg",
     history:
-      "St Andrew Church was established in 2001 to serve the lakeside community of Kisumu, uniting believers in faith, worship, and community service.",
+      "St. Andrew was one of Jesus' twelve apostles and the brother of St. Peter. He was the first disciple called by Jesus and later preached the Gospel in various regions. He was martyred on an X-shaped cross. He is the patron saint of Scotland, Russia, and fishermen. His feast day is November 30.",
     inspirationMessage: "Faith grows when shared; serve with humility and joy.",
 
     leadership: [
       {
-        name: "Rev. Michael Onyango",
-        role: "Parish Pastor",
+        name: "Fr. Anthony Mwangi",
+        role: "Parish Priest",
         description:
-          "Rev. Onyango is passionate about family ministry, youth discipleship, and community empowerment.",
-        image: "🙏",
+          "Fr. Anthony Mwangi shepherds the parish with a deep commitment to faith formation and community service.",
+        image: "✝️",
       },
       {
-        name: "Sarah Akinyi",
-        role: "Music Director",
+        name: "Grace Naliaka",
+        role: "Choir Director",
         description:
-          "Sarah leads the music and worship ministry, inspiring hearts through praise.",
-        image: "🎤",
+          "Grace leads the choir with passion and discipline, enhancing every liturgy with vibrant music.",
+        image: "🎶",
       },
       {
-        name: "David Otieno",
-        role: "Youth Minister",
+        name: "Joseph Kariuki",
+        role: "Catechist and Evangelization Coordinator",
         description:
-          "David oversees youth programs and evangelism across Kisumu parishes.",
-        image: "🧑‍🤝‍🧑",
+          "Joseph organizes catechism sessions and inspires parishioners to live out the Gospel.",
+        image: "📖",
+      },
+      {
+        name: "Ann Wambui",
+        role: "Parish Administrator",
+        description:
+          "Ann oversees parish logistics and communication, ensuring seamless coordination of ministries.",
+        image: "🗂️",
+      },
+      {
+        name: "Sr. Beatrice Achieng",
+        role: "Pastoral Care Coordinator",
+        description:
+          "Sr. Beatrice visits the sick and marginalized, offering comfort and spiritual support.",
+        image: "🤝",
+      },
+      {
+        name: "Daniel Onyango",
+        role: "Youth Ministry Leader",
+        description:
+          "Daniel encourages faith development among the youth through mentorship and active engagement.",
+        image: "🌱",
       },
     ],
 
@@ -378,31 +418,52 @@ export const branches = [
     established: "2005-03-18",
     image: "/outStations/st-monica.jpg",
     history:
-      "St Monica Church began as a small chapel and has grown into one of Nakuru’s most active Christian centers, focusing on education and family ministries.",
+      "St. Monica was the mother of St. Augustine. She is known for her strong faith and years of prayer for her son's conversion to Christianity. Her persistence led to Augustine becoming a great saint and theologian. She is the patron saint of mothers and those who pray for family members. Her feast day is August 27.",
     inspirationMessage:
       "Serve faithfully, love deeply, and walk humbly before God.",
 
     leadership: [
       {
-        name: "Rev. Paul Maina",
-        role: "Resident Pastor",
+        name: "Fr. David Oloo",
+        role: "Parish Priest",
         description:
-          "Rev. Maina leads with compassion and vision for a growing community of believers.",
+          "Fr. David Oloo leads with pastoral wisdom and a strong dedication to family ministry.",
         image: "✝️",
       },
       {
-        name: "Catherine Njeri",
-        role: "Community Outreach Coordinator",
+        name: "Sarah Wanjiru",
+        role: "Choir Director",
         description:
-          "Catherine organizes charity events and outreach missions across Nakuru County.",
+          "Sarah directs the choir with joyful reverence, creating an uplifting worship atmosphere.",
+        image: "🎶",
+      },
+      {
+        name: "Vincent Odhiambo",
+        role: "Catechist and Evangelization Coordinator",
+        description:
+          "Vincent promotes ongoing faith education and organizes outreach in the community.",
+        image: "📖",
+      },
+      {
+        name: "Angela Kavai",
+        role: "Parish Administrator",
+        description:
+          "Angela coordinates all parish affairs with diligence, care, and accountability.",
+        image: "🗂️",
+      },
+      {
+        name: "Sr. Josephine Wambua",
+        role: "Pastoral Care Coordinator",
+        description:
+          "Sr. Josephine serves with love, visiting the sick and accompanying those in distress.",
         image: "🤝",
       },
       {
-        name: "Joseph Kimani",
-        role: "Elder Board Chair",
+        name: "Kevin Musyoka",
+        role: "Youth Ministry Leader",
         description:
-          "Joseph provides strategic guidance for church projects and ministries.",
-        image: "📜",
+          "Kevin energizes the youth ministry through faith-building and creative expression.",
+        image: "🌱",
       },
     ],
 
@@ -492,31 +553,52 @@ export const branches = [
     established: "2010-11-27",
     image: "/outStations/st-gabriel.jpg",
     history:
-      "Founded in 2010, St Gabriel Church stands as a symbol of unity and renewal for the Eldoret community, known for strong youth engagement and missions.",
+      "St. Gabriel is one of the archangels named in the Bible. He is best known for announcing to the Virgin Mary that she would be the mother of Jesus (the Annunciation). He is the patron saint of messengers and communication workers. His feast day is September 29.",
     inspirationMessage:
       "Go forth in faith and let your life be a message of hope.",
 
     leadership: [
       {
-        name: "Rev. Stephen Kiptoo",
-        role: "Senior Pastor",
+        name: "Fr. Stephen Omondi",
+        role: "Parish Priest",
         description:
-          "Rev. Kiptoo brings energy and vision to missions, youth development, and church planting.",
-        image: "🕊️",
+          "Fr. Stephen Omondi brings spiritual depth and a vision for vibrant parish life.",
+        image: "✝️",
       },
       {
-        name: "Anne Jepchirchir",
-        role: "Women Ministry Lead",
+        name: "Jacinta Wekesa",
+        role: "Choir Director",
         description:
-          "Anne encourages women to lead in faith and family strength through prayer and mentorship.",
-        image: "💐",
+          "Jacinta crafts meaningful liturgical music experiences that inspire devotion.",
+        image: "🎶",
       },
       {
-        name: "Mark Cheruiyot",
-        role: "Mission Coordinator",
+        name: "Andrew Muthomi",
+        role: "Catechist and Evangelization Coordinator",
         description:
-          "Mark manages outreach missions across Uasin Gishu and neighboring counties.",
-        image: "🌍",
+          "Andrew nurtures parish faith through Bible study, catechesis, and outreach.",
+        image: "📖",
+      },
+      {
+        name: "Beatrice Naliaka",
+        role: "Parish Administrator",
+        description:
+          "Beatrice manages parish activities and fosters efficient ministry collaboration.",
+        image: "🗂️",
+      },
+      {
+        name: "Sr. Teresa Chepkemoi",
+        role: "Pastoral Care Coordinator",
+        description:
+          "Sr. Teresa brings a compassionate presence to the sick, grieving, and isolated.",
+        image: "🤝",
+      },
+      {
+        name: "Brian Mwangi",
+        role: "Youth Ministry Leader",
+        description:
+          "Brian leads teens and young adults toward faith-filled lives with purpose and joy.",
+        image: "🌱",
       },
     ],
 
