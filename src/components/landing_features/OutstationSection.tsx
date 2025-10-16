@@ -64,7 +64,7 @@ export default function OutstationSection({ branchId }: Props) {
         <div className="max-screen-2xl mx-auto">
           {/* History Section */}
           <div className="mb-12 sm:mb-16">
-            <div className="relative w-full h-64 sm:h-[1000px]">
+            <div className="relative w-full h-64 sm:h-[500px]">
               {/* Background Image */}
               <Image
                 src={branch.image}
@@ -75,9 +75,9 @@ export default function OutstationSection({ branchId }: Props) {
               />
 
               {/* Overlay Content */}
-              <div className="absolute inset-0 flex flex-col sm:flex-row items-center justify-center bg-black/40 text-white text-center gap-3">
+              <div className="absolute inset-0 flex flex-col sm:flex-row items-center justify-center bg-black/70 text-white text-center gap-3">
                 <Church className="w-10 h-10 sm:w-12 sm:h-12 text-[#D4AF37]" />
-                <h2 className="text-3xl sm:text-4xl font-heading font-semibold text-[#FFF]">
+                <h2 className="text-3xl sm:text-4xl md:text-7xl font-heading font-semibold text-[#FFF]">
                   {branch.name}
                 </h2>
               </div>
