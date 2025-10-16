@@ -2,7 +2,7 @@
 
 import LeftPanel from "@/components/dashboard/priest/LeftPanel";
 import RightPanel from "@/components/dashboard/priest/RightPanel";
-import { TabType } from "@/types";
+import { TabType } from "@/types/types";
 import React, { useState } from "react";
 
 export default function PriestDashboard() {
