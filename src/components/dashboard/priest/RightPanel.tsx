@@ -14,6 +14,13 @@ import AnalyticsSection from "./right-panel/AnalyticsSection";
 import PriestAnnouncements from "./right-panel/AnnouncementsSection";
 import { RightPanelProps } from "@/types/types";
 
+type TabType =
+  | "members"
+  | "bookings"
+  | "announcements"
+  | "scheduling"
+  | "analytics";
+
 export default function RightPanel({
   activeTab,
   setActiveTab,
@@ -40,7 +47,7 @@ export default function RightPanel({
                 label={tab.label}
                 icon={tab.icon}
                 isActive={activeTab === tab.id}
-                onClick={setActiveTab}
+                onClick={(id) => setActiveTab(id as TabType)}
               />
             ))}
           </div>
