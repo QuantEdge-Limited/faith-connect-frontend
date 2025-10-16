@@ -1,8 +1,7 @@
 "use client";
 import React, { useMemo, useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Assuming Next.js for routing
-import axios from "axios"; // For API calls
 import Link from "next/link";
+import { Level } from "@/types/types";
 
 type ClassItem = {
   id: number;
@@ -80,14 +79,15 @@ const MOCK_CLASSES: ClassItem[] = [
 const MOCK_RECORD: CatechismRecord = {
   id: 1,
   date_of_baptism: "2010-05-15",
-  place_of_baptism: "St. Mary's Cathedral",
+  place_of_baptism: "St. Mary&apos;s Cathedral",
   baptism_officiant: "Fr. Michael Rodriguez",
   certificate_number: "BT-2010-05872",
   godparents: "John & Mary Smith",
-  parish: "St. Mary's Parish",
+  parish: "St. Mary&apos;s Parish",
   confirmed: true,
   date_of_confirmation: "2018-09-22",
-  notes: "Completed First Communion in 2012. Regular participant in youth activities."
+  notes:
+    "Completed First Communion in 2012. Regular participant in youth activities.",
 };
 
 // Mock progress data
@@ -100,9 +100,7 @@ const MOCK_PROGRESS: CatechismProgress = {
 
 export default function CatechismPage() {
   const [query, setQuery] = useState("");
-  const [levelFilter, setLevelFilter] = useState<
-    "All" | "Beginner" | "Intermediate" | "Advanced" | "Youth"
-  >("All");
+  const [levelFilter, setLevelFilter] = useState<Level>("All");
   const [enrolled, setEnrolled] = useState<number[]>([]);
   const [view, setView] = useState<"classes" | "profile">("classes");
   const [record, setRecord] = useState<CatechismRecord | null>(null);
@@ -111,8 +109,7 @@ export default function CatechismPage() {
   const [error, setError] = useState<string | null>(null);
 
   const levels = useMemo(
-    () =>
-      ["All", ...Array.from(new Set(MOCK_CLASSES.map((c) => c.level)))] as any,
+    () => ["All", ...Array.from(new Set(MOCK_CLASSES.map((c) => c.level)))],
     []
   );
 
@@ -181,7 +178,9 @@ export default function CatechismPage() {
           <li className="text-gray-900 font-medium dark:text-gray-100">
             <button
               onClick={() => setView("classes")}
-              className={`${view === "classes" ? "underline" : ""} hover:text-blue-600 transition-colors`}
+              className={`${
+                view === "classes" ? "underline" : ""
+              } hover:text-blue-600 transition-colors`}
             >
               Catechism
             </button>
@@ -190,7 +189,9 @@ export default function CatechismPage() {
           <li className="text-gray-900 font-medium dark:text-gray-100">
             <button
               onClick={() => setView("profile")}
-              className={`${view === "profile" ? "underline" : ""} hover:text-blue-600 transition-colors`}
+              className={`${
+                view === "profile" ? "underline" : ""
+              } hover:text-blue-600 transition-colors`}
             >
               Profile
             </button>
@@ -218,7 +219,7 @@ export default function CatechismPage() {
               />
               <select
                 value={levelFilter}
-                onChange={(e) => setLevelFilter(e.target.value as any)}
+                onChange={(e) => setLevelFilter(e.target.value as Level)}
                 className="p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
               >
                 {levels.map((l: string) => (
@@ -451,7 +452,9 @@ export default function CatechismPage() {
                           Date of Confirmation
                         </label>
                         <p className="text-sm text-gray-900 dark:text-gray-100">
-                          {new Date(record.date_of_confirmation).toLocaleDateString()}
+                          {new Date(
+                            record.date_of_confirmation
+                          ).toLocaleDateString()}
                         </p>
                       </div>
                     )}
@@ -513,13 +516,21 @@ export default function CatechismPage() {
                   </h4>
                   <div className="space-y-2">
                     {progress?.sacramentsReceived.map((sacrament, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm">
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 text-sm"
+                      >
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span className="text-gray-700 dark:text-gray-300">{sacrament}</span>
+                        <span className="text-gray-700 dark:text-gray-300">
+                          {sacrament}
+                        </span>
                       </div>
                     ))}
-                    {(!progress?.sacramentsReceived || progress.sacramentsReceived.length === 0) && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">No sacraments recorded yet</p>
+                    {(!progress?.sacramentsReceived ||
+                      progress.sacramentsReceived.length === 0) && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        No sacraments recorded yet
+                      </p>
                     )}
                   </div>
                 </div>
@@ -537,7 +548,9 @@ export default function CatechismPage() {
                       Browse Classes
                     </button>
                     <button
-                      onClick={() => alert("Document download feature coming soon")}
+                      onClick={() =>
+                        alert("Document download feature coming soon")
+                      }
                       className="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
                     >
                       Download Certificate
@@ -555,11 +568,14 @@ export default function CatechismPage() {
                 No Catechism Record Found
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4 max-w-md mx-auto">
-                We couldn't find your catechism records. Please contact the parish administration to add your sacramental details.
+                We couldn&apos;t find your catechism records. Please contact the
+                parish administration to add your sacramental details.
               </p>
               <button
                 className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                onClick={() => alert("Contact: parish@example.com | Phone: (555) 123-4567")}
+                onClick={() =>
+                  alert("Contact: parish@example.com | Phone: (555) 123-4567")
+                }
               >
                 Contact Parish Admin
               </button>
