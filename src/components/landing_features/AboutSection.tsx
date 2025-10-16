@@ -116,7 +116,6 @@ export default function AboutSection() {
                 alt="Church building showcasing our parish community"
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                 priority
               />
             </div>
