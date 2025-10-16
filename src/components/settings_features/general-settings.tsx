@@ -120,17 +120,36 @@ const GeneralSettings = () => {
     //     console.log(`Selected font size: ${size}`);
     // }
 
+    const getInitials = (name: string): string => {
+    const names = name.trim().split(/\s+/);
+    if (names.length === 1) {
+        return names[0].charAt(0).toUpperCase();
+    }
+    return (names[0].charAt(0) + names[1].charAt(0)).toUpperCase();
+    };
+
   return (
     <div className='general-settings p-1 w-full min-h-[calc(100vh-6rem)] space-y-2'>
         <section className='p-4 px-8 bg-white dark:bg-gray-800 rounded-md shadow-md w-full'>
             <h2 className='text-xl font-semibold pb-2 dark:text-gray-100'>Personal Profile</h2>
-            <div className="flex justify-between px-4 w-full pb-2">
-                <Image src={'/profile-placeholder.png'} alt="Profile Picture" width={100} height={100} className='rounded-full' />
-                <div className='fex flex-col gap-2 w-2/3 px-4'>
-                    <h4 className='font-semibold italic text-xl dark:text-gray-100'>John Doe</h4>
-                    <p className="text-sm dark:text-gray-300"><span>0712345678</span></p>
-                    <p className='font-semibold dark:text-gray-100'>Bio: <span className='text-sm dark:text-gray-300'>bio</span></p>
-                    <button className='p-2 py-[1px] bg-gray-500 hover:bg-blue-500 text-white rounded-md cursor-pointer dark:bg-gray-700 dark:hover:bg-gray-600'>Edit Profile</button>
+            <div className="flex items-center px-4 w-full pb-2 gap-6">
+                {/* Initials-based avatar fallback */}
+                <div
+                className="w-[100px] h-[100px] rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-2xl font-bold text-white shadow"
+                aria-label="Profile avatar"
+                >
+                {getInitials("John Doe")}
+                </div>
+
+                <div className='flex flex-col gap-2 w-2/3'>
+                <h4 className='font-semibold italic text-xl dark:text-gray-100'>John Doe</h4>
+                <p className="text-sm dark:text-gray-300">0712345678</p>
+                <p className='font-semibold dark:text-gray-100'>
+                    Bio: <span className='text-sm dark:text-gray-300'>bio</span>
+                </p>
+                <button className='p-2 py-[1px] md:w-40 bg-gray-500 hover:bg-blue-500 text-white rounded-md cursor-pointer dark:bg-gray-700 dark:hover:bg-gray-600'>
+                    Edit Profile
+                </button>
                 </div>
             </div>
         </section>
@@ -152,11 +171,11 @@ const GeneralSettings = () => {
         <section className='p-4 px-8 bg-white dark:bg-gray-800 rounded-md shadow-md w-full space-y-2'>
             <h2 className='text-xl font-semibold dark:text-gray-100'>Time and Date</h2>
             <div className="flex justify-end items-center">
-                <p className='p-2 border border-gray-300 rounded-lg md:w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>Central Street, Limuru, Kiambu</p>
+                <p className='p-2 border border-gray-300 rounded-lg md:w-[30%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>Central Street, Limuru, Kiambu</p>
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4>Date Tone</h4>
-                <p className='p-2 border border-gray-300 rounded-lg md:w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                <p className='p-2 border border-gray-300 rounded-lg md:w-[30%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
                     {(() => {
                         try {
                             // Format as MM/DD/YYYY in the selected timezone
@@ -178,7 +197,7 @@ const GeneralSettings = () => {
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4>Time Zone</h4>
-                <select id="timezone-select" value={selectedTimezone} onChange={handleTimezoneChange} className='p-2 border w-[40%] max-sm:text-sm border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                <select id="timezone-select" value={selectedTimezone} onChange={handleTimezoneChange} className='p-2 border w-[40%] md:w-[30%] max-sm:text-sm border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
                     {/* If supported timezones are available, list them; otherwise show a UTC/default option */}
                     {timezones.length ? (
                         timezones.map((tz) => (
@@ -191,7 +210,7 @@ const GeneralSettings = () => {
             </div>
             <div className="flex justify-between gap-4 space-y-1 items-center">
                 <h4>Day of Week</h4>
-                <p className='p-2 border border-gray-300 rounded-lg w-[40%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+                <p className='p-2 border border-gray-300 rounded-lg md:w-[30%] dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200'>
                     {(() => {
                         try {
                             return new Intl.DateTimeFormat('en-KE', { weekday: 'long', timeZone: selectedTimezone }).format(new Date());
