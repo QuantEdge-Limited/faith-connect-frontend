@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   ColumnDef,
   flexRender,
@@ -7,6 +8,8 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
+  PaginationState,
+  ColumnFiltersState,
 } from "@tanstack/react-table";
 
 import {
@@ -17,14 +20,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React from "react";
 import { Button } from "@/components/ui/button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  columnFilters: any[];
-  setColumnFilters: React.Dispatch<React.SetStateAction<any[]>>;
+  columnFilters: ColumnFiltersState;
+  setColumnFilters: React.Dispatch<React.SetStateAction<ColumnFiltersState>>;
   globalFilter: string;
   setGlobalFilter: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -37,7 +39,7 @@ export function DataTable<TData, TValue>({
   globalFilter,
   setGlobalFilter,
 }: DataTableProps<TData, TValue>) {
-  const [pagination, setPagination] = React.useState({
+  const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 20,
   });
@@ -46,11 +48,12 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     onGlobalFilterChange: setGlobalFilter,
     onColumnFiltersChange: setColumnFilters,
     globalFilterFn: "includesString",
+    onPaginationChange: setPagination,
     state: {
       pagination,
       columnFilters,
@@ -60,7 +63,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      {/* Outer container with rounded border */}
+      {/* Table Container */}
       <div className="rounded-xl border border-gray-200 bg-white overflow-hidden">
         <Table className="w-full border-collapse">
           {/* HEADER */}
@@ -73,8 +76,7 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => (
                   <TableHead
                     key={header.id}
-                    style={{ width: header.getSize() }}
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200 last:border-r-0"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider border-r border-gray-200 last:border-r-0"
                   >
                     {header.isPlaceholder
                       ? null
@@ -95,13 +97,11 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   className="border-b border-gray-200 last:border-b-0"
-                  data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
-                      style={{ width: cell.column.getSize() }}
-                      className="px-6 py-4 whitespace-nowrap "
+                      className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -125,9 +125,10 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
 
-      {/* Pagination Buttons */}
-      <div className="flex justify-end gap-3 py-2.5 mr-5">
+      {/* PAGINATION */}
+      <div className="flex justify-end gap-3 py-3 mr-5">
         <Button
+          type="button"
           className="p-2 text-sm rounded border border-gray-400 text-gray-700 hover:bg-gray-100"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
@@ -135,6 +136,7 @@ export function DataTable<TData, TValue>({
           Prev
         </Button>
         <Button
+          type="button"
           className="p-2 text-sm rounded border border-gray-400 text-gray-700 hover:bg-gray-100"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}

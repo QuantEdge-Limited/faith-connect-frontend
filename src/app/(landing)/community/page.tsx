@@ -120,8 +120,8 @@ export default function CommunityPage() {
             Ready to Get Involved?
           </h2>
           <p className="text-lg sm:text-xl text-[#0D090A] mb-6 px-4">
-            We'd love to help you find your place in our community. Reach out to
-            us today!
+            We&apos;d love to help you find your place in our community. Reach
+            out to us today!
           </p>
           <p className="text-sm sm:text-base text-[#0D090A] px-4">
             <strong>Have questions?</strong> Contact our church office at{" "}

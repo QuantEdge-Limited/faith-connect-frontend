@@ -1,11 +1,8 @@
-
-
 // Import required modules and icons
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { Bell, Menu, Settings, User } from "lucide-react";
-
+import React from "react";
+import { Bell, Menu, User } from "lucide-react";
 
 // Props for Header component
 // onMenuClick: function to handle mobile menu toggle
@@ -46,14 +43,28 @@ export default function Header({ onMenuClick }: HeaderProps) {
         {/* Right section: User info and actions */}
         <div className="flex items-center gap-3">
           {/* Notification bell with badge */}
-          <Link href={"/notifications"} title='Notification' className="relative w-8 h-8 flex items-center justify-center rounded-full">
-            <Bell size={25} width={30} className="text-gray-600 dark:text-gray-300 cursor-pointer" />
-            <span className='text-white text-sm absolute w-4 h-4 z-10 right-0 top-0 font-bold bg-red-500 rounded-full flex justify-center items-center'>8</span>
+          <Link
+            href={"/notifications"}
+            title="Notification"
+            className="relative w-8 h-8 flex items-center justify-center rounded-full"
+          >
+            <Bell
+              size={25}
+              width={30}
+              className="text-gray-600 dark:text-gray-300 cursor-pointer"
+            />
+            <span className="text-white text-sm absolute w-4 h-4 z-10 right-0 top-0 font-bold bg-red-500 rounded-full flex justify-center items-center">
+              8
+            </span>
           </Link>
           {/* User name and role (hidden on small screens) */}
           <div className="hidden md:flex md:ml-5 flex-col items-end">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">Member</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+              John Doe
+            </span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              Member
+            </span>
           </div>
           {/* User avatar icon */}
           <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center">

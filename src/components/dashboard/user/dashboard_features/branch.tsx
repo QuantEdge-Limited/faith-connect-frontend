@@ -1,6 +1,7 @@
 import React from "react";
 import { MapPin, Clock } from "lucide-react";
 import { Card, CardContent } from "../../../ui/card";
+import Image from "next/image";
 
 /*
   Branch component:
@@ -12,8 +13,7 @@ const Branch = () => {
   const branch = {
     id: 1,
     name: "St Francis Parish",
-    image:
-      "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&h=400&fit=crop",
+    image: "/images/church.jpg",
     location: {
       address: "00232",
       city: "Ruiru",
@@ -41,9 +41,11 @@ const Branch = () => {
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Branch Image and Basic Info */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-4 sm:mb-5">
-              <img
+              <Image
                 src={branch.image}
                 alt={branch.name}
+                width={150}
+                height={150}
                 className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full flex-shrink-0 border-2 border-gray-200 dark:border-gray-600"
               />
               <div className="text-center sm:text-left flex-1 min-w-0">

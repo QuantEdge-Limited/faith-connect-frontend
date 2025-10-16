@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, CircleX, Search } from "lucide-react";
+import { CircleX, Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import NotificationBell from "./NotificationBell";
 import ProfileDropdown from "./ProfileDropdown";
@@ -9,7 +9,7 @@ import SettingsModal from "../settings/SettingsModal";
 
 export default function Header() {
 
-    const [catechistNotifications, setCatechistNotifications] = useState(8);
+    // const [catechistNotifications, setCatechistNotifications] = useState(8);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isSearchVisible, setIsSearchVisible] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import ThemeProvider from '@/lib/ThemeProvider';
 
 const openSans = Open_Sans({
   subsets: ["latin"],

@@ -50,7 +50,7 @@ export default function OutstationSection({ branchId }: Props) {
       <div className="min-h-fit text-center py-20">
         <h2 className="text-3xl font-semibold">Branch Not Found</h2>
         <p className="text-gray-600 mt-2">
-          The branch you're looking for doesn't exist.
+          The branch you&apos;re looking for doesn&apos;t exist.
         </p>
       </div>
     );

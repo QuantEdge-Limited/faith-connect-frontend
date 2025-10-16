@@ -7,10 +7,6 @@ interface BranchPageParams {
   branch: string;
 }
 
-interface BranchPageProps {
-  params: BranchPageParams;
-}
-
 // Generate metadata for SEO
 export async function generateMetadata(props: {
   params: Promise<{ branch: string }>;

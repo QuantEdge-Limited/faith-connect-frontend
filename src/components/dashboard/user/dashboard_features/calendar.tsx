@@ -10,22 +10,25 @@ const CalendarComponent = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   // Event data
-  const events = [
-    { id: 1, title: "Adoration", date: "2025-10-03", color: "#EF4444" },
-    { id: 2, title: "Choir", date: "2025-10-04", color: "#3B82F6" },
-    { id: 3, title: "Youth Meeting", date: "2025-10-05", color: "#10B981" },
-    { id: 4, title: "RCIA Session", date: "2025-10-05", color: "#8B5CF6" },
-    { id: 5, title: "Bible Study", date: "2025-10-07", color: "#F59E0B" },
-    { id: 6, title: "Prayer Group", date: "2025-10-08", color: "#EC4899" },
-    { id: 7, title: "Catechism Class", date: "2025-10-10", color: "#059669" },
-    { id: 8, title: "Parish Council", date: "2025-10-12", color: "#6B7280" },
-    { id: 9, title: "Charity Drive", date: "2025-10-15", color: "#FF6B6B" },
-    { id: 10, title: "Rosary Hour", date: "2025-10-18", color: "#10B981" },
-  ];
+  const events = useMemo(
+    () => [
+      { id: 1, title: "Adoration", date: "2025-10-03", color: "#EF4444" },
+      { id: 2, title: "Choir", date: "2025-10-04", color: "#3B82F6" },
+      { id: 3, title: "Youth Meeting", date: "2025-10-05", color: "#10B981" },
+      { id: 4, title: "RCIA Session", date: "2025-10-05", color: "#8B5CF6" },
+      { id: 5, title: "Bible Study", date: "2025-10-07", color: "#F59E0B" },
+      { id: 6, title: "Prayer Group", date: "2025-10-08", color: "#EC4899" },
+      { id: 7, title: "Catechism Class", date: "2025-10-10", color: "#059669" },
+      { id: 8, title: "Parish Council", date: "2025-10-12", color: "#6B7280" },
+      { id: 9, title: "Charity Drive", date: "2025-10-15", color: "#FF6B6B" },
+      { id: 10, title: "Rosary Hour", date: "2025-10-18", color: "#10B981" },
+    ],
+    []
+  );
 
   const eventsByDate = useMemo(() => {
     const map: Record<string, typeof events> = {};
-    events.forEach(event => {
+    events.forEach((event) => {
       if (!map[event.date]) map[event.date] = [];
       map[event.date].push(event);
     });
@@ -33,11 +36,15 @@ const CalendarComponent = () => {
   }, [events]);
 
   const goToPreviousMonth = () => {
-    setSelectedDate(prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
+    setSelectedDate(
+      (prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1)
+    );
   };
 
   const goToNextMonth = () => {
-    setSelectedDate(prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));
+    setSelectedDate(
+      (prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1)
+    );
   };
 
   const renderCalendar = () => {
@@ -53,17 +60,22 @@ const CalendarComponent = () => {
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
-      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      const isToday = 
+      const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+        day
+      ).padStart(2, "0")}`;
+      const isToday =
         day === new Date().getDate() &&
         month === new Date().getMonth() &&
         year === new Date().getFullYear();
-      
+
       const isSelected = day === selectedDate.getDate();
       const hasEvent = eventsByDate[dateStr]?.length > 0;
 
       days.push(
-        <div key={day} className="flex flex-col items-center justify-start p-1 aspect-square">
+        <div
+          key={day}
+          className="flex flex-col items-center justify-start p-1 aspect-square"
+        >
           <button
             onClick={() => setSelectedDate(new Date(year, month, day))}
             className={`w-7 h-7 flex items-center justify-center text-xs rounded-full transition-colors ${
@@ -85,8 +97,18 @@ const CalendarComponent = () => {
   };
 
   const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   return (
@@ -94,12 +116,11 @@ const CalendarComponent = () => {
       <h2 className="text-lg font-semibold mb-3 px-1 dark:text-gray-100">
         Calendar & Events
       </h2>
-      
+
       <Card className="bg-white shadow-sm border-[#D4AF37]/20 dark:bg-gray-800 dark:border-gray-700">
         <div className="p-3 sm:p-4">
           {/* ✅ FIXED: All 3 sections inside the grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            
             {/* 1. Calendar */}
             <div className="md:col-span-1 lg:col-span-1">
               <div className="flex items-center justify-between mb-2">
@@ -112,7 +133,8 @@ const CalendarComponent = () => {
                     <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                   </button>
                   <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 whitespace-nowrap">
-                    {monthNames[selectedDate.getMonth()]} {selectedDate.getFullYear()}
+                    {monthNames[selectedDate.getMonth()]}{" "}
+                    {selectedDate.getFullYear()}
                   </h3>
                   <button
                     onClick={goToNextMonth}
@@ -138,9 +160,9 @@ const CalendarComponent = () => {
               </div>
 
               {/* Calendar grid */}
-              <div 
-                className="grid grid-cols-7 gap-1 overflow-hidden" 
-                style={{ height: '220px' }}
+              <div
+                className="grid grid-cols-7 gap-1 overflow-hidden"
+                style={{ height: "220px" }}
               >
                 {renderCalendar()}
               </div>
@@ -159,10 +181,10 @@ const CalendarComponent = () => {
                   View all
                 </Link>
               </div>
-              
-              <div 
+
+              <div
                 className="space-y-2 pr-1 custom-scrollbar"
-                style={{ maxHeight: '220px', overflowY: 'auto' }}
+                style={{ maxHeight: "220px", overflowY: "auto" }}
               >
                 {events.map((event) => (
                   <div

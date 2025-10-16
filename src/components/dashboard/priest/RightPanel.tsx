@@ -12,9 +12,10 @@ import BookingSection from "./right-panel/BookingSection";
 import SchedulingSection from "./right-panel/SchedulingSection";
 import AnalyticsSection from "./right-panel/AnalyticsSection";
 import PriestAnnouncements from "./right-panel/AnnouncementsSection";
-import { RightPanelProps } from "@/types";
+import { RightPanelProps } from "@/types/types";
 
-export default function RightPanel({  activeTab,
+export default function RightPanel({
+  activeTab,
   setActiveTab,
 }: RightPanelProps) {
   const tabs = [
