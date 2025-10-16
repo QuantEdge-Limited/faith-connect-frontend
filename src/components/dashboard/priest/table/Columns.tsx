@@ -19,8 +19,8 @@ export const Columns: ColumnDef<any>[] = [
     size: 200,
   },
   {
-    accessorKey: "gender",
-    header: "Gender",
+    accessorKey: "role",
+    header: "Role ",
     size: 10,
   },
   {
