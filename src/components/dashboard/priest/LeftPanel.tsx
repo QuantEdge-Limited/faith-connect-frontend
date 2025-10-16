@@ -132,7 +132,7 @@ export default function LeftPanel() {
           <div className="space-y-2">
             <ScheduleMassDrawer triggerAsChild>
               <Button className="w-full px-4 py-2   bg-blue-600  text-white rounded-lg hover:bg-blue-700  flex items-center gap-2 text-sm">
-                <CalendarDays size={14} /> Schedule Mass
+                <CalendarDays size={14} /> Schedule Priest
               </Button>
             </ScheduleMassDrawer>
             <Button className="w-full px-4 py-2 border border-slate-300 bg-white text-slate-700 text-left rounded-lg hover:bg-slate-50 flex items-center gap-2 text-sm">

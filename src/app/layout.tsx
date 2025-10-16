@@ -27,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable} ${cormorant.variable}`}>
       <body className="font-sans antialiased">
-        <ThemeProvider>
+        {/* <ThemeProvider>
           {children}
-        </ThemeProvider>
+        </ThemeProvider> */}
+
+        {children}
       </body>
     </html>
   );
