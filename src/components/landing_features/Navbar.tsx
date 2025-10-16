@@ -101,7 +101,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 min-w-0">
             <Link href="/" onClick={closeMobileMenu}>
               <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium cursor-pointer truncate">
-                Faith Connect
+                FaithConnect
               </h1>
             </Link>
           </div>

@@ -7,7 +7,6 @@ import {
   GraduationCap,
   Handshake,
   Calendar,
-  Clock,
   MapPin,
 } from "lucide-react";
 
@@ -76,14 +75,14 @@ export const testimonials = [
 
 export const leadership = [
   {
-    name: "Rev. John Smith",
+    name: "Fr. John Smith",
     position: "Senior Pastor",
     description:
       "Leading our congregation with wisdom and compassion for over 15 years.",
     image: "👨‍⚖️",
   },
   {
-    name: "Rev. Sarah Johnson",
+    name: "Fr. Johnson",
     position: "Associate Pastor",
     description: "Dedicated to youth ministry and community outreach programs.",
     image: "👩‍⚖️",
@@ -105,25 +104,31 @@ export const leadership = [
 
 export const parishes = [
   {
-    name: "St. Mary's Cathedral",
+    name: "St. Andrew",
     location: "Downtown District",
     established: "1895",
     services: "Sunday: 7:00 AM, 9:00 AM, 11:00 AM, 5:00 PM",
   },
   {
-    name: "Holy Trinity Church",
+    name: "St Charles",
     location: "Eastside Community",
     established: "1923",
     services: "Sunday: 8:00 AM, 10:30 AM",
   },
   {
-    name: "Grace Chapel",
+    name: "St Francis",
     location: "Westbrook Area",
     established: "1967",
     services: "Sunday: 9:00 AM, 11:00 AM, 6:00 PM",
   },
   {
-    name: "Faith Community Center",
+    name: "St Gabriel",
+    location: "Northridge",
+    established: "2005",
+    services: "Sunday: 10:00 AM, 12:00 PM",
+  },
+  {
+    name: "St Monica",
     location: "Northridge",
     established: "2005",
     services: "Sunday: 10:00 AM, 12:00 PM",

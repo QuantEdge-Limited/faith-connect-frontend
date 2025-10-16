@@ -4,16 +4,31 @@ import { Church, Clock, Heart, Info, Link, MapPin, Users } from "lucide-react";
 import React, { useState } from "react";
 import TabButtons from "../TabButtons";
 import { ShowcaseCard } from "../ShowcaseCard";
+import Image from "next/image";
 
 type Props = {
   branchId: string;
 };
 
-function QuickCard({ title, subtitle }: { title: string; subtitle: string }) {
+type QuickCardsProps = {
+  title: string;
+  subtitle: string;
+};
+
+function QuickCard({ title, subtitle }: QuickCardsProps) {
   return (
     <div className="bg-[#FAF7EB] p-6 rounded-lg text-center">
       <div className="text-4xl font-bold text-[#D4AF37] mb-2">{title}</div>
       <div className="text-gray-700">{subtitle}</div>
+    </div>
+  );
+}
+
+function QuickInfo({ title, subtitle }: QuickCardsProps) {
+  return (
+    <div className="bg-black/40 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+      <div className="text-white text-xs uppercase tracking-wide">{title}</div>
+      <div className="text-white font-medium">{subtitle}</div>
     </div>
   );
 }
@@ -26,7 +41,7 @@ export default function OutstationSection({ branchId }: Props) {
   const [activeTab, setActiveTab] = useState("leadership");
   const tabs = [
     { id: "leadership", label: "Church Leadership", icon: Users },
-    { id: "community", label: "Communities & Ministries", icon: Heart },
+    { id: "community", label: "Groups", icon: Heart },
     { id: "info", label: "More Information", icon: Info },
   ];
 
@@ -41,17 +56,31 @@ export default function OutstationSection({ branchId }: Props) {
     );
   }
 
+  console.log(branch.image);
+
   return (
     <>
-      <section className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 px-4 text-[#0D090A]">
-        <div className="max-w-7xl mx-auto">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 px-5 md:px-16 text-[#0D090A]">
+        <div className="max-screen-2xl mx-auto">
           {/* History Section */}
           <div className="mb-12 sm:mb-16">
-            <div className="flex flex-col sm:flex-row items-center justify-center mb-6 sm:mb-8 gap-3">
-              <Church className="w-10 h-10 sm:w-12 sm:h-12 text-[#D4AF37]" />
-              <h2 className="text-3xl sm:text-4xl font-heading font-semibold text-[#0D090A] text-center">
-                {branch.name}
-              </h2>
+            <div className="relative w-full h-64 sm:h-[500px]">
+              {/* Background Image */}
+              <Image
+                src={branch.image}
+                alt={branch.name}
+                fill
+                className="object-cover"
+                priority
+              />
+
+              {/* Overlay Content */}
+              <div className="absolute inset-0 flex flex-col sm:flex-row items-center justify-center bg-black/70 text-white text-center gap-3">
+                <Church className="w-10 h-10 sm:w-12 sm:h-12 text-[#D4AF37]" />
+                <h2 className="text-3xl sm:text-4xl md:text-7xl font-heading font-semibold text-[#FFF]">
+                  {branch.name}
+                </h2>
+              </div>
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 md:p-12">
@@ -65,10 +94,21 @@ export default function OutstationSection({ branchId }: Props) {
                     title={branch.established.split("-")[0]}
                     subtitle="Established"
                   />
+
                   <QuickCard
                     title={branch.address.split(",")[0]}
                     subtitle="Address"
                   />
+                </div>
+
+                <div className="grid grids-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                  {branch.mass?.map((mass, index) => (
+                    <QuickInfo
+                      key={index}
+                      title={mass.day}
+                      subtitle={mass.time}
+                    />
+                  ))}
                 </div>
 
                 <p className="text-[#0D090A] leading-relaxed mb-6">
@@ -136,7 +176,7 @@ export default function OutstationSection({ branchId }: Props) {
               {activeTab === "community" && (
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-heading font-semibold text-[#0D090A] mb-6">
-                    Community & Ministries
+                    Community & Groups
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     {branch.ministries.map((ministry, index) => (

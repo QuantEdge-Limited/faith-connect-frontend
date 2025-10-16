@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function CTASection() {
   return (
@@ -35,9 +36,10 @@ export default function CTASection() {
 
         {/* Improved button layout and sizing */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-          <Button
-            variant="ghost"
-            className="w-full sm:w-auto bg-[#D4AF37] hover:bg-[#C19B26] 
+          <Link href="/sign_up">
+            <Button
+              variant="ghost"
+              className="w-full sm:w-auto bg-[#D4AF37] hover:bg-[#C19B26] 
                        px-6 sm:px-8 md:px-10 lg:px-12
                        py-3 sm:py-4 md:py-5 
                        text-sm sm:text-base md:text-lg
@@ -45,12 +47,14 @@ export default function CTASection() {
                        transition-all duration-300
                        font-medium
                        min-w-[120px] sm:min-w-[140px] md:min-w-[160px]"
-          >
-            Join now
-          </Button>
-          <Button
-            variant="ghost"
-            className="w-full sm:w-auto 
+            >
+              Join now
+            </Button>
+          </Link>
+          <Link href="/about">
+            <Button
+              variant="ghost"
+              className="w-full sm:w-auto 
                        border border-gray-300 hover:bg-gray-50 
                        px-6 sm:px-8 md:px-10 lg:px-12
                        py-3 sm:py-4 md:py-5 
@@ -59,9 +63,10 @@ export default function CTASection() {
                        transition-all duration-300
                        font-medium
                        min-w-[120px] sm:min-w-[140px] md:min-w-[160px]"
-          >
-            Learn More
-          </Button>
+            >
+              Learn More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

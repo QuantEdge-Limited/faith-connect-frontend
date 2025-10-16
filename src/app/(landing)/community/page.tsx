@@ -16,8 +16,8 @@ export default function CommunityPage() {
   ];
 
   return (
-    <section className="bg-white min-h-screen py-12 sm:py-16 px-4 text-[#0D090A]">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white min-h-screen py-12 sm:py-16 px-5 md:px-16 text-[#0D090A]">
+      <div className="max-screen-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl font-heading font-semibold text-[#0D090A] mb-4">

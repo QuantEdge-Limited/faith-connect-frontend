@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="flex-shrink-0">
               <Link href="/">
                 <h1 className="text-2xl sm:text-3xl font-bold cursor-pointer">
-                  Faith Connect
+                  FaithConnect
                 </h1>
               </Link>
             </div>

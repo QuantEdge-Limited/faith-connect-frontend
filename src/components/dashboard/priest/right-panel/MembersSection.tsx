@@ -62,7 +62,7 @@ export default function MembersSection() {
       <div className="space-y-4">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold text-slate-800">
-            Parish Members
+            Parish Leaders
           </h2>
         </div>
         {/* Search and Filters */}
