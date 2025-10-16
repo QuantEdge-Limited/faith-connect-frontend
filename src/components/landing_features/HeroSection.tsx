@@ -41,7 +41,7 @@ export default function HeroSection() {
     >
       {/* Background Image using next/image */}
       <Image
-        src="/outStations/st-francis.jpg"
+        src="/outStations/st-charles.jpg"
         alt="St. Francis of Assisi Ruiru Parish"
         fill
         className="object-cover"
