@@ -6,7 +6,8 @@ export const branches = [
     name: "St Charles OutStation",
     address: "123 Unity Avenue, Nairobi, Kenya",
     established: "1988-04-15",
-    image: "/outStations/st-charles.jpg",
+    image:
+      "https://images.unsplash.com/photo-1730148901396-8347002f054a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=68https://images.unsplash.com/photo-1631392048960-abffadda1958?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
     history:
       "St. Charles Lwanga (c. 1860-1886) was a Ugandan Catholic convert and leader among the royal pages of King Mwanga II. He protected young boys from the king's sexual abuse and encouraged them to stay strong in their Christian faith. For refusing to renounce Christianity, he was burned alive on June 3, 1886, at Namugongo, along with other Christian converts. He was canonized in 1964 and is now the patron saint of youth in Africa. His feast day is June 3",
     inspirationMessage:
@@ -141,7 +142,8 @@ export const branches = [
     name: "St Francis OutStation",
     address: "45 Peace Road, Mombasa, Kenya",
     established: "1995-09-22",
-    image: "/outStations/st-francis.jpg",
+    image:
+      "https://images.pexels.com/photos/27295081/pexels-photo-27295081.jpeg",
     history:
       "St. Francis of Assisi (1181/1182-1226) was an Italian Catholic friar and preacher who gave up a wealthy life to live in poverty, dedicating himself to God, peace, and care for the poor and nature. He founded the Franciscan Order and is known for his love of animals and creation. He received the stigmata (wounds of Christ) in 1224 and died in 1226. He was canonized in 1228 and is the patron saint of animals, ecology, and peace. His feast day is October 4",
     inspirationMessage:
@@ -282,7 +284,7 @@ export const branches = [
     name: "St Andrew OutStation",
     address: "12 Hope Street, Kisumu, Kenya",
     established: "2001-06-10",
-    image: "/outStations/st-andrew.jpg",
+    image: "https://images.pexels.com/photos/3892129/pexels-photo-3892129.jpeg",
     history:
       "St. Andrew was one of Jesus' twelve apostles and the brother of St. Peter. He was the first disciple called by Jesus and later preached the Gospel in various regions. He was martyred on an X-shaped cross. He is the patron saint of Scotland, Russia, and fishermen. His feast day is November 30.",
     inspirationMessage: "Faith grows when shared; serve with humility and joy.",
@@ -416,7 +418,7 @@ export const branches = [
     name: "St Monica OutStation",
     address: "78 Grace Lane, Nakuru, Kenya",
     established: "2005-03-18",
-    image: "/outStations/st-monica.jpg",
+    image: "https://images.pexels.com/photos/5273638/pexels-photo-5273638.jpeg",
     history:
       "St. Monica was the mother of St. Augustine. She is known for her strong faith and years of prayer for her son's conversion to Christianity. Her persistence led to Augustine becoming a great saint and theologian. She is the patron saint of mothers and those who pray for family members. Her feast day is August 27.",
     inspirationMessage:
@@ -551,7 +553,7 @@ export const branches = [
     name: "St Gabriel OutStation",
     address: "32 Trinity Road, Eldoret, Kenya",
     established: "2010-11-27",
-    image: "/outStations/st-gabriel.jpg",
+    image: "https://images.pexels.com/photos/2351425/pexels-photo-2351425.jpeg",
     history:
       "St. Gabriel is one of the archangels named in the Bible. He is best known for announcing to the Virgin Mary that she would be the mother of Jesus (the Annunciation). He is the patron saint of messengers and communication workers. His feast day is September 29.",
     inspirationMessage:

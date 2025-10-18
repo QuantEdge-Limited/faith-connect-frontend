@@ -47,21 +47,19 @@ export default function FeatureSection() {
             <Card
               key={card.title}
               className="bg-white 
-   rounded-2xl lg:rounded-3xl
-   overflow-hidden 
-   border border-[#0D090A]/10 hover:border-[#0D090A]/20
-   transition-all duration-300 hover:shadow-2xl hover:-translate-y-2
-   group"
+    rounded-2xl lg:rounded-3xl
+    overflow-hidden 
+    border border-[#0D090A]/10 hover:border-[#0D090A]/20
+    transition-all duration-300 hover:shadow-2xl hover:-translate-y-2
+    group p-0"
             >
               {/* Card Image Container */}
-              <div className="w-full h-40 sm:h-48 md:h-44 lg:h-48 xl:h-52 2xl:h-56 overflow-hidden relative">
+              <div className="relative w-full h-40 sm:h-48 md:h-44 lg:h-48 xl:h-52 2xl:h-56 overflow-hidden flex-shrink-0">
                 <Image
                   src={card.image}
                   alt={card.alt}
                   fill
-                  unoptimized
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 400px, (max-width: 768px) 448px, (max-width: 1024px) 448px, (max-width: 1280px) 480px, (max-width: 1536px) 512px, 512px"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 

@@ -12,7 +12,7 @@ import {
 
 export const processCards = [
   {
-    image: "/images/group.jpg",
+    image: "https://images.pexels.com/photos/6860473/pexels-photo-6860473.jpeg",
     alt: "Outstation -Parish fellowship gathering for event",
     category: "Outstation",
     title: "Join your outstation community",
@@ -20,7 +20,7 @@ export const processCards = [
     buttonLabel: "Explore",
   },
   {
-    image: "/images/update.jpg",
+    image: "https://images.pexels.com/photos/5237657/pexels-photo-5237657.jpeg",
     alt: "Updates - Person receiving notification on device",
     category: "Updates",
     title: "Stay informed",
@@ -28,7 +28,7 @@ export const processCards = [
     buttonLabel: "View",
   },
   {
-    image: "/images/study.jpg",
+    image: "https://images.pexels.com/photos/2574619/pexels-photo-2574619.jpeg",
     alt: "Grow - Person engaging in spiritual activity",
     category: "Grow",
     title: "Track your spiritual journey",
@@ -36,7 +36,8 @@ export const processCards = [
     buttonLabel: "Start now",
   },
   {
-    image: "/images/ministry.jpg",
+    image:
+      "https://images.pexels.com/photos/25457345/pexels-photo-25457345.jpeg",
     alt: "Serve - Person volunteering in church service",
     category: "Serve",
     title: "Get involved",
