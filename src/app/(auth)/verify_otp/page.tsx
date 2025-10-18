@@ -16,7 +16,7 @@ export default function OTPPage() {
       <div className="hidden lg:flex lg:w-1/2 relative">
         {/* Background Image using next/image */}
         <Image
-          src="/outStations/st-francis.jpg"
+          src="https://images.pexels.com/photos/31479127/pexels-photo-31479127.jpeg"
           alt="St. Francis of Assisi Ruiru Parish"
           fill
           className="object-cover"

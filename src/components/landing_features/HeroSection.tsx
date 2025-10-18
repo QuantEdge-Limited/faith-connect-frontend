@@ -41,12 +41,11 @@ export default function HeroSection() {
     >
       {/* Background Image using next/image */}
       <Image
-        src="/outStations/st-charles.jpg"
-        alt="St. Francis of Assisi Ruiru Parish"
+        src="https://images.pexels.com/photos/31528486/pexels-photo-31528486.jpeg"
+        alt="Church building showcasing our parish community"
         fill
-        className="object-cover"
+        className="object-cover w-full h-full"
         priority
-        unoptimized
       />
 
       {/* Simple Dark Overlay */}

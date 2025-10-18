@@ -72,11 +72,10 @@ export default function OutstationSection({ branchId }: Props) {
                 fill
                 className="object-cover"
                 priority
-                unoptimized
               />
 
               {/* Overlay Content */}
-              <div className="absolute inset-0 flex flex-col sm:flex-row items-center justify-center bg-black/70 text-white text-center gap-3">
+              <div className="absolute inset-0 flex flex-col sm:flex-row items-center justify-center bg-black/55 text-white text-center gap-3">
                 <Church className="w-10 h-10 sm:w-12 sm:h-12 text-[#D4AF37]" />
                 <h2 className="text-3xl sm:text-4xl md:text-7xl font-heading font-semibold text-[#FFF]">
                   {branch.name}
